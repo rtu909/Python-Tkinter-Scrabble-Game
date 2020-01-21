@@ -1,4 +1,4 @@
-#Scrabble
+# Scrabble
 
 Team Name: The Trifecta
 
