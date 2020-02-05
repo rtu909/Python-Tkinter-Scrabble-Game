@@ -1,6 +1,7 @@
 from tkinter import *
 
 root = Tk()
+root.title("Scrabble")
 
 def instructions():
     strInstruct = """Instructions for Scrabble:
@@ -27,7 +28,19 @@ def instructions():
     The game ends when there are no tiles left in the bag."""
     welcome = Label(root, text=strInstruct)
     welcome.grid(row=0, column=0)
-   
+
+def startGame():
+    p1Label = Label(root, text="Enter Name of Player One")
+    p1Label.grid(row=3, column=0)
+    play1 = Entry(root)
+    play1.grid(row = 3, column=1)
+
+    p2Label = Label(root, text="Enter Name of Player Two")
+    p2Label.grid(row=4, column=0)
+    play2 = Entry(root)
+    play2.grid(row = 4, column=1)
+    nameP1 = play1.get()
+    nameP2 = play2.get()
 
 welcome = Label(root, text="Welcome to Scrabble")
 welcome.grid(row=0, column=0)
@@ -35,4 +48,8 @@ welcome.grid(row=0, column=0)
 instructionsB = Button(root, text="Instructions", command=instructions)
 instructionsB.grid(row=1, column=0)
 
+startB = Button(root, text="Start Game", command=startGame)
+startB.grid(row=2, column=0)
+
+ 
 root.mainloop()
