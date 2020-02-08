@@ -1,0 +1,67 @@
+NO BLANK TILES
+
+
+VIEW
+root -> instructions button, start game
+	frame -> input player1 and player2 name,
+			button to start playing the board game
+	frame -> game board -> 
+			player score -> receive from calculateScore after move has updated
+			label turn
+			frame -> player1 rack
+			frame -> player2 rack
+			input word 
+			input row/column
+			input direction
+			button make move -> connect to CONTROL module 
+			label invalid move -> receive from CONTROL module
+			button exchange tiles -> connect to exchange method in rack class
+			label end game -> receive from checkWinState in CONTROL class
+			
+
+
+MODEL
+tiles -> A-Z, attributes: letter, score, methods: init, getters
+bag -> 100 tiles, methods: init, get, number of tiles in bag
+rack -> array of 7 tiles, init, exchange tiles,
+board -> 2D array of chars ~ empty is null, full there is a letter there
+
+CONTROL
+methods:
+	GLOBAL bool for all checks -> if false activate label on front end (Set vars)
+	checkSkip:if null inputted then skip turn. (ADD INSTRUCTIONS)
+	checkInRack: checks if inputted word is equivalent to tiles in the rack
+	checkInDict: checks if inputted word is in the dictionary
+	
+	checkBoard: 
+		horizontal checks:
+		check1: if tile unoccupied -> GOOD, if occupied first letter of word must match letter on board
+		check2: if tile is empty for length of word, if occupied then check if letters match
+		check3: (from second to end of input) checks if tile is occupied, then check if letters match if occupied
+				Checks position y + 1 and y - 1 iteratively until find start and end of word
+					then check if word is in dictionary (call checkInDict)
+		check4: out of bounds check
+		
+		vertical checks:
+		check1: if tile unoccupied -> GOOD, if occupied first letter of word must match letter on board
+		check2: if tile is empty for length of word, if occupied then check if letters match
+		check3: (from second to end of input) checks if tile is occupied, then check if letters match if occupied
+				Checks position x + 1 and x - 1 iteratively until find start and end of word
+					then check if word is in dictionary (call checkInDict)
+		check4: out of bounds check
+	updateBackBoard:
+		update the backend version of the board
+	updateFrontBoard:
+		update front end board to change text of button to letter value
+	AT THE END OF EVERY TURN, ADD TO SCORE
+	calculateScore: 
+		if word is valid from above checkBoard, then calculate score
+	checkWinState:
+		checks if bag is empty and one player has no tiles left
+	
+	
+		
+	
+		
+		
+		
