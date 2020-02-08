@@ -8,7 +8,7 @@ root -> instructions button, start game
 	frame -> game board -> 
 			player score -> receive from calculateScore after move has updated
 			label turn
-			frame -> player1 rack
+			frame -> player1 rack -> connect to the rack class in MODEL
 			frame -> player2 rack
 			input word 
 			input row/column
