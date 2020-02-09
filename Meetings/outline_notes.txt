@@ -5,9 +5,10 @@ VIEW
 root -> instructions button, start game
 	frame -> input player1 and player2 name,
 			button to start playing the board game
-	frame -> game board -> 
+	frame -> 
+			game board -> recive from updateFrontBoard to change board to add new word
 			player score -> receive from calculateScore after move has updated
-			label turn
+			label turn -> receive from updateFrontBoard to change player turn in text
 			frame -> player1 rack -> connect to the rack class in MODEL
 			frame -> player2 rack
 			input word 
@@ -17,13 +18,11 @@ root -> instructions button, start game
 			label invalid move -> receive from CONTROL module
 			button exchange tiles -> connect to exchange method in rack class
 			label end game -> receive from checkWinState in CONTROL class
-			
-
 
 MODEL
 tiles -> A-Z, attributes: letter, score, methods: init, getters
 bag -> 100 tiles, methods: init, get, number of tiles in bag
-rack -> array of 7 tiles, init, exchange tiles,
+rack -> array of 7 tiles, init, exchange tiles, toString(build string of letters separated by commas)
 board -> 2D array of chars ~ empty is null, full there is a letter there
 
 CONTROL
@@ -49,10 +48,12 @@ methods:
 				Checks position x + 1 and x - 1 iteratively until find start and end of word
 					then check if word is in dictionary (call checkInDict)
 		check4: out of bounds check
+	
 	updateBackBoard:
 		update the backend version of the board
 	updateFrontBoard:
 		update front end board to change text of button to letter value
+		
 	AT THE END OF EVERY TURN, ADD TO SCORE
 	calculateScore: 
 		if word is valid from above checkBoard, then calculate score
