@@ -9,8 +9,11 @@ root -> instructions button, start game
 			game board -> recive from updateFrontBoard to change board to add new word
 			player score -> receive from calculateScore after move has updated
 			label turn -> receive from updateFrontBoard to change player turn in text
-			frame -> player1 rack -> connect to the rack class in MODEL
-			frame -> player2 rack
+			
+			
+			frame -> player1 rack -> connect to the rack class in MODEL the toString method
+			frame -> player2 rack 
+			
 			input word 
 			input row/column
 			input direction
@@ -18,6 +21,7 @@ root -> instructions button, start game
 			label invalid move -> receive from CONTROL module
 			button exchange tiles -> connect to exchange method in rack class
 			label end game -> receive from checkWinState in CONTROL class
+	
 
 MODEL
 tiles -> A-Z, attributes: letter, score, methods: init, getters
