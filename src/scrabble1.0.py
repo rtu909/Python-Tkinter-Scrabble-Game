@@ -156,7 +156,7 @@ def scrabbleBoard(player1Name, player2Name):
 
     #Creating the side panel for playing the game.
     #Creating a turn label that tells which player's turn it currently is.
-    turnL = Label(boardF, text = "Player " + str(p1Name) + "'s turn")
+    turnL = Label(boardF, text = "'s turn")
     turnL.grid(row = 2, column = 17)
     #Creating labels for the player's score
     p1ScoreL = Label(boardF, text = str(p1Name) + "'s Score")
@@ -164,6 +164,7 @@ def scrabbleBoard(player1Name, player2Name):
     p2ScoreL = Label(boardF, text = str(p2Name) + "'s Score")
     p2ScoreL.grid(row = 3, column = 18)
     #labels for the values of the score
+    #UPDATE WITH SCORE FROM BACKEND
     p1ScoreValL = Label(boardF, text = "num")
     p1ScoreValL.grid(row = 4, column = 17)
     p2ScoreValL = Label(boardF, text = "num")
@@ -682,9 +683,9 @@ def scrabbleBoard(player1Name, player2Name):
 
 def updateLabelText(label):
     if (label["text"] == p1Name):
-        label.configure(text = p2Name)
+        label.configure(text = str(p2Name) + "'s turn")
     else:
-        label.configure(text = p1Name)
+        label.configure(text = str(p1Name) + "'s turn")
 
 def updateButtontxt(button,row_col):
     var = i_word[row_col]
