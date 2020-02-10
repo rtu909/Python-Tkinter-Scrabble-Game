@@ -1,0 +1,1 @@
+This folder contains the software specification document for Scrabble. (SRS.pdf)
