@@ -10,12 +10,10 @@ from BoardFrame import *
 root = Tk()
 root.geometry("1500x900")
 root.title("Scrabble")
+root.iconbitmap(r'ScrabbleT.ico')
 
 global i_word
 global pTurn
-global tileArray 
-
-tileArray = []
 
 # Method pops up window that display instructions to the player.
 def instructions():
