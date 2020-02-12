@@ -1,6 +1,6 @@
 from tkinter import *
 from example import *
-from BoardInterface import *
+from boardGUI import *
 
 #Naming Conventions for Variables
 #ending in R for Windows
