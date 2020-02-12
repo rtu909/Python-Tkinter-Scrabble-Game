@@ -12,4 +12,18 @@ class endTurn:
                 backBoard[col][countRow] = char
                 countRow ++
     
-    def updateFrontBoard():
+    def updateFrontBoard(row, col, dir, word):
+        frontList = []
+        if(dir.lower() = "right")
+            countCol = col
+            for char in word:
+                configTuple = (row, countCol, char)
+                frontList.append(configTuple)
+                countCol ++
+        elif(dir.lower() = "down")
+            countRow = row
+            for char in word:
+                configTuple = (countRow, col, char)
+                frontList.append(configTuple)
+                countRow ++
+        return frontList
