@@ -1,0 +1,4 @@
+class checkBoard:
+    def occupiedTile:
+    
+    

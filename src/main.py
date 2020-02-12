@@ -10,7 +10,7 @@ from boardGUI import *
 root = Tk()
 root.geometry("1500x900")
 root.title("Scrabble")
-root.iconbitmap(r'ScrabbleT.ico')
+root.iconbitmap(r'scrabbleS.ico')
 
 global i_word
 global pTurn
