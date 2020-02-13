@@ -1,4 +1,4 @@
-class checkBoardVert:
+class checkBoardRight:
     def occupiedTile(row, col, input, arr):
         colcount = 0
         for char in input:
@@ -30,7 +30,7 @@ class checkBoardVert:
     def outOfBounds(row, col, input, arr):
         return (col <= 14 and row <= 14 and row + len(input) <= 14)
 
-class checkBoardHoriz:
+class checkBoardDown:
     def occupiedTile(row, col, input, arr):
         rowcount = 0
         for char in input:
