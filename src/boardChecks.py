@@ -17,9 +17,13 @@ class checkBoardRight:
             while arr[row][colcount] != 0:
                 colcount++
             last = arr[row][colcount]
+            lastRow = row
+            lastCol = colcount
             while arr[row][colcount] != 0:
                 colcount--
             first = arr[row][colcount]
+            firstRow = row
+            firstCol = colcount
             for i in range(first.col, last.col):
                 word = word + arr[i][col].getLetter
             boolCheck = boolCheck and checkDict(word)
