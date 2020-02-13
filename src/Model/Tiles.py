@@ -39,10 +39,10 @@ class Tile:
         else:
             self.score = 0
 
-    def get_letter(self):
+    def getLetter(self):
         #Returns the tile's letter (string).
         return self.letter
 
-    def get_score(self):
+    def getScore(self):
         #Returns the tile's score value.
         return self.score

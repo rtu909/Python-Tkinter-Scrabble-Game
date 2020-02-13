@@ -4,7 +4,7 @@ class checkBoardRight:
         for char in input:
             if arr[row][colcount] == 0:
                 colcount++
-            else if arr[row][colcount].char == 0: #matches char
+            else if arr[row][colcount].getLetter == char: #matches char
                 colcount++
             else    
                 return false
@@ -21,7 +21,7 @@ class checkBoardRight:
                 colcount--
             first = arr[row][colcount]
             for i in range(first.col, last.col):
-                word = word + arr[row][col].letter
+                word = word + arr[i][col].getLetter
             boolCheck = boolCheck and checkDict(word)
         
         return boolCheck
@@ -36,7 +36,7 @@ class checkBoardDown:
         for char in input:
             if arr[rowcount][col] == 0:
                 rowcount++
-            else if arr[rowcount][col].char == 0: #matches char
+            else if arr[rowcount][col].getLetter == char: #matches char
                 rowcount++
             else    
                 return false
@@ -49,11 +49,15 @@ class checkBoardDown:
             while arr[rowcount][col] != 0:
                 rolcount++
             last = arr[rowcount][col]
+            lastRow = rowcount
+            lastCol = col
             while arr[rowcount][col] != 0:
                 rolcount--
             first = arr[rowcount][col]
-            for i in range(first.col, last.col):
-                word = word + arr[row][col].letter
+            firstRow = rowcount
+            firstCol = col
+            for i in range(firstRow, lastRow):
+                word = word + arr[i][col].getLetter
             boolCheck = boolCheck and checkDict(word)
         
         return boolCheck
