@@ -25,7 +25,7 @@ class checkBoardRight:
             firstRow = row
             firstCol = colcount
             for i in range(first.col, last.col):
-                word = word + arr[i][col].getLetter
+                word = word + arr[row][i].getLetter
             boolCheck = boolCheck and checkDict(word)
         
         return boolCheck
