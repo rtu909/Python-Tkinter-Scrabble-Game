@@ -33,6 +33,9 @@ class checkBoardRight:
         
     def outOfBounds(row, col, input, arr):
         return (col <= 14 and row <= 14 and row + len(input) <= 14)
+        
+    def rightCheck(row, col, input, arr):
+        return occupiedTile(row, col, input, arr) and neighbourTiles(row, col, input, arr) and outOfBounds(row, col, input, arr)
 
 class checkBoardDown:
     def occupiedTile(row, col, input, arr):
@@ -68,4 +71,7 @@ class checkBoardDown:
     
     def outOfBounds(row, col, input, arr):
         return (col <= 14 and row <= 14 and col + len(input) <= 14)
+        
+    def downCheck(row, col, input, arr):
+        return occupiedTile(row, col, input, arr) and neighbourTiles(row, col, input, arr) and outOfBounds(row, col, input, arr)
     
