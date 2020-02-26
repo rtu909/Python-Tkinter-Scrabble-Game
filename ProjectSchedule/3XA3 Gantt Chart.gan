@@ -68,12 +68,20 @@
         </task>
         <task id="11" name="Test Plan Revision 0" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true">
             <depend id="12" type="2" difference="0" hardness="Strong"/>
+            <depend id="191" type="2" difference="0" hardness="Strong"/>
             <task id="114" name="Plan" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
             <task id="115" name="System Test Description" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
             <task id="116" name="Tests for Proof of Concept" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-01-12" thirdDate-constraint="0" expand="true"/>
             <task id="118" name="Comparison to Existing Implementation" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
             <task id="119" name="Unit Testing Plan" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
             <task id="138" name="Appendix" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="191" name="Test Schedule" meeting="false" start="2020-02-29" duration="14" complete="0" expand="true">
+            <task id="194" name="Keyboard and Mouse Testing" color="#8cb6ce" meeting="false" start="2020-02-29" duration="14" complete="0" thirdDate="2020-02-29" thirdDate-constraint="0" expand="true"/>
+            <task id="195" name="Backend Unit Tests" color="#8cb6ce" meeting="false" start="2020-02-29" duration="14" complete="0" thirdDate="2020-02-29" thirdDate-constraint="0" expand="true"/>
+            <task id="196" name="Functional Requirement Testing" color="#8cb6ce" meeting="false" start="2020-02-29" duration="14" complete="0" thirdDate="2020-02-29" thirdDate-constraint="0" expand="true"/>
+            <task id="197" name="Non-functional Requirement Testing" color="#8cb6ce" meeting="false" start="2020-02-29" duration="14" complete="0" thirdDate="2020-02-29" thirdDate-constraint="0" expand="true"/>
+            <task id="198" name="Proof of Concept Testing" color="#8cb6ce" meeting="false" start="2020-02-29" duration="14" complete="0" thirdDate="2020-02-29" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="12" name="Design &amp; Document Revision 0" color="#8cb6ce" meeting="false" start="2020-02-29" duration="14" complete="0" thirdDate="2020-02-29" thirdDate-constraint="0" expand="true">
             <depend id="13" type="2" difference="0" hardness="Strong"/>
@@ -124,6 +132,11 @@
         <allocation task-id="103" resource-id="1" function="3" responsible="true" load="50.0"/>
         <allocation task-id="108" resource-id="1" function="3" responsible="true" load="50.0"/>
         <allocation task-id="10" resource-id="1" function="3" responsible="false" load="33.0"/>
+        <allocation task-id="194" resource-id="1" function="3" responsible="false" load="20.0"/>
+        <allocation task-id="195" resource-id="1" function="3" responsible="true" load="20.0"/>
+        <allocation task-id="196" resource-id="1" function="3" responsible="true" load="20.0"/>
+        <allocation task-id="197" resource-id="1" function="3" responsible="true" load="20.0"/>
+        <allocation task-id="198" resource-id="1" function="3" responsible="false" load="20.0"/>
         <allocation task-id="79" resource-id="2" function="3" responsible="true" load="16.0"/>
         <allocation task-id="80" resource-id="2" function="3" responsible="true" load="16.67"/>
         <allocation task-id="81" resource-id="2" function="3" responsible="false" load="16.67"/>
@@ -136,6 +149,11 @@
         <allocation task-id="105" resource-id="2" function="2" responsible="true" load="50.0"/>
         <allocation task-id="107" resource-id="2" function="2" responsible="true" load="50.0"/>
         <allocation task-id="10" resource-id="2" function="2" responsible="true" load="33.0"/>
+        <allocation task-id="195" resource-id="2" function="3" responsible="false" load="20.0"/>
+        <allocation task-id="196" resource-id="2" function="3" responsible="false" load="20.0"/>
+        <allocation task-id="197" resource-id="2" function="3" responsible="false" load="20.0"/>
+        <allocation task-id="198" resource-id="2" function="3" responsible="false" load="20.0"/>
+        <allocation task-id="194" resource-id="2" function="3" responsible="false" load="20.0"/>
         <allocation task-id="81" resource-id="3" function="3" responsible="false" load="33.33"/>
         <allocation task-id="83" resource-id="3" function="3" responsible="true" load="33.33"/>
         <allocation task-id="88" resource-id="3" function="3" responsible="false" load="33.33"/>
@@ -144,6 +162,10 @@
         <allocation task-id="4" resource-id="3" function="Default:0" responsible="true" load="50.0"/>
         <allocation task-id="106" resource-id="3" function="3" responsible="true" load="100.0"/>
         <allocation task-id="10" resource-id="3" function="3" responsible="false" load="33.0"/>
+        <allocation task-id="194" resource-id="3" function="3" responsible="false" load="25.0"/>
+        <allocation task-id="195" resource-id="3" function="3" responsible="false" load="25.0"/>
+        <allocation task-id="196" resource-id="3" function="3" responsible="false" load="25.0"/>
+        <allocation task-id="197" resource-id="3" function="3" responsible="false" load="25.0"/>
     </allocations>
     <vacations/>
     <previous/>
