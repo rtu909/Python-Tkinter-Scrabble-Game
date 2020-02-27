@@ -65,6 +65,39 @@
         </task>
         <task id="10" name="Proof of Concept Demonstration" color="#ffff00" meeting="false" start="2020-02-08" duration="14" complete="0" thirdDate="2020-01-13" thirdDate-constraint="0" expand="true">
             <depend id="11" type="2" difference="0" hardness="Strong"/>
+            <depend id="171" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="171" name="Development" meeting="false" start="2020-02-22" duration="6" complete="0" expand="true">
+            <task id="172" name="View" color="#000000" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true">
+                <task id="175" name="Board Interface" color="#000000" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true">
+                    <task id="176" name="End Game Label" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                    <task id="177" name="Player 1 and 2 Rack" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                    <task id="178" name="Player Score" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                    <task id="179" name="Update Methods" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                </task>
+            </task>
+            <task id="173" name="Controller" meeting="false" start="2020-02-22" duration="6" complete="0" expand="true">
+                <task id="189" name="Word Checks" meeting="false" start="2020-02-22" duration="6" complete="0" expand="true">
+                    <task id="185" name="checkSkip" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                    <task id="186" name="checkInRack" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-01-12" thirdDate-constraint="0" expand="true"/>
+                    <task id="188" name="checkInDict" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                </task>
+                <task id="190" name="Board Checks" meeting="false" start="2020-02-22" duration="6" complete="0" expand="true">
+                    <task id="191" name="Horizontal Check" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                    <task id="192" name="Vertical Check" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-01-12" thirdDate-constraint="0" expand="true"/>
+                </task>
+                <task id="194" name="End of Turn Check" meeting="false" start="2020-02-22" duration="6" complete="0" expand="true">
+                    <task id="195" name="updateBackBoard" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                    <task id="196" name="updateFrontBoard" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                    <task id="197" name="calculateScore" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                    <task id="198" name="checkWinState" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                </task>
+            </task>
+            <task id="174" name="Model" meeting="false" start="2020-02-22" duration="6" complete="0" expand="true">
+                <task id="180" name="Tiles" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                <task id="181" name="Bag" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                <task id="182" name="Rack" color="#8cb6ce" meeting="false" start="2020-02-22" duration="6" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+            </task>
         </task>
         <task id="11" name="Test Plan Revision 0" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true">
             <depend id="12" type="2" difference="0" hardness="Strong"/>
@@ -73,7 +106,10 @@
             <task id="115" name="System Test Description" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
             <task id="116" name="Tests for Proof of Concept" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-01-12" thirdDate-constraint="0" expand="true"/>
             <task id="118" name="Comparison to Existing Implementation" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
-            <task id="119" name="Unit Testing Plan" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+            <task id="119" name="Unit Testing Plan" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true">
+                <task id="245" name="Unit testing of internal functions" color="#8cb6ce" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+                <task id="247" name="Unit testing of output files" color="#8cb6ce" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
+            </task>
             <task id="138" name="Appendix" color="#006600" meeting="false" start="2020-02-22" duration="7" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="191" name="Test Schedule" meeting="false" start="2020-02-29" duration="14" complete="0" expand="true">
