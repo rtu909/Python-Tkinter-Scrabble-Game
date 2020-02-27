@@ -60,7 +60,7 @@ The purpose of testing this project is to ensure that the system meets all the f
 
 \subsection{Scope}
 
-The test plan contained in this document ensures all  functional and non-functional requirements are covered by tests. As well as specifying how each of the methods contained within the various of software project are to be tested for functionality and performance.
+The test plan contained in this document ensures all  functional and non-functional requirements are covered by tests. As well as specifying how each of the methods contained within the various software projects are to be tested for functionality and performance.
 
 \subsection{Acronyms, Abbreviations, and Symbols}
 	
@@ -112,15 +112,17 @@ The software of the Scrabble project is a re-implementation of a text based vers
 The test team consists of the members of the Scrabble project, Kanakabha Choudhri, Lucia Cristiano, and Raymond Tu.
 
 \subsection{Automated Testing Approach}
-The scrabble project team has decided to create a set of unit tests using PyTest. These tests will test every method in the frontend and backend for errors and ensure consistency between updates. Additionally, PyTest's inbuilt code coverage feature will also be used to measure the coverage of the unit tests. Test cases will be grouped into sections based on functional requirements and non-functional requirements. These will be broken down into tests regarding the keyboard and mouse inputs to the game. Then the backend modules that takes in this input and processes the turn will be tested. These tests will be automated and automatically ran between updates to the main branch of the repository. 
+The scrabble project team has decided to create a set of unit tests using PyTest. These tests will test every method in the front-end and back-end for errors and ensure consistency between updates. Additionally, PyTest's inbuilt code coverage feature will also be used to measure the coverage of the unit tests. Test cases will be grouped into sections based on functional requirements and non-functional requirements. These will be broken down into tests regarding the keyboard and mouse inputs to the game. Then the back-end modules that take in this input and processes the turn will be tested. These tests will be automated and automatically ran between updates to the main branch of the repository. 
 
 \subsection{Testing Tools} %raymond
 
-PyTest is a framework that will used to create unit tests for the program, as well test for overall statement coverage in the testing approach.
+PyTest is a framework that will be used to create unit tests for the program, as well as test for overall statement coverage in the testing approach.
 
 \subsection{Testing Schedule} %Raymond - gantt chart
 		
-See Gantt Chart at the following url ...
+See Gantt Chart at the following url:
+
+\href{https://gitlab.cas.mcmaster.ca/choudhrk/thetrifecta_scrabble/blob/master/ProjectSchedule/3XA3\%20Gantt\%20Chart.pdf}{[Click Here for Link to Gantt Chart]}
 
 \section{System Test Description}
 	
@@ -225,18 +227,18 @@ How test will be performed:
     Output: An error label appears stating that the move is invalid \\
     How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the error label appears and it remains that player's turn.\\
     
-    \item{test-UI12:Test for when the word inputted vertically forms a valid word with existing word/letter.\\} %FR9
+    \item{test-UI12:Test for when the word inputted vertically forms a valid word with existing words/letters.\\} %FR9
     Type: Functional, Dynamic, Manual\\
     Initial State: Player has entered a valid word sequence, valid row, valid column and valid direction on the game board screen.\\
     Input: The Player clicks the "End Move" button.\\
-    Output: The board gets updated with new word sequence. \\
+    Output: The board gets updated with the new word sequence. \\
     How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the board gets updated with the valid word sequence.\\
     
     \item{test-UI13:Test for when the word inputted vertically forms an invalid word with existing word/letter.\\} %FR9
     Type: Functional, Dynamic, Manual\\
     Initial State: Player has entered an invalid word, valid row, valid column and valid direction on the game board screen.\\
     Input: The Player clicks the "End Move" button.\\
-    Output: An error label appears stating that the move is invalid \\
+    Output: An error label appears stating that the move is invalid.\\
     How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the error label appears and it remains that player's turn.\\
     
     \item{test-UI14:Test for when the word inputted horizontally forms a valid word with existing word/letter.\\} %FR9
@@ -244,7 +246,7 @@ How test will be performed:
     Initial State: Player has entered a valid word sequence, valid row, valid column and direction on the game board screen.\\
     Input: The Player clicks the "End Move" button.\\
     Output: The board gets updated with new word sequence. \\
-    How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the board gets updated with correct word sequence.\\
+    How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the board gets updated with the correct word sequence.\\
     
     \item{test-UI15:Test for when the word inputted horizontally forms an invalid word with existing word/letter.\\} %FR9
     Type: Functional, Dynamic, Manual\\
@@ -256,37 +258,37 @@ How test will be performed:
     \item{test-UI16:Test for standalone word score.\\} %FR10
     Type: Functional, Dynamic, Manual\\
     Initial State: The Player clicks the "End Move" button.\\
-    Input: Player has entered an valid word onto the board. \\
+    Input: Player has entered a valid word onto the board. \\
     Output: The updated score is shown. \\
     How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the board updates players score by expected amount.\\
     
     \item{test-UI17:Test for inputted word sequence attached to existing word.\\} %FR10
     Type: Functional, Dynamic, Manual\\
     Initial State: The Player clicks the "End Move" button.\\
-    Input: Player has entered an valid word sequence onto the board. \\
+    Input: Player has entered a valid word sequence onto the board. \\
     Output: The updated score is shown. \\
     How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the board updates players score by expected amount.\\
     
     \item{test-UI18:Test for removal of rack when turn is finished.\\} %FR11
     Type: Functional, Dynamic, Manual\\
-    Initial State: Current Players rack is visible.\\
+    Initial State: Current player's rack is visible.\\
     Input: Player clicks "End move" button. \\
-    Output: The previous players rack is replaced with next players rack. \\
+    Output: The previous player's rack is replaced with the next player's rack. \\
     How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the board gets updated with a new rack.\\
     
     \item{test-UI19:Test for end game state based on allowed words.\\} %FR12
     Type: Functional, Dynamic, Manual\\
     Initial State: Board has space for one more word\\
     Input: Player clicks "End move" button. \\
-    Output: The board is filled with no space for no valid words, exits and displays highest score and player who scored it. \\
-    How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the game exits the board and displays highest score with player who scored that score.\\
+    Output: The board is filled with no space for no valid words, exits and displays the highest score and the player who scored it. \\
+    How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the game exits the board and displays the highest score with the player who scored that score.\\
     
     \item{test-UI20:Test for end game state based on internal bag count.\\} %FR12
     Type: Functional, Dynamic, Manual\\
     Initial State: Current bag having $N rack$ sized letters.\\
     Input: Player clicks "End move" button. \\
-    Output: The internal bags size is 0 which results into game exiting board and and displaying highest score and player who scored it. \\
-    How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the game exits the board and displays highest score with player who scored that score.\\
+    Output: The internal bags size is 0 which results into game exiting board and displaying the highest score and player who scored it. \\
+    How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the game exits the board and displays the highest score with the player who scored that score.\\
     
 \end{enumerate}
 \subsubsection{Game Environment}
@@ -320,7 +322,7 @@ How test will be performed:
     Output: The game board screen section showing score gets updated with correct score.
     How test will be performed: A test member will conduct a visual test to confirm that the game board has the score section updated under correct user.\\
     
-    \item{test-GE5: Test that upon arrival of end state game exits board.\\} %FR12
+    \item{test-GE5: Test that upon arrival of the end state game exits board.\\} %FR12
     Type: Functional, Dynamic, Manual\\
     Initial State: Player is allowed to make valid moves or internal bag has $N rack$ sized amount of letters in bag. \\
     Input: The Player clicks the "End Move" button.\\
@@ -329,6 +331,17 @@ How test will be performed:
 \end{enumerate}
     
 \subsection{Tests for Nonfunctional Requirements}%Raymond
+
+\subsubsection{Look and Feel}
+\begin{enumerate}
+
+\item{test-LF1: Users find interface warm and welcoming}\\
+    Type: Functional, Static, Manual\\
+    Initial State: The Scrabble project game opened and loaded to the initial screen.\\
+    Input/Conditions: The user takes a good look at the interface and its components.\\
+    Output/Result: Most users report the user interface has a warm look and feel to it.\\
+    How test will be performed: The group of testers of different personal views and opinions will statically observe the user interface and give back their opinions on what kind of impression the game gives to them.\\
+\end{enumerate}
 
 \subsubsection{Usability}
 \begin{enumerate}
@@ -358,7 +371,7 @@ How test will be performed:
     Initial State: Scrabble project game is opened and loaded the initial screen and given to a user who has already played a game of Scrabble.\\
     Input/Conditions: The user is able to play through the game with no outside help and not using the in game instructions.\\
     Output/Result:  The user will report a six or higher on the scale from one to ten when asked about how easy it was to remember the game. (See section 7.2)\\
-    How test will be performed: The a group of testers will have 90\% percent giving a rating of six or higher on the scale.\\
+    How test will be performed: The group of testers will have 90\% percent giving a rating of six or higher on the scale.\\
 \end{enumerate}
 
 \subsubsection{Performance}
@@ -369,7 +382,7 @@ How test will be performed:
     Initial State: The player has hit the let's play button and is at the board game screen.\\
     Input/Conditions: The player inputs a valid word and move and has hit the turn change button.\\
     Output/Result:  The turn is changed and the board is updated within $MIN\_TURN\_CHANGE\_TIME$.\\
-    How test will be performed: A tester will input a valid word and direction based on their rack and the game board state and hit end turn. They will visually verify that the turn changes in a within $MIN\_TURN\_CHANGE\_TIME$ with the correct updated board.\\
+    How test will be performed: A tester will input a valid word and direction based on their rack and the game board state and hit end turn. They will visually verify that the turn changes within $MIN\_TURN\_CHANGE\_TIME$ with the correct updated board.\\
     
     \item{test-PR2: Test for Playable State Between Updates} %PR2
     Type: Functional, Dynamic, Manual\\
@@ -377,6 +390,25 @@ How test will be performed:
     Input/Conditions: The player inputs a valid word and move and has hit the turn change button.\\
     Output/Result:  The turn is changed and the board is updated correctly.\\
     How test will be performed: A tester will input a valid word and direction based on their rack and the game board state and hit end turn. They will visually verify that the game is in a playable state, ie. turn changes in a reasonable amount of time with the correct updated board. Additionally, a questionnaire will be provided to a sample set of users and at least 90\% will confirm software is playable prior to the next update.\\
+\end{enumerate}
+
+\subsubsection{Operational and Environmental}
+\begin{enumerate}
+
+\item{test-OE1: The Scrabble game takes no more than 20 minutes to install onto the host computer.}\\
+    Type: Functional, Dynamic, Manual\\ %OE1
+    Initial State: User has the link necessary for downloading the game.\\
+    Input/Conditions: The user follows necessary steps to download the game.\\
+    Output/Result: The game has been downloaded and stored into correct folder within 20 minutes of initializing download. \\
+    How test will be performed: The group of testers with different kinds of PC's will download the game and note how long it took them to download it and set it up on their PC's.\\
+    
+\item{test-OE2: The Scrabble game takes no more than 10 seconds to load.}\\
+    Type: Functional, Dynamic, Manual\\ %OE2
+    Initial State: User has downloaded the game.\\
+    Input/Conditions: User tries to open the game.\\
+    Output/Result: Users note that the game doesn't take too long(more than 10 seconds) to load. \\
+    How test will be performed: The group of testers having the game installed on their PC will try to load the game and note how long it took them to do so.\\
+    
 \end{enumerate}
 
 \subsubsection{Maintainability and Support}
@@ -425,13 +457,13 @@ How test will be performed:
         \hline
         FR8 & test-UI8, test-UI9, test-UI10, test-UI11\\
         \hline
-        FR9 &  \\
+        FR9 &  test-UI12, test-UI13, test-UI14, test-UI15\\
         \hline
-        FR10 & \\
+        FR10 & test-UI16, test-UI17, test-GE4\\
         \hline
-        FR11 & \\
+        FR11 & test-UI18\\
         \hline
-        FR12 & \\
+        FR12 & test-UI19, test-UI20, test-GE5\\
         \bottomrule
     \end{tabular}
   \end{center}
@@ -445,7 +477,7 @@ How test will be performed:
         \toprule
         \textbf{Non-Functional Requirement} & \textbf{Test Cases}\\
         \midrule
-        NFR LF1 & test- \\
+        NFR LF1 & test-LF1 \\
         \hline
         NFR UH1 & test-UH1\\
         \hline
@@ -459,9 +491,9 @@ How test will be performed:
         \hline
         NFR PR2 & test-PR2\\
         \hline
-        NFR OE1 & test- \\
+        NFR OE1 & test-OE1 \\
         \hline
-        NFR OE2 & test- \\
+        NFR OE2 & test-OE2 \\
         \hline
         NFR MS1 & test-MS1\\
         \hline
@@ -478,11 +510,11 @@ Proof of Concept testing is similar to the planned testing above of the actual g
 
 \subsection{Board Layout}
 
-Testing for the board layout will ensure the size of the game board and the layout of the premium is correct (See Section 7.2 Figure 1 for correct board layout). Additionally, the overall aesthetic appeal of the POC and it's visual similarity to the scrabble game will be tested. See (Test case names for FR2, FR5) for testing the board size and layout of premium squares. See (Test case names for LF1) for testing the aesthetic appeal of the POC. 
+Testing for the board layout will ensure the size of the game board and the layout of the premium is correct (See Section 7.2 Figure 1 for correct board layout). Additionally, the overall aesthetic appeal of the POC and it's visual similarity to the scrabble game will be tested. See (test-GE1, test-GE2) for testing the board size and layout of premium squares. See (test-LF1) for testing the aesthetic appeal of the POC. 
 
 \subsection{Label Layout}
 
-Testing for the label layout will ensure the labels to the right of the board fit on the screen (See Section 7.2) and are in the correct layout. Additionally, the testing will ensure that player names are correctly appended to the labels. See (Test case names for FR4) for testing whether player names are correctly updated. See below test cases for testing the correct label output.
+Testing for the label layout will ensure the labels to the right of the board fit on the screen (See Section 7.2) and are in the correct layout. Additionally, the testing will ensure that player names are correctly appended to the labels. See (test-UI2, test-UI3) for testing whether player names are correctly updated. See below test cases for testing the correct label output.
 
 \begin{enumerate}
     \item{test-POC1: Test Label Layout\\} 
@@ -490,16 +522,16 @@ Testing for the label layout will ensure the labels to the right of the board fi
     Initial State: Player has entered in the two player names on the player name input screen. \\
     Input: The Player clicks the "Let's Play" button.\\
     Output: The game board screen is loaded with correct label layout and button layout. All labels and buttons fit in the window.
-    How test will be performed: A test member will conduct a visual test to confirm that the label and button layout is correct, and that all buttons and labels fit within the window margins. Check section 7.2 for correct board layout.\\
+    How test will be performed: A test member will conduct a visual test to confirm that the label and button layout is correct, and that all buttons and labels fit within the window margins. Check section 7.2 for the correct board layout.\\
 \end{enumerate}
 	
 \section{Comparison to Existing Implementation}	%Lucia
 When writing tests for the Scrabble project the team considered how recognizable this digital version of the game is to the board game version of Scrabble. This can be seen in test-UH2 which surveys users who played the game about their ability to recognize the GUI of the Scrabble project as the board game Scrabble.\\
-Another test that takes the existing implementation into consideration is having a user that has already played Scrabble before testing the how easy it is to remember how to play the game. This test can be seen in test-UH4.
+Another test that takes the existing implementation into consideration is having a user that has already played Scrabble before testing how easy it is to remember how to play the game. This test can be seen in test-UH4.
 \section{Unit Testing Plan}%Lucia
 For unit testing of the Scrabble project PyTest will be used to write the test suites as well as determine coverage of the methods and classes being tested. 
 \subsection{Unit testing of internal functions}
-Unit testing of the project will consists of testing each of the modules individually by creating test cases for each of the major methods within the module. Using PyTest, test cases will be written that  compare the actual output of the methods to the expected output of the method. The tests will also check if exceptions in the method are handled in the correct manner. These tests are intended to ensure that the entire module and its methods function as outlined in the SRS and the MIS.\\
+Unit testing of the project will consist of testing each of the modules individually by creating test cases for each of the major methods within the module. Using PyTest, test cases will be written that  compare the actual output of the methods to the expected output of the method. The tests will also check if exceptions in the method are handled in the correct manner. These tests are intended to ensure that the entire module and its methods function as outlined in the SRS and the MIS.\\
 The unit testing step is crucial, as the modules must function as intended before proceeding to perform integration testing. Since the Scrabble project is a game all the modules work together to ensure that the game runs as intended. This testing step cannot be completed unless unit testing is done thoroughly.
 		
 \subsection{Unit testing of output files}	
@@ -525,10 +557,11 @@ $MIN\_AGE = 8$\\
 $BOARD\_WIDTH$ = 15\\
 $BOARD\_HEIGHT$ = 15\\
 $MIN\_TURN\_CHANGE\_TIME$ = 10 seconds\\
+$N$ = How many letters are supposed to go in one rack\\
 
 \subsection{Figures}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics{TestPlan/Scrabble Board.png}
     \caption{Board Layout}
@@ -536,7 +569,7 @@ $MIN\_TURN\_CHANGE\_TIME$ = 10 seconds\\
 \end{figure}
 
 \subsection{Removed Functional Requirements}
-Functional Requirements one and three were deemed as obsolete based on feedback on the SRS document and decisions made by the Scrabble project team. Since these requirements have been removed there are not any test cases written for them.\\
+Functional Requirements one and three were deemed obsolete based on feedback on the SRS document and decisions made by the Scrabble project team. Since these requirements have been removed there are not any test cases written for them.\\
 \subsection{Usability Survey Questions}
 For test-UH1: How comfortable on a scale of 1-10 were you with playing the Scrabble game?\\
 For test-UH2: How easy was it to identify this game as Scrabble on a scale of 1-10?\\
