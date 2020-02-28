@@ -40,8 +40,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+2020/02/27 & 1.0 & Revision 0 Test Plan\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -81,19 +80,6 @@ LF1 & Look and Feel Requirements\\
 
 \end{table}
 
-\begin{table}[!htbp]
-\caption{\textbf{Table of Definitions}} \label{Table}
-\begin{tabularx}{\textwidth}{p{3cm}X}
-\toprule
-\textbf{Term} & \textbf{Definition}\\
-\midrule
-Term1 & Definition1\\
-Term2 & Definition2\\
-\bottomrule
-\end{tabularx}
-
-\end{table}	
-
 \subsection{Overview of Document}
 The remainder of this document is divided into six separate sections. \\
 Section two covers the overall testing plan, such as the testing team, tools being used, and the schedule for testing.\\ 
@@ -128,18 +114,6 @@ See Gantt Chart at the following url:
 	
 \subsection{Tests for Functional Requirements} 
 Refer to Appendix Section 7.3 for explanation of omitted functional requirements one and three. 
-\item{test-id1\\}
-
-Type: 
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-
 
 \subsubsection{User Input}
 
@@ -327,7 +301,7 @@ How test will be performed:
     Initial State: Player is allowed to make valid moves or internal bag has $N rack$ sized amount of letters in bag. \\
     Input: The Player clicks the "End Move" button.\\
     Output: The game exits the game board to a separate screen showing player with highest score and their score.
-    How test will be performed: A test member will conduct a visual test to confirm that the game board has been exited from and a new screen pops up with highest score and winner shown\\
+    How test will be performed: A test member will conduct a visual test to confirm that the game board has been exited from and a new screen pops up with highest score and winner shown.\\
 \end{enumerate}
     
 \subsection{Tests for Nonfunctional Requirements}%Raymond
@@ -426,7 +400,7 @@ How test will be performed:
     Initial State: The source code has been reviewed by a focus group of programmers.\\
     Input/Conditions: The source code of the repository.\\
     Output/Result:  The maintainability of the system is rated on a scale from 1-10.\\
-    How test will be performed: A focus group of software design experts will do a code review of the source code of the game. They will rate how modular the game is and if it allows for easy implementation of new features, on a scale from 1-10. For the test case to pass, the average score must be higher than 4=8.\\
+    How test will be performed: A focus group of software design experts will do a code review of the source code of the game. They will rate how modular the game is and if it allows for easy implementation of new features, on a scale from 1-10. For the test case to pass, the average score must be higher than 8.\\
     
     \item{test-MS3: Test for Playable State Between Python Updates} %MS3
     Type: Functional, Dynamic, Manual\\
