@@ -14,15 +14,15 @@ class endTurn:
     def updateFrontBoard(self, row, col, dir, word):
         frontList = []
         if(dir.lower() == "right"):
-            countCol = col
+            countCol = int(col)
             for char in word:
-                configTuple = (row, countCol, char)
+                configTuple = (int(row), countCol, char)
                 frontList.append(configTuple)
                 countCol += 1 
         elif(dir.lower() == "down"):
-            countRow = row
+            countRow = int(row)
             for char in word:
-                configTuple = (countRow, col, char)
+                configTuple = (countRow, int(col), char)
                 frontList.append(configTuple)
                 countRow += 1
         return frontList
