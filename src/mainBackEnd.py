@@ -13,6 +13,7 @@ from frontEndMain import*
 
 mainBoard = Board()
 mainBag = Bag()
+wordChecks = wordChecks()
 player1 = Player(mainBag)
 player2 = Player(mainBag)
 
@@ -27,5 +28,19 @@ for row in mainBoard.getBoard():
         print(col)
 
 print(mainBag.getRemainingTiles())
+
+#rack1 = Rack(mainBag)
+tile1 = Tile("D")
+tile2 = Tile("O")
+tile3 = Tile("G")
+player1.rack.rack.append(tile1)
+player1.rack.rack.append(tile2)
+player1.rack.rack.append(tile3)
+
+b1 = wordChecks.checkRack("gibberish",player1.rack.getRackStr())
+b2 = wordChecks.checkInDict("dog")
+print(b1)
+print(b2)
+print(player1.rack.getRackLength())
 
 frontEndMain()
