@@ -3,7 +3,7 @@ class Tile:
     Class that allows for the creation of a tile. Initializes using an uppercase string of one letter,
     and an integer representing that letter's score.
     """
-	LETTER_VALUES = {"A": 1,
+    LETTER_VALUES = {"A": 1,
                  "B": 3,
                  "C": 3,
                  "D": 2,
@@ -30,9 +30,9 @@ class Tile:
                  "Y": 4,
                  "Z": 10}
     def __init__(self, letter):
-        #Initializes the tile class. Takes the letter as a string, and the dictionary of letter values as arguments.
-		self.letter = letter.upper()
-		self.score = 0
+        #Initializes the tile class. Takes the letter as a string, and the dictionary of letter values as arguments
+        self.letter = letter.upper()
+        self.score = 0
         if self.letter in LETTER_VALUES:
             self.score = LETTER_VALUES[self.letter]
         else:
