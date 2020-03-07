@@ -35,7 +35,7 @@ class Bag:
         self.addToBag(Tile("G"), 3)
         self.addToBag(Tile("H"), 2)
         self.addToBag(Tile("I"), 9)
-        self.addToBag(Tile("J"), 9)
+        self.addToBag(Tile("J"), 1)
         self.addToBag(Tile("K"), 1)
         self.addToBag(Tile("L"), 4)
         self.addToBag(Tile("M"), 2)

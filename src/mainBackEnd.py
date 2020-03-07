@@ -16,5 +16,16 @@ mainBag = Bag()
 player1 = Player(mainBag)
 player2 = Player(mainBag)
 
+print(player1.getRackStr())
+for tile in player1.getRackArr():
+	print(tile.getLetter() + " " + str(tile.getScore()))
+#print(player1.getRackArr())
+print(player1.getScore())
+print(mainBoard.getBoard())
+for row in mainBoard.getBoard():
+    for col in row:
+        print(col)
+
+print(mainBag.getRemainingTiles())
 
 frontEndMain()

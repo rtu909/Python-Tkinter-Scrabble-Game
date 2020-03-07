@@ -4,7 +4,7 @@ class Board:
         self.backBoard = [["0" for col in range(0, 15)] for row in range(0, 15)]
 
     def getBoard(self):
-        return backBoard
+        return self.backBoard
     
     ## @brief updates the back end version of the board with the valid word.
     #  @param1 an integer that represents the row of an the back end array.
