@@ -1,4 +1,3 @@
-from Player import *
 
 ## @file endTurn.py
 #  @author Lucia Cristiano
@@ -6,22 +5,6 @@ from Player import *
 #  @date Feb.12,2020
 class endTurn:
 
-    ## @brief updates the back end version of the board with the valid word.
-    #  @param1 an integer that represents the row of an the back end array.
-    #  @param2 an integer that represents the column of the back end array.
-    #  @param3 a string that represents the direction of the word placed on the board.
-    #  @param4 a string that represents the word being placed on the board.
-    def updateBackBoard(self, row, col, dir, word):
-        if(dir.lower() == "right"):
-            countCol = col
-            for char in word:
-                backBoard[row][countCol] = char
-                countCol += 1 
-        elif(dir.lower() == "down"):
-            countRow = row
-            for char in word:
-                backBoard[col][countRow] = char
-                countRow += 1
     ## @brief updates the back end version of the board with the valid word.
     #  @param1 an integer that represents the row of an the back end array.
     #  @param2 an integer that represents the column of the back end array.
@@ -45,7 +28,7 @@ class endTurn:
         return frontList
     
     #return score
-    def calculateScore(self, row, col, dir, word, player):
+    def calculateScore(self, row, col, dir, word):
         #Set list used in score calculations.
         #List of premium tiles.
         TWS = [(0,0), (7, 0), (14,0), (0, 7), (14, 7), (0, 14), (7, 14), (14,14)]
@@ -90,11 +73,7 @@ class endTurn:
                     score += LETTER_VALUES[char]
                 countRow += 1
             score *= multiplierWord
-        # if player == 1:
-        #     player1.increaseScore(score)
-        # elif player == 2:
-        #     player2.increaseScore
-
+        return score
 
     ## @brief checks if the game has been won
     #  @return returns a bool to represent win state or not 
