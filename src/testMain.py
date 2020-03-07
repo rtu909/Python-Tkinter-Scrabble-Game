@@ -114,7 +114,13 @@ class BoardFrame:
     #     curRow = row
     #     curCol = col
     #     curDir = dir
+
+    def updateGUI(updateList):
+        for tuple in updateList:
+            tileArray[tuple[0]][tuple[1]].configure("text", str(tuple[2]))
+
     def completeTurn(word, row, col, dir, player, label):
+        global turn
         winState = endTurn.checkWinState(player1.rack, player2.rack, mainBag)
         if winState:
             #popup winner and destroy all windows
@@ -124,14 +130,18 @@ class BoardFrame:
             player.increaseScore(score)
             #use to configure button to have correct letters
             frontList = endTurn.updateFrontBoard(row, col, dir, word)
+            mainBoard.updateBackBoard(row, col, dir, word)
+            BoardFrame.updateGUI(frontList)
+
             if turn == 1:
-                player1Rack = player1.rack.getRackStr()
-                label.configure(text = player1Rack)
-            elif turn == 2:
                 player2Rack = player2.rack.getRackStr()
                 label.configure(text = player2Rack)
-            for i in frontList:
-                print(frontList[i][0] + " " + frontList[i][1] + " " + frontList[i][2])
+				turn = 2
+            elif turn == 2:
+                player1Rack = player1.rack.getRackStr()
+                label.configure(text = player1Rack)
+				turn = 1
+
     def endChecks(word, row, col, dir, player, label):
         validTurn = wordChecks.checkRack(word, player.rack.getRackStr())
         if validTurn:
@@ -154,7 +164,8 @@ class BoardFrame:
             #label popup for try again
             print()
 
-    def endMove(word, row, col, dir, turn, label):
+    def endMove(word, row, col, dir, label):
+        global turn
         validTurn = False
         winState = False
         print(word + "," + row + "," + col + "," + dir + str(turn))
@@ -173,7 +184,7 @@ class BoardFrame:
         #Hide the playerInput grid
         frame.grid_remove()
         #Storing the names of players for the turn label.
-        global p1Name, p2Name
+        global p1Name, p2Name, turn
         p1Name = player1Name
         p2Name = player2Name
 
@@ -208,7 +219,7 @@ class BoardFrame:
         p2ScoreValL.grid(row = 4, column = 18)
         #Buttons for end move and exchange tiles.
         endMoveB = Button(boardF, text = "End Move", command=lambda: BoardFrame.endMove(inputWordE.get(),
-        inputRowE.get(), inputColE.get(), inputDirE.get(), turn, playerRackL))
+        inputRowE.get(), inputColE.get(), inputDirE.get(), playerRackL))
         endMoveB.grid(row = 11, column = 17)
 
         #empty label as a buffer
