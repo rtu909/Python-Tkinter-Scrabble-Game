@@ -60,7 +60,6 @@ class Bag:
         return self.bag.pop()
 
     ## @brief Returns the number of tiles left in the bag.
-    #  @return 
+    #  @return Number of tiles left in the bag.
     def getRemainingTiles(self):
-        
         return len(self.bag)
