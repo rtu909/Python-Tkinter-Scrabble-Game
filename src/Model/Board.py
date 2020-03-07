@@ -1,12 +1,26 @@
+SCORE_TYPES = {"Normal": 0, "DLS": 1, "DWS": 2, "TLS": 3}
+
+#Use below lists when making tiles on window(was trying to ease your job with this).
+DLS_Tiles = [[0, 3], [0, 11], [2, 6], [2, 8], [3, 0], [3, 7], [3, 14], [6, 2], [6, 6], [6, 8], [6, 12], [7, 3], 
+			[7, 11], [8, 2], [8, 6], [8, 8], [8, 12], [11, 0], [11, 7], [11, 14], [12, 6], [12, 8], [14, 3], [14, 11]]
+			
+DWS_Tiles = [[1, 1], [1, 13], [2, 2], [2, 12], [3, 3], [3, 11], [4, 4], [4, 10], 
+			[10, 4], [10, 10], [11, 3], [11, 11], [12, 2], [12, 12], [13, 1], [13, 3]]
+			
+TLS_Tiles = [[1, 5], [1, 9], [5, 1], [5, 5], [5, 9], [5, 13], [9, 1], [9, 5], [9, 9], [9, 13], [13, 5], [13, 9]]
+
 class Board:
     def __init__(self):
-        list = []
+        board = [[]]
         for row in range(0, 15):
+			colList = []
             for col in range(0, 15):
-                list.append(0)
+                colList.append(0)
+			list.append(
         
-        self.tileBoard = list
+        self.tileBoard = board
         self.scoreBoard = list
+        self.addPremiumSquares()
         
     
     def addPremiumSquares(self):
