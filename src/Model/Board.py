@@ -13,12 +13,20 @@ class Board:
     #  @param4 a string that represents the word being placed on the board.
     def updateBackBoard(self, row, col, dir, word):
         if(dir.lower() == "right"):
-            countCol = col
+            countCol = int(col)
             for char in word:
+<<<<<<< HEAD
+                backBoard[int(row)][int(countCol)] = char
+=======
                 self.backBoard[row][countCol] = char
+>>>>>>> 96e98d53fd2fb24d0241d3f865981fa337f575e9
                 countCol += 1 
         elif(dir.lower() == "down"):
-            countRow = row
+            countRow = int(row)
             for char in word:
+<<<<<<< HEAD
+                backBoard[int(col)][int(countRow)] = char
+=======
                 self.backBoard[col][countRow] = char
+>>>>>>> 96e98d53fd2fb24d0241d3f865981fa337f575e9
                 countRow += 1
