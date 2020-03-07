@@ -1,4 +1,5 @@
 from Tiles import *
+from random import shuffle
 
 class Bag:
     """
@@ -11,12 +12,12 @@ class Bag:
         self.bag = []
         self.initialize_bag()
 
-    def add_to_bag(self, tile, quantity):
+    def addToBag(self, tile, quantity):
         #Adds a certain quantity of a certain tile to the bag. Takes a tile and an integer quantity as arguments.
         for i in range(quantity):
             self.bag.append(tile)
 
-    def initialize_bag(self):
+    def initBag(self):
         #Adds the intiial 100 tiles to the bag.
         self.add_to_bag(Tile("A"), 9)
         self.add_to_bag(Tile("B"), 2)
@@ -47,10 +48,10 @@ class Bag:
         self.add_to_bag(Tile("#"), 2)
         shuffle(self.bag)
 
-    def take_from_bag(self):
+    def takeFromBag(self):
         #Removes a tile from the bag and returns it to the user. This is used for replenishing the rack.
         return self.bag.pop()
 
-    def get_remaining_tiles(self):
+    def getRemainingTiles(self):
         #Returns the number of tiles left in the bag.
         return len(self.bag)
