@@ -1,3 +1,5 @@
+from Player import *
+
 ## @file endTurn.py
 #  @author Lucia Cristiano
 #  @brief This program performs various functions neeeded to update the front end after a move is validated. 
@@ -14,12 +16,12 @@ class endTurn:
             countCol = col
             for char in word:
                 backBoard[row][countCol] = char
-                countCol++  
+                countCol += 1 
         elif(dir.lower() == "down"):
             countRow = row
             for char in word:
                 backBoard[col][countRow] = char
-                countRow++
+                countRow += 1
     ## @brief updates the back end version of the board with the valid word.
     #  @param1 an integer that represents the row of an the back end array.
     #  @param2 an integer that represents the column of the back end array.
@@ -33,18 +35,67 @@ class endTurn:
             for char in word:
                 configTuple = (row, countCol, char)
                 frontList.append(configTuple)
-                countCol++ 
+                countCol += 1 
         elif(dir.lower() == "down"):
             countRow = row
             for char in word:
                 configTuple = (countRow, col, char)
                 frontList.append(configTuple)
-                countRow ++
+                countRow += 1
         return frontList
     
-    def calculateScore(self, row, col, dir, word):
-        multiplier = 0
-        for char in word:
+    #return score
+    def calculateScore(self, row, col, dir, word, player):
+        #Set list used in score calculations.
+        #List of premium tiles.
+        TWS = [(0,0), (7, 0), (14,0), (0, 7), (14, 7), (0, 14), (7, 14), (14,14)]
+        DWS = [(1,1), (2,2), (3,3), (4,4), (1, 13), (2, 12), (3, 11), (4, 10), (13, 1), (12, 2), (11, 3), (10, 4),  (13,13), (12, 12), (11,11), (10,10)]
+        TLS = [(1,5), (1, 9), (5,1), (5,5), (5,9), (5,13), (9,1), (9,5), (9,9), (9,13), (13, 5), (13,9)]
+        DLS = [(0, 3), (0,11), (2,6), (2,8), (3,0), (3,7), (3,14), (6,2), (6,6), (6,8), (6,12), (7,3), (7,11), (8,2), (8,6), (8,8), (8, 12), (11,0), (11,7), (11,14), (12,6), (12,8), (14, 3), (14, 11)]
+
+        #List of letters and their scores.
+        LETTER_VALUES = {"A": 1, "B": 3, "C": 3, "D": 2, "E": 1, "F": 4, "G": 2, "H": 4, "I": 1, "J": 1, "K": 5,    "L": 1, "M": 3, "N": 1, "O": 1, "P": 3, "Q": 10, "R": 1, "S": 1, "T": 1, "U": 1, "V": 4, "W": 4, "X": 8,"Y": 4, "Z": 10}
+
+        multiplierWord = 1
+        score = 0
+        if dir.lower() == "right":
+            countCol = col
+            for char in word:
+                checkPremiumTuple = (row, countCol)
+                if checkPremiumTuple in TLS:
+                    score += LETTER_VALUES[char]*3
+                elif checkPremiumTuple in DLS:
+                    score += LETTER_VALUES[char]*2
+                elif checkPremiumTuple in TWS:
+                    multiplierWord *= 3
+                elif checkPremiumTuple in DWS:
+                    multiplierWord *= 2
+                else:
+                    score += LETTER_VALUES[char]
+                countCol += 1
+            score *= multiplierWord
+        elif dir.lower() == "down":
+            countRow = row
+            for char in word:
+                checkPremiumTuple = (countRow, col)
+                if checkPremiumTuple in TLS:
+                    score += LETTER_VALUES[char]*3
+                elif checkPremiumTuple in DLS:
+                    score += LETTER_VALUES[char]*2
+                elif checkPremiumTuple in TWS:
+                    multiplierWord *= 3
+                elif checkPremiumTuple in DWS:
+                    multiplierWord *= 2
+                else:
+                    score += LETTER_VALUES[char]
+                countRow += 1
+            score *= multiplierWord
+        # if player == 1:
+        #     player1.increaseScore(score)
+        # elif player == 2:
+        #     player2.increaseScore
+
+
     ## @brief checks if the game has been won
     #  @return returns a bool to represent win state or not 
     def checkWinState(self, rack1, rack2, bag):
