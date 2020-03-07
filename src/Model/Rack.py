@@ -10,34 +10,32 @@ class Rack:
         self.bag = bag
         self.initialize()
 
-    def add_to_rack(self):
+    def addToRack(self):
         #Takes a tile from the bag and adds it to the player's rack.
-        self.rack.append(self.bag.take_from_bag())
+        self.rack.append(self.bag.takeFromBag())
 
     def initialize(self):
         #Adds the initial 7 tiles to the player's hand.
         for i in range(7):
-            self.add_to_rack()
+            self.addToRack()
 
-    def get_rack_str(self):
+    def getRackStr(self):
         #Displays the user's rack in string form.
-        return ", ".join(str(item.get_letter()) for item in self.rack)
+        return ", ".join(str(tile.getLetter()) for tile in self.rack)
 
-    def get_rack_arr(self):
+    def getRackArr(self):
         #Returns the rack as an array of tile instances
         return self.rack
 
-    def remove_from_rack(self, tile):
+    def removeFromRack(self, tile):
         #Removes a tile from the rack (for example, when a tile is being played).
         self.rack.remove(tile)
 
-    def get_rack_length(self):
+    def getRackLength(self):
         #Returns the number of tiles left in the rack.
         return len(self.rack)
 
-    def replenish_rack(self):
+    def replenishRack(self):
         #Adds tiles to the rack after a turn such that the rack will have 7 tiles (assuming a proper number of tiles in the bag).
-        while self.get_rack_length() < 7 and self.bag.get_remaining_tiles() > 0:
-            self.add_to_rack()
-			
-	def rack_view
+        while self.getRackLength() < 7 and self.bag.getRemainingTiles() > 0:
+            self.addToRack()
