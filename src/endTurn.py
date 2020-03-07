@@ -14,7 +14,7 @@ class endTurn:
             countCol = col
             for char in word:
                 backBoard[row][countCol] = char
-                countCol++
+                countCol++  
         elif(dir.lower() == "down"):
             countRow = row
             for char in word:
@@ -40,12 +40,16 @@ class endTurn:
                 configTuple = (countRow, col, char)
                 frontList.append(configTuple)
                 countRow ++
-            return frontList
+        return frontList
     
     def calculateScore(self, row, col, dir, word):
         multiplier = 0
         for char in word:
     ## @brief checks if the game has been won
-    #  @return returns a bool to represent win state or not
-    def checkWinState():
-        #return Rack.getRackLength == 0 && Bag.getRemainingTiles == 0
+    #  @return returns a bool to represent win state or not 
+    def checkWinState(self, rack1, rack2, bag):
+        emptyRack = (rack1.getRackLength() == 0) or (rack2.getRackLength() == 0)
+        if  emptyRack and bag.getRemainingTiles() == 0:
+            return True
+        else:
+            return False
