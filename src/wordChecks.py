@@ -11,7 +11,7 @@ class wordChecks:
 
     def checkInDict(self, word):
         dictionary = open("dic.txt").read()
-        if word not in dictionary:
+        if word.upper() not in dictionary:
             checksBool = False
         else:
             checksBool = True
