@@ -15,10 +15,10 @@ class Board:
         if(dir.lower() == "right"):
             countCol = col
             for char in word:
-                backBoard[row][countCol] = char
+                self.backBoard[row][countCol] = char
                 countCol += 1 
         elif(dir.lower() == "down"):
             countRow = row
             for char in word:
-                backBoard[col][countRow] = char
+                self.backBoard[col][countRow] = char
                 countRow += 1

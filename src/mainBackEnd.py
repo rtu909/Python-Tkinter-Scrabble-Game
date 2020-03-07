@@ -14,8 +14,11 @@ from frontEndMain import*
 mainBoard = Board()
 mainBag = Bag()
 wordChecks = wordChecks()
+checkBoardRight = checkBoardRight()
+checkBoardDown = checkBoardDown()
 player1 = Player(mainBag)
 player2 = Player(mainBag)
+
 
 print(player1.getRackStr())
 for tile in player1.getRackArr():
@@ -42,5 +45,11 @@ b2 = wordChecks.checkInDict("dog")
 print(b1)
 print(b2)
 print(player1.rack.getRackLength())
+
+mainBoard.updateBackBoard(0,0,"right","DOG")
+print(mainBoard.getBoard())
+
+
+
 
 frontEndMain()
