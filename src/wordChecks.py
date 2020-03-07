@@ -1,8 +1,7 @@
 
 class wordChecks:
-    checksBool = False
-
     def checkRack(self, word, rack):
+        checksBool = False
         if word == None or word == " ":
             raise ValueError("Must input word")
         for char in word:
