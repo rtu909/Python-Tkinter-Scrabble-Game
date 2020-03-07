@@ -5,10 +5,11 @@ class checkBoardRight:
         for char in input:
             if arr[row][colcount] == "0":
                 colcount += 1
-            elif arr[row][colcount].getLetter == char: #matches char
+            elif arr[row][colcount] == char: #matches char
                 colcount += 1
             else:   
                 return False
+        return True
     
     def neighbourTiles(self, row, col, input, arr):
         colcount = 0
@@ -44,10 +45,11 @@ class checkBoardDown:
         for char in input:
             if arr[rowcount][col] == "0":
                 rowcount += 1
-            elif arr[rowcount][col].getLetter == char: #matches char
+            elif arr[rowcount][col] == char: #matches char
                 rowcount += 1
             else:    
                 return False
+        return True
     
     def neighbourTiles(self, row, col, input, arr):
         colcount = 0
