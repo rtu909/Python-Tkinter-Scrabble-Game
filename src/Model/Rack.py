@@ -39,3 +39,5 @@ class Rack:
         #Adds tiles to the rack after a turn such that the rack will have 7 tiles (assuming a proper number of tiles in the bag).
         while self.get_rack_length() < 7 and self.bag.get_remaining_tiles() > 0:
             self.add_to_rack()
+			
+	def rack_view
