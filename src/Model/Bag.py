@@ -13,7 +13,7 @@ class Bag:
     ## @brief initializes the bag model by calling the initBag() method, which adds the default 100 tiles to the bag.
     def __init__(self):
         self.bag = []
-        self.initialize_bag()
+        self.initBag()
 
     ## @brief Adds a certain quantity of a certain tile to the bag. Takes a tile and an integer quantity as arguments.
     #  @param1 a tile object that represents the letter tile.
