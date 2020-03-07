@@ -1,4 +1,5 @@
-
+from Tiles import *
+from Rack import *
 ## @file endTurn.py
 #  @author Lucia Cristiano
 #  @brief This program performs various functions neeeded to update the front end after a move is validated. 
@@ -27,6 +28,10 @@ class endTurn:
                 countRow += 1
         return frontList
     
+    def removeTile(self, word, rack):
+        for char in word:
+            tile = Tile(char)
+            rack.removeFromRack(tile)
     #return score
     def calculateScore(self, row, col, dir, word):
         #Set list used in score calculations.
