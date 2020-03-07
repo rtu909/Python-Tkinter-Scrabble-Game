@@ -1,8 +1,9 @@
+from wordChecks import *
 class checkBoardRight:
     def occupiedTile(self, row, col, input, arr):
         colcount = 0
         for char in input:
-            if arr[row][colcount] == 0:
+            if arr[row][colcount] == "0":
                 colcount += 1
             elif arr[row][colcount].getLetter == char: #matches char
                 colcount += 1
@@ -14,19 +15,19 @@ class checkBoardRight:
         rowcount = 0
         boolCheck = True
         for char in input:
-            while arr[row][colcount] != 0:
+            while arr[row][colcount] != "0":
                 colcount += 1
             last = arr[row][colcount]
             lastRow = row
             lastCol = colcount
-            while arr[row][colcount] != 0:
+            while arr[row][colcount] != "0":
                 colcount -= 1
             first = arr[row][colcount]
             firstRow = row
             firstCol = colcount
             for i in range(first.col, last.col):
                 word = word + arr[row][i].getLetter
-            #boolCheck = boolCheck and checkDict(word)
+            boolCheck = boolCheck and checkInDict(word)
         
         return boolCheck
             
@@ -41,7 +42,7 @@ class checkBoardDown:
     def occupiedTile(self, row, col, input, arr):
         rowcount = 0
         for char in input:
-            if arr[rowcount][col] == 0:
+            if arr[rowcount][col] == "0":
                 rowcount += 1
             elif arr[rowcount][col].getLetter == char: #matches char
                 rowcount += 1
@@ -53,7 +54,7 @@ class checkBoardDown:
         rowcount = 0
         boolCheck = True
         for char in input:
-            while arr[rowcount][col] != 0:
+            while arr[rowcount][col] != "0":
                 rowcount += 1
             last = arr[rowcount][col]
             lastRow = rowcount
