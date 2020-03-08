@@ -1,80 +1,80 @@
 from wordChecks import *
 class checkBoardRight:
-    def occupiedTile(self, row, col, input, arr):
+    def occupiedTile(self, row, col, word, board):
         colcount = 0
-        for char in input:
-            if arr[row][colcount] == "0":
+        for char in word:
+            if board[row][colcount] == "0":
                 colcount += 1
-            elif arr[row][colcount] == char: #matches char
+            elif board[row][colcount] == char: #matches char
                 colcount += 1
             else:   
                 return False
         return True
     
-    def neighbourTiles(self, row, col, input, arr):
+    def neighbourTiles(self, row, col, word, board):
         colcount = 0
         rowcount = 0
         boolCheck = True
-        for char in input:
-            while arr[row][colcount] != "0":
+        for char in word:
+            while board[row][colcount] != "0":
                 colcount += 1
-            last = arr[row][colcount]
+            last = board[row][colcount]
             lastRow = row
             lastCol = colcount
-            while arr[row][colcount] != "0":
+            while board[row][colcount] != "0":
                 colcount -= 1
-            first = arr[row][colcount]
+            first = board[row][colcount]
             firstRow = row
             firstCol = colcount
             for i in range(first.col, last.col):
-                word = word + arr[row][i].getLetter
+                word = word + board[row][i].getLetter
             boolCheck = boolCheck and checkInDict(word)
         
         return boolCheck
             
         
-    def outOfBounds(self, row, col, input, arr):
-        return (col <= 14 and row <= 14 and row + len(input) <= 14)
+    def outOfBounds(self, row, col, word, board):
+        return (col <= 14 and row <= 14 and row + len(word) <= 14)
         
-    def rightCheck(self, row, col, input, arr):
-        return occupiedTile(row, col, input, arr) and neighbourTiles(row, col, input, arr) and outOfBounds(row, col, input, arr)
+    def rightCheck(self, row, col, word, board):
+        return occupiedTile(row, col, word, board) and neighbourTiles(row, col, word, board) and outOfBounds(row, col, word, board)
 
 class checkBoardDown:
-    def occupiedTile(self, row, col, input, arr):
+    def occupiedTile(self, row, col, word, board):
         rowcount = 0
-        for char in input:
-            if arr[rowcount][col] == "0":
+        for char in word:
+            if board[rowcount][col] == "0":
                 rowcount += 1
-            elif arr[rowcount][col] == char: #matches char
+            elif board[rowcount][col] == char: #matches char
                 rowcount += 1
             else:    
                 return False
         return True
     
-    def neighbourTiles(self, row, col, input, arr):
+    def neighbourTiles(self, row, col, word, board):
         colcount = 0
         rowcount = 0
         boolCheck = True
-        for char in input:
-            while arr[rowcount][col] != "0":
+        for char in word:
+            while board[rowcount][col] != "0":
                 rowcount += 1
-            last = arr[rowcount][col]
+            last = board[rowcount][col]
             lastRow = rowcount
             lastCol = col
-            while arr[rowcount][col] != 0:
+            while board[rowcount][col] != 0:
                 rowcount -= 1
-            first = arr[rowcount][col]
+            first = board[rowcount][col]
             firstRow = rowcount
             firstCol = col
             for i in range(firstRow, lastRow):
-                word = word + arr[i][col].getLetter
+                word = word + board[i][col].getLetter
             #boolCheck = boolCheck and checkDict(word)
         
         return boolCheck
     
-    def outOfBounds(self, row, col, input, arr):
-        return (col <= 14 and row <= 14 and col + len(input) <= 14)
+    def outOfBounds(self, row, col, word, board):
+        return (col <= 14 and row <= 14 and col + len(word) <= 14)
         
-    def downCheck(self, row, col, input, arr):
-        return occupiedTile(row, col, input, arr) and neighbourTiles(row, col, input, arr) and outOfBounds(row, col, input, arr)
+    def downCheck(self, row, col, word, board):
+        return occupiedTile(row, col, word, board) and neighbourTiles(row, col, word, board) and outOfBounds(row, col, word, board)
     
