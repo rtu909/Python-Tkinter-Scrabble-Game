@@ -58,8 +58,10 @@ class endTurn:
                     score += LETTER_VALUES[char]*2
                 elif checkPremiumTuple in TWS:
                     multiplierWord *= 3
+                    score += LETTER_VALUES[char]
                 elif checkPremiumTuple in DWS:
                     multiplierWord *= 2
+                    score += LETTER_VALUES[char]
                 else:
                     score += LETTER_VALUES[char]
                 countCol += 1
@@ -74,8 +76,10 @@ class endTurn:
                     score += LETTER_VALUES[char]*2
                 elif checkPremiumTuple in TWS:
                     multiplierWord *= 3
+                    score += LETTER_VALUES[char]
                 elif checkPremiumTuple in DWS:
                     multiplierWord *= 2
+                    score += LETTER_VALUES[char]
                 else:
                     score += LETTER_VALUES[char]
                 countRow += 1
