@@ -29,10 +29,12 @@ class endTurn:
         return frontList
     
     def removeTile(self, word, rack):
-        for char in word:
-            tile = Tile(char)
-            rack.removeFromRack(tile)
-    #return score
+        for letter in word:
+            for tile in rack.getRackArr():
+                if tile.getLetter() == letter:
+                    rack.removeFromRack(tile)
+        rack.replenishRack()
+
     def calculateScore(self, row, col, dir, word):
         #Set list used in score calculations.
         #List of premium tiles.
