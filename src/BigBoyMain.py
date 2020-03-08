@@ -10,8 +10,9 @@ from boardChecks import *
 from wordChecks import *
 from endTurn import *
 
-global turn, player1Rack, player2Rack
+global turn, player1Rack, player2Rack, roundCount
 turn = 1
+roundCount = 0
 
 #Initializing the introductory window to the scrabble game.
 class frontEndMain:
@@ -120,7 +121,7 @@ class BoardFrame:
             tileArray[tuple[0]][tuple[1]].configure("text", str(tuple[2]))
 
     def completeTurn(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel):
-        global turn
+        global turn, roundCount
         winState = endTurn.checkWinState(player1.rack, player2.rack, mainBag)
         if winState:
             #popup winner and destroy all windows
@@ -135,6 +136,7 @@ class BoardFrame:
             print(mainBoard)
             BoardFrame.updateGUI(frontList)
             endTurn.removeTile(word, player.rack)
+            roundCount += 1
             if (turnLabel['text'] == "Player " + p1Name + "'s turn"):
                 turnLabel.configure(text = "Player " + p2Name + "'s turn")
                 score1Label.configure(text = player.getScore())
@@ -151,26 +153,29 @@ class BoardFrame:
                 turn = 1
 
     def endChecks(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel):
+        global roundCount
         validTurn = wordChecks.checkRack(word, player.rack.getRackStr())
         if validTurn:
             if dir == "down":
-                validTurn = True #checkBoardDown.downCheck(row, col, word, mainBoard)
+                #validTurn = True
+                validTurn = checkBoardDown.downCheck(row, col, word, mainBoard.getBoard(), roundCount)
                 if validTurn:
                     BoardFrame.completeTurn(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel)
                 else:
                     #label popup for try again
-                    print()
+                    print("Try again")
 
             elif dir == "right":
-                validTurn = True #checkBoardRight.rightCheck(row, col, word, mainBoard)
+                #validTurn = True 
+                validTurn = checkBoardRight.rightCheck(row, col, word, mainBoard.getBoard(), roundCount)
                 if validTurn:
                     BoardFrame.completeTurn(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel)
                 else:
                     #label popup for try again
-                    print()
+                    print("Try again")
         else:
             #label popup for try again
-            print()
+            print("Try again")
 
     def endMove(word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel):
         global turn
