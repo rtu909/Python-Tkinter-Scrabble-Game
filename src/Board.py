@@ -17,10 +17,14 @@ class Board:
         if(dirLower == "right"):
             countCol = int(col)
             for char in wordUp:
+                char = char.upper()
+                print(char)
                 self.backBoard[int(row)][int(countCol)] = char
                 countCol += 1 
         elif(dirLower == "down"):
             countRow = int(row)
             for char in word:
+                char = char.upper()
+                print(char)
                 self.backBoard[int(col)][int(countRow)] = char
                 countRow += 1
