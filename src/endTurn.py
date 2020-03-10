@@ -51,9 +51,10 @@ class endTurn:
         multiplierWord = 1
         score = 0
         dirLower = dir.lower()
+        wordUp = word.upper()
         if dirLower == "right":
             countCol = int(col)
-            for char in word:
+            for char in wordUp:
                 checkPremiumTuple = (int(row), countCol)
                 if checkPremiumTuple in TLS:
                     score += LETTER_VALUES[char]*3
@@ -71,7 +72,7 @@ class endTurn:
             score *= multiplierWord
         elif dirLower == "down":
             countRow = int(row)
-            for char in word:
+            for char in wordUp:
                 checkPremiumTuple = (int(countRow), int(col))
                 if checkPremiumTuple in TLS:
                     score += LETTER_VALUES[char]*3
