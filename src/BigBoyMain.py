@@ -176,9 +176,17 @@ class BoardFrame:
                 rackLabel.configure(text = player1Rack)
                 turn = 1
 
-    def endChecks(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL):
+    def endChecks(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL, sharedLetters):
         global roundCount
-        validTurn = wordChecks.checkRack(word, player.rack.getRackStr())
+        if sharedLetters == "":
+            validTurn = wordChecks.checkRack(word, player.rack.getRackStr())
+            validTurn = validTurn and wordChecks.checkInDict(word)
+        else:
+            rackWord = word
+            for char in sharedLetters:
+                rackWord = rackWord.replace(char, "")
+            validTurn = wordChecks.checkRack(rackWord, player.rack.getRackStr())
+            validTurn = validTurn and wordChecks.checkInDict(word)
         BoardFrame.clearEntry(inputWordE, inputRowE, inputColE, inputDirE)
         if validTurn:
             if dir == "down":
@@ -205,15 +213,15 @@ class BoardFrame:
             #print("Try again")
             validMoveL.configure(text = "Invalid move please try again")
 
-    def endMove(word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL):
+    def endMove(word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL, sharedLetters):
         global turn
         validTurn = False
         winState = False
         print(word + "," + row + "," + col + "," + dir + str(turn))
         if turn == 1:
-            BoardFrame.endChecks(word, row, col, dir, player1, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
+            BoardFrame.endChecks(word, row, col, dir, player1, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL, sharedLetters)
         elif turn == 2:
-            BoardFrame.endChecks(word, row, col, dir, player2, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
+            BoardFrame.endChecks(word, row, col, dir, player2, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL, sharedLetters)
     def updateLabelText(label):
         if (label['text'] == "Player " + p1Name + "'s turn"):
             label.configure(text = "Player " + p2Name + "'s turn")
@@ -260,7 +268,7 @@ class BoardFrame:
         #Buttons for end move and exchange tiles.
         endMoveB = Button(boardF, text = "End Move", command=lambda: BoardFrame.endMove(inputWordE.get(),
         inputRowE.get(), inputColE.get(), inputDirE.get(), playerRackL, p1ScoreValL, p2ScoreValL, turnL,
-        inputWordE, inputRowE, inputColE, inputDirE, validMoveL))
+        inputWordE, inputRowE, inputColE, inputDirE, validMoveL, inputWordSharedE.get()))
         endMoveB.grid(row = 11, column = 17)
         skipTurnB = Button(boardF, text = "Skip Turn", command=lambda: BoardFrame.skipTurn(turnL, playerRackL))
         skipTurnB.grid(row = 11, column = 18)
@@ -276,6 +284,10 @@ class BoardFrame:
         inputWordL.grid(row = 7, column = 17)
         inputWordE = Entry(boardF)
         inputWordE.grid(row = 7, column = 18)
+        inputWordSharedL = Label(boardF, text = "Enter Shared Letters")
+        inputWordSharedL.grid(row = 7, column = 19)
+        inputWordSharedE = Entry(boardF)
+        inputWordSharedE.grid(row = 7, column = 20)
         inputRowL = Label(boardF, text = "Enter row")
         inputRowL.grid(row = 8, column = 17)
         inputRowE = Entry(boardF)
