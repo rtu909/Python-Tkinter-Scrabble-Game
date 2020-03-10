@@ -128,6 +128,7 @@ class BoardFrame:
     
     def skipTurn(turnLabel, rackLabel):
         global turn, roundCount
+        print("working")
         if roundCount != 0:
             if (turnLabel['text'] == "Player " + p1Name + "'s turn"):
                 turnLabel.configure(text = "Player " + p2Name + "'s turn")
@@ -141,7 +142,25 @@ class BoardFrame:
                 player1Rack = player1.rack.getRackStr()
                 rackLabel.configure(text = player1Rack)
                 turn = 1
-         
+            roundCount += 1
+    
+    def exchangeTiles(exchangeTiles, label, turnLabel):
+        global turn, roundCount
+        if (turnLabel['text'] == "Player " + p1Name + "'s turn"):
+                turnLabel.configure(text = "Player " + p2Name + "'s turn")
+        else:
+                turnLabel.configure(text = "Player " + p1Name + "'s turn")
+        if turn == 1:
+            endTurn.exchangeTile(exchangeTiles, player1.rack)
+            player2Rack = player2.rack.getRackStr()
+            label.configure(text = player2Rack)
+            turn = 2
+        else:
+            endTurn.exchangeTile(exchangeTiles, player2.rack)
+            player1Rack = player1.rack.getRackStr()
+            label.configure(text = player1Rack)
+            turn = 1
+        roundCount += 1
 
     def completeTurn(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL):
         global turn, roundCount
@@ -158,7 +177,7 @@ class BoardFrame:
 
             frontList = endTurn.updateFrontBoard(row, col, dirLower, wordUp)
             mainBoard.updateBackBoard(row, col, dirLower, wordUp)
-            print(mainBoard)
+            print(mainBoard.getBoard())
             BoardFrame.updateGUI(frontList)
             endTurn.removeTile(wordUp, player.rack)
             validMoveL.configure(text = "")
@@ -185,6 +204,7 @@ class BoardFrame:
         if sharedLetters == "":
             validTurn = wordChecks.checkRack(wordUp, player.rack.getRackStr())
             validTurn = validTurn and wordChecks.checkInDict(wordUp)
+            print("sharedletters", validTurn)
         else:
             rackWord = wordUp
             for char in sharedLetters:
@@ -196,25 +216,30 @@ class BoardFrame:
             if dirLower == "down":
                 #validTurn = True
                 validTurn = checkBoardDown.downCheck(row, col, wordUp, mainBoard.getBoard(), roundCount)
+                
                 if validTurn:
                     BoardFrame.completeTurn(wordUp, row, col, dirLower, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
                 else:
                     #label popup for try again
                     #print("Try again")
+                    print("failure in down")
                     validMoveL.configure(text = "Invalid move please try again")
 
             elif dirLower == "right":
                 #validTurn = True 
                 validTurn = checkBoardRight.rightCheck(row, col, wordUp, mainBoard.getBoard(), roundCount)
+                print(validTurn, "dir right")
                 if validTurn:
                     BoardFrame.completeTurn(wordUp, row, col, dirLower, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
                 else:
                     #label popup for try again
                     #print("Try again")
+                    print("failure in dir right")
                     validMoveL.configure(text = "Invalid move please try again")
         else:
             #label popup for try again
             #print("Try again")
+            print("failure in shared")
             validMoveL.configure(text = "Invalid move please try again")
 
     def endMove(word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL, sharedLetters):
@@ -278,6 +303,8 @@ class BoardFrame:
         endMoveB.grid(row = 11, column = 17)
         skipTurnB = Button(boardF, text = "Skip Turn", command=lambda: BoardFrame.skipTurn(turnL, playerRackL))
         skipTurnB.grid(row = 11, column = 18)
+        exchangeTilesB = Button(boardF, text = "Exchange Tiles", command=lambda: BoardFrame.exchangeTiles(inputWordExchangeE.get(), playerRackL, turnL))
+        exchangeTilesB.grid(row = 11, column = 19)
         #empty label as a buffer
         emptyL2 = Label(boardF, text = " ")
         emptyL2.grid(row = 0,column = 16,rowspan = 15)
@@ -294,6 +321,10 @@ class BoardFrame:
         inputWordSharedL.grid(row = 7, column = 19)
         inputWordSharedE = Entry(boardF)
         inputWordSharedE.grid(row = 7, column = 20)
+        inputWordExchangeL = Label(boardF, text = "Enter Tiles to Exchange")
+        inputWordExchangeL.grid(row = 8, column = 19)
+        inputWordExchangeE = Entry(boardF)
+        inputWordExchangeE.grid(row = 8, column = 20)
         inputRowL = Label(boardF, text = "Enter row")
         inputRowL.grid(row = 8, column = 17)
         inputRowE = Entry(boardF)

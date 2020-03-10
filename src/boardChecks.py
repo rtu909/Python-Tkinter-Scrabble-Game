@@ -10,6 +10,7 @@ class checkBoardRight:
             elif board[row][colcount] == char: #matches char
                 colcount += 1
             else:   
+                print("occupiedTile error")
                 return False
         return True
     
@@ -41,6 +42,7 @@ class checkBoardRight:
     def outOfBounds(self, row, col, word, board):
         row = int(row)
         col = int(col)
+        print("outofbounds", (col <= 14 and row <= 14 and col + len(word) <= 14))
         return (col <= 14 and row <= 14 and col + len(word) <= 14)
     
     def placementCheck(self, row, col, word, board, count):
@@ -50,14 +52,11 @@ class checkBoardRight:
             if (int(row) == 7) and (int(col) == 7):
                 return True
             else:
+                print("placement check error")
                 return False
         else:
-            for char in wordUp:
-                if board[int(row)][colcount] == char: #matches char
-                    return True
-                else:   
-                    colcount += 1
-            return False
+            return True
+            
             
     def rightCheck(self, row, col, word, board, count):
         #and self.neighbourTiles(row, col, word, board)
@@ -74,6 +73,7 @@ class checkBoardDown:
             elif board[rowcount][col] == char: #matches char
                 rowcount += 1
             else:    
+                print("occupiedTile error")
                 return False
         return True
     
@@ -115,12 +115,7 @@ class checkBoardDown:
             else:
                 return False
         else:
-            for char in wordUp:
-                if board[rowCount][int(col)] == char: #matches char
-                    return True
-                else:    
-                    rowCount += 1
-            return False
+            return True
         
     def downCheck(self, row, col, word, board, count):
         #and self.neighbourTiles(row, col, word, board)

@@ -1,5 +1,6 @@
 from Tiles import *
 from Rack import *
+from Bag import *
 ## @file endTurn.py
 #  @author Lucia Cristiano
 #  @brief This program performs various functions neeeded to update the front end after a move is validated. 
@@ -36,6 +37,20 @@ class endTurn:
                 if tile.getLetter() == letter:
                     rack.removeFromRack(tile)
         rack.replenishRack()
+        
+    def exchangeTile(self, word, rack):
+        wordUp = word.upper()
+        saveTiles = []
+        print(rack.bag.getRemainingTiles())
+        for letter in wordUp:
+            for tile in rack.getRackArr():
+                if tile.getLetter() == letter:
+                    saveTiles.append(tile)
+                    rack.removeFromRack(tile)
+        rack.replenishRack()
+        for tiles in saveTiles:
+            rack.bag.addToBag(tiles, 1)
+        print(rack.bag.getRemainingTiles())
 
     def calculateScore(self, row, col, dir, word):
         #Set list used in score calculations.
