@@ -18,13 +18,13 @@ class endTurn:
         if(dirLower == "right"):
             countCol = int(col)
             for char in word:
-                configTuple = (int(row), countCol, char)
+                configTuple = (int(row), countCol, char.upper())
                 frontList.append(configTuple)
                 countCol += 1 
         elif(dirLower == "down"):
             countRow = int(row)
             for char in word:
-                configTuple = (countRow, int(col), char)
+                configTuple = (countRow, int(col), char.upper())
                 frontList.append(configTuple)
                 countRow += 1
         return frontList
