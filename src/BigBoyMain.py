@@ -119,6 +119,12 @@ class BoardFrame:
     def updateGUI(updateList):
         for tuple in updateList:
             tileArray[tuple[0]][tuple[1]].configure("text", str(tuple[2]))
+    
+    def clearEntry(inputWordE, inputRowE, inputColE, inputDirE):
+        inputWordE.delete(0, "end")
+        inputRowE.delete(0, "end")
+        inputColE.delete(0, "end")
+        inputDirE.delete(0, "end")
 
     def completeTurn(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel):
         global turn, roundCount
@@ -152,9 +158,10 @@ class BoardFrame:
                 rackLabel.configure(text = player1Rack)
                 turn = 1
 
-    def endChecks(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel):
+    def endChecks(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE):
         global roundCount
         validTurn = wordChecks.checkRack(word, player.rack.getRackStr())
+        BoardFrame.clearEntry(inputWordE, inputRowE, inputColE, inputDirE)
         if validTurn:
             if dir == "down":
                 #validTurn = True
@@ -177,15 +184,15 @@ class BoardFrame:
             #label popup for try again
             print("Try again")
 
-    def endMove(word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel):
+    def endMove(word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE):
         global turn
         validTurn = False
         winState = False
         print(word + "," + row + "," + col + "," + dir + str(turn))
         if turn == 1:
-            BoardFrame.endChecks(word, row, col, dir, player1, rackLabel, score1Label, score2Label, turnLabel)
+            BoardFrame.endChecks(word, row, col, dir, player1, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE)
         elif turn == 2:
-            BoardFrame.endChecks(word, row, col, dir, player2, rackLabel, score1Label, score2Label, turnLabel)
+            BoardFrame.endChecks(word, row, col, dir, player2, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE)
     def updateLabelText(label):
         if (label['text'] == "Player " + p1Name + "'s turn"):
             label.configure(text = "Player " + p2Name + "'s turn")
@@ -225,13 +232,14 @@ class BoardFrame:
         p2ScoreL = Label(boardF, text = str(p2Name) + "'s Score")
         p2ScoreL.grid(row = 3, column = 18)
         #labels for the values of the score
-        p1ScoreValL = Label(boardF, text = "num")
+        p1ScoreValL = Label(boardF, text = "0")
         p1ScoreValL.grid(row = 4, column = 17)
-        p2ScoreValL = Label(boardF, text = "num")
+        p2ScoreValL = Label(boardF, text = "0")
         p2ScoreValL.grid(row = 4, column = 18)
         #Buttons for end move and exchange tiles.
         endMoveB = Button(boardF, text = "End Move", command=lambda: BoardFrame.endMove(inputWordE.get(),
-        inputRowE.get(), inputColE.get(), inputDirE.get(), playerRackL, p1ScoreValL, p2ScoreValL, turnL))
+        inputRowE.get(), inputColE.get(), inputDirE.get(), playerRackL, p1ScoreValL, p2ScoreValL, turnL,
+        inputWordE, inputRowE, inputColE, inputDirE))
         endMoveB.grid(row = 11, column = 17)
 
         #empty label as a buffer
@@ -240,6 +248,8 @@ class BoardFrame:
         #The label and input for word, row, column and direction.
         playerRackL = Label(boardF, text = player1Rack)
         playerRackL.grid(row = 5, column = 17)
+        validMoveL = Label(boardF, text = "")
+        validMoveL.grid(row = 6, column = 17)
         inputWordL = Label(boardF, text = "Enter word")
         inputWordL.grid(row = 7, column = 17)
         inputWordE = Entry(boardF)
