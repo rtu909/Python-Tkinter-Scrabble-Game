@@ -4,6 +4,7 @@ class wordChecks:
         checksBool = False
         if word == None or word == " ":
             raise ValueError("Must input word")
+        word.upper()
         for char in word:
             if char in rack:
                 checksBool = True
