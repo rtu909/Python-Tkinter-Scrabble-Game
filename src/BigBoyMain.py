@@ -116,17 +116,17 @@ class BoardFrame:
     #     curCol = col
     #     curDir = dir
 
-    def updateGUI(self, updateList):
+    def updateGUI(updateList):
         for tuple in updateList:
             tileArray[tuple[0]][tuple[1]].configure("text", str(tuple[2]))
     
-    def clearEntry(self, inputWordE, inputRowE, inputColE, inputDirE):
+    def clearEntry(inputWordE, inputRowE, inputColE, inputDirE):
         inputWordE.delete(0, "end")
         inputRowE.delete(0, "end")
         inputColE.delete(0, "end")
         inputDirE.delete(0, "end")
     
-    def skipTurn(self, turnLabel, rackLabel):
+    def skipTurn(turnLabel, rackLabel):
         global turn, roundCount
         if roundCount != 0:
             if (turnLabel['text'] == "Player " + p1Name + "'s turn"):
@@ -143,7 +143,7 @@ class BoardFrame:
                 turn = 1
          
 
-    def completeTurn(self, word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL):
+    def completeTurn(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL):
         global turn, roundCount
         winState = endTurn.checkWinState(player1.rack, player2.rack, mainBag)
         if winState:
@@ -178,7 +178,7 @@ class BoardFrame:
                 rackLabel.configure(text = player1Rack)
                 turn = 1
 
-    def endChecks(self, word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL, sharedLetters):
+    def endChecks(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL, sharedLetters):
         global roundCount
         dirLower = dir.lower()
         wordUp = word.upper()
@@ -217,7 +217,7 @@ class BoardFrame:
             #print("Try again")
             validMoveL.configure(text = "Invalid move please try again")
 
-    def endMove(self, word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL, sharedLetters):
+    def endMove(word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL, sharedLetters):
         global turn
         dirLower = dir.lower()
         wordUp = word.upper()
@@ -234,7 +234,7 @@ class BoardFrame:
         else:
             label.configure(text = "Player " + p1Name + "'s turn")
 
-    def scrabbleBoard(self, root, frame, player1Name, player2Name):
+    def scrabbleBoard(root, frame, player1Name, player2Name):
         #Hide the playerInput grid
         frame.grid_remove()
         #Storing the names of players for the turn label.
