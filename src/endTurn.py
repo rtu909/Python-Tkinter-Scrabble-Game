@@ -14,13 +14,14 @@ class endTurn:
     #  @returns a list of tuples representing the row, column and text needed to be changed in the front end
     def updateFrontBoard(self, row, col, dir, word):
         frontList = []
-        if(dir.lower() == "right"):
+        dirLower = dir.lower()
+        if(dirLower == "right"):
             countCol = int(col)
             for char in word:
                 configTuple = (int(row), countCol, char)
                 frontList.append(configTuple)
                 countCol += 1 
-        elif(dir.lower() == "down"):
+        elif(dirLower == "down"):
             countRow = int(row)
             for char in word:
                 configTuple = (countRow, int(col), char)
@@ -29,7 +30,8 @@ class endTurn:
         return frontList
     
     def removeTile(self, word, rack):
-        for letter in word:
+        wordUp = word.upper()
+        for letter in wordUp:
             for tile in rack.getRackArr():
                 if tile.getLetter() == letter:
                     rack.removeFromRack(tile)
@@ -48,7 +50,8 @@ class endTurn:
 
         multiplierWord = 1
         score = 0
-        if dir.lower() == "right":
+        dirLower = dir.lower()
+        if dirLower == "right":
             countCol = int(col)
             for char in word:
                 checkPremiumTuple = (int(row), countCol)
@@ -66,7 +69,7 @@ class endTurn:
                     score += LETTER_VALUES[char]
                 countCol += 1
             score *= multiplierWord
-        elif dir.lower() == "down":
+        elif dirLower == "down":
             countRow = int(row)
             for char in word:
                 checkPremiumTuple = (int(countRow), int(col))
