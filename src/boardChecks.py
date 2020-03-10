@@ -13,29 +13,29 @@ class checkBoardRight:
                 return False
         return True
     
-    def neighbourTiles(self, row, col, word, board):
-        # wordChecks = wordChecks()
-        # colcount = int(col)
-        # rowcount = int(row)
-        # boolCheck = True
-        # #row = int(row)
-        # for char in word:
-        #     newWord = ""
-        #     while board[row][colcount] != "0":
-        #         colcount += 1
-        #         #while
-        #     #last = (row,colcount)
-        #     lastRow = row
-        #     lastCol = colcount
-        #     # while board[row][colcount] != "0":
-        #     #     colcount -= 1
-        #     #first = (row,colcount)
-        #     #firstRow = row
-        #     #firstCol = colcount
-        #     for i in range(first[1], last[1]):
-        #         newWord = newWord + board[row][i]
-        #     boolCheck = boolCheck and wordChecks.checkInDict(newWord)
-        return boolCheck
+    # def neighbourTiles(self, row, col, word, board):
+    #     # wordChecks = wordChecks()
+    #     # colcount = int(col)
+    #     # rowcount = int(row)
+    #     # boolCheck = True
+    #     # #row = int(row)
+    #     # for char in word:
+    #     #     newWord = ""
+    #     #     while board[row][colcount] != "0":
+    #     #         colcount += 1
+    #     #         #while
+    #     #     #last = (row,colcount)
+    #     #     lastRow = row
+    #     #     lastCol = colcount
+    #     #     # while board[row][colcount] != "0":
+    #     #     #     colcount -= 1
+    #     #     #first = (row,colcount)
+    #     #     #firstRow = row
+    #     #     #firstCol = colcount
+    #     #     for i in range(first[1], last[1]):
+    #     #         newWord = newWord + board[row][i]
+    #     #     boolCheck = boolCheck and wordChecks.checkInDict(newWord)
+    #     return boolCheck
             
         
     def outOfBounds(self, row, col, word, board):
@@ -77,28 +77,28 @@ class checkBoardDown:
                 return False
         return True
     
-    def neighbourTiles(self, row, col, word, board):
-        colcount = int(col)
-        rowcount = int(row)
-        col = int(col)
-        row = int(row)
-        boolCheck = True
-        for char in word:
-            while board[rowcount][col] != "0":
-                rowcount += 1
-            last = board[rowcount][col]
-            lastRow = rowcount
-            lastCol = col
-            while board[rowcount][col] != 0:
-                rowcount -= 1
-            first = board[rowcount][col]
-            firstRow = rowcount
-            firstCol = col
-            for i in range(firstRow, lastRow):
-                word = word + board[i][col].getLetter
-            #boolCheck = boolCheck and checkDict(word)
+    # def neighbourTiles(self, row, col, word, board):
+    #     colcount = int(col)
+    #     rowcount = int(row)
+    #     col = int(col)
+    #     row = int(row)
+    #     boolCheck = True
+    #     for char in word:
+    #         while board[rowcount][col] != "0":
+    #             rowcount += 1
+    #         last = board[rowcount][col]
+    #         lastRow = rowcount
+    #         lastCol = col
+    #         while board[rowcount][col] != 0:
+    #             rowcount -= 1
+    #         first = board[rowcount][col]
+    #         firstRow = rowcount
+    #         firstCol = col
+    #         for i in range(firstRow, lastRow):
+    #             word = word + board[i][col].getLetter
+    #         #boolCheck = boolCheck and checkDict(word)
         
-        return boolCheck
+    #     return boolCheck
     
     def outOfBounds(self, row, col, word, board):
         col = int(col)
