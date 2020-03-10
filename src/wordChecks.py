@@ -5,6 +5,7 @@ class wordChecks:
         if word == None or word == " ":
             raise ValueError("Must input word")
         wordUp = word.upper()
+        print(wordUp + " rack")
         for char in wordUp:
             if char in rack:
                 checksBool = True
@@ -12,7 +13,9 @@ class wordChecks:
 
     def checkInDict(self, word):
         dictionary = open("dic.txt").read()
-        if word.upper() not in dictionary:
+        wordUp = word.upper()
+        print(wordUp + " dict")
+        if wordUp not in dictionary:
             checksBool = False
         else:
             checksBool = True
