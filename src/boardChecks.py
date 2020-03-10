@@ -14,31 +14,27 @@ class checkBoardRight:
                 return False
         return True
     
-    # def neighbourTiles(self, row, col, word, board):
-    #     # wordChecks = wordChecks()
-    #     # colcount = int(col)
-    #     # rowcount = int(row)
-    #     # boolCheck = True
-    #     # #row = int(row)
-    #     # for char in word:
-    #     #     newWord = ""
-    #     #     while board[row][colcount] != "0":
-    #     #         colcount += 1
-    #     #         #while
-    #     #     #last = (row,colcount)
-    #     #     lastRow = row
-    #     #     lastCol = colcount
-    #     #     # while board[row][colcount] != "0":
-    #     #     #     colcount -= 1
-    #     #     #first = (row,colcount)
-    #     #     #firstRow = row
-    #     #     #firstCol = colcount
-    #     #     for i in range(first[1], last[1]):
-    #     #         newWord = newWord + board[row][i]
-    #     #     boolCheck = boolCheck and wordChecks.checkInDict(newWord)
-    #     return boolCheck
-            
+    def adjWordCheck(self, row, col, word, board):
+        #checking for a word being placed right
+        wordCheck = wordChecks()
+        colCount = int(col)
         
+        for char in word:
+            if board [int(row)-1][colCount] == "0" and board[int(row) + 1][colCount] == "0":
+                colCount += 1 
+            else:
+                rowCount = int(row)
+                while board[rowCount][colCount] != "0" :
+                    rowCount += 1
+                end = colCount
+                while board[rowCount][colCount] != "0" :
+                    rowCount -= 1
+                begin = colCount
+                for rown in range(begin, end):
+                    word = word + board[rown][colCount]
+                corrWords = corrWords and wordCheck.checkInDict(word)
+        return corrWords
+    
     def outOfBounds(self, row, col, word, board):
         row = int(row)
         col = int(col)
@@ -76,30 +72,28 @@ class checkBoardDown:
                 print("occupiedTile error")
                 return False
         return True
-    
-    # def neighbourTiles(self, row, col, word, board):
-    #     colcount = int(col)
-    #     rowcount = int(row)
-    #     col = int(col)
-    #     row = int(row)
-    #     boolCheck = True
-    #     for char in word:
-    #         while board[rowcount][col] != "0":
-    #             rowcount += 1
-    #         last = board[rowcount][col]
-    #         lastRow = rowcount
-    #         lastCol = col
-    #         while board[rowcount][col] != 0:
-    #             rowcount -= 1
-    #         first = board[rowcount][col]
-    #         firstRow = rowcount
-    #         firstCol = col
-    #         for i in range(firstRow, lastRow):
-    #             word = word + board[i][col].getLetter
-    #         #boolCheck = boolCheck and checkDict(word)
+
+    def adjWordCheck(self, row, col, word, board):
+        #checking for a word being placed downwards
+        wordCheck = wordChecks()
+        rowCount = int(row)
         
-    #     return boolCheck
-    
+        for char in word:
+            if board [rowCount][int(col)-1] == "0" and board[rowCount][int(col)+1] == "0":
+                rowCount += 1 
+            else:
+                colCount = int(col)
+                while board[rowCount][colCount] != "0" :
+                    colCount += 1
+                end = colCount
+                while board[rowCount][colCount] != "0" :
+                    colCount -= 1
+                begin = colCount
+                for coln in range(begin, end):
+                    word = word + board[rowCount][coln]
+                corrWords = corrWords and wordCheck.checkInDict(word)
+        return corrWords
+
     def outOfBounds(self, row, col, word, board):
         col = int(col)
         row = int(row)
