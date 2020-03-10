@@ -35,7 +35,6 @@ class checkBoardRight:
         #     for i in range(first[1], last[1]):
         #         newWord = newWord + board[row][i]
         #     boolCheck = boolCheck and wordChecks.checkInDict(newWord)
-        
         return boolCheck
             
         
@@ -69,7 +68,7 @@ class checkBoardDown:
         rowcount = int(row)
         col = int(col)
         wordUp = word.upper()
-        for char in wordUps:
+        for char in wordUp:
             if board[rowcount][col] == "0":
                 rowcount += 1
             elif board[rowcount][col] == char: #matches char
