@@ -125,6 +125,23 @@ class BoardFrame:
         inputRowE.delete(0, "end")
         inputColE.delete(0, "end")
         inputDirE.delete(0, "end")
+    
+    def skipTurn(turnLabel, rackLabel):
+        global turn, roundCount
+        if roundCount != 0:
+            if (turnLabel['text'] == "Player " + p1Name + "'s turn"):
+                turnLabel.configure(text = "Player " + p2Name + "'s turn")
+            else:
+                turnLabel.configure(text = "Player " + p1Name + "'s turn")
+            if turn == 1:
+                player2Rack = player2.rack.getRackStr()
+                rackLabel.configure(text = player2Rack)
+                turn = 2
+            elif turn == 2:
+                player1Rack = player1.rack.getRackStr()
+                rackLabel.configure(text = player1Rack)
+                turn = 1
+         
 
     def completeTurn(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL):
         global turn, roundCount
@@ -245,7 +262,8 @@ class BoardFrame:
         inputRowE.get(), inputColE.get(), inputDirE.get(), playerRackL, p1ScoreValL, p2ScoreValL, turnL,
         inputWordE, inputRowE, inputColE, inputDirE, validMoveL))
         endMoveB.grid(row = 11, column = 17)
-
+        skipTurnB = Button(boardF, text = "Skip Turn", command=lambda: BoardFrame.skipTurn(turnL, playerRackL))
+        skipTurnB.grid(row = 11, column = 18)
         #empty label as a buffer
         emptyL2 = Label(boardF, text = " ")
         emptyL2.grid(row = 0,column = 16,rowspan = 15)
