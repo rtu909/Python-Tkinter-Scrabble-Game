@@ -26,5 +26,5 @@ class Board:
             for char in word:
                 char = char.upper()
                 print(char)
-                self.backBoard[int(col)][int(countRow)] = char
+                self.backBoard[int(countRow)][int(col)] = char
                 countRow += 1

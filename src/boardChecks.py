@@ -4,12 +4,25 @@ class checkBoardRight:
         row = int(row)
         colcount = int(col)
         wordUp = word.upper()
+        print(wordUp)
         for char in wordUp:
             if board[row][colcount] == "0":
+                print(board[row])
+                print(board[row][colcount])
                 colcount += 1
+                print(colcount)
             elif board[row][colcount] == char: #matches char
+                print(board[row])
+                print(board[row][colcount])
                 colcount += 1
+                print(colcount)
             else:   
+                print(colcount, "col")
+                print(row, "row")
+                #print(board)
+                print(board[row])
+                print(board[row][colcount], "board char")
+                print(char)
                 print("occupiedTile error")
                 return False
         return True
