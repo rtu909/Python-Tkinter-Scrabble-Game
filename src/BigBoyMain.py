@@ -163,13 +163,33 @@ class BoardFrame:
             label.configure(text = player1Rack)
             turn = 1
         roundCount += 1
+    
+    def scoreBoard(frame, score1Label, score2Label):
+         frame.destroy()
+         scoreBoardR = Toplevel()
+         scoreBoardR.title('Score Board')
+         
+         winnerL = Label(scoreBoardR, text = "")
+         
+         
+         if ((score1Label['text']) > (score2Label['text'])):
+            winnerL.configure(text = p1Name + "is the winner!")
+         else:
+            winnerL.configure(text = p2Name + "is the winner!")
+         #Displays label with Scrabble Game instructions.
+         #instrL = Label(instructR, text = strInstruct)
+         #instrL.grid(row = 0, column = 0)
+         #Closes the window once the button is pressed.
+         closeB = Button(scoreBoardR, text = "Close Score Board", command = scoreBoardR.destroy)
+         closeB.grid(row = 1, column = 0)
 
-    def completeTurn(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL):
+    def completeTurn(frame, word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL):
         global turn, roundCount
-        winState = endTurn.checkWinState(player1.rack, player2.rack, mainBag)
+        #winState = endTurn.checkWinState(player1.rack, player2.rack, mainBag)
+        winState = True
         if winState:
             #popup winner and destroy all windows
-            frontEndView.scoreBoard()
+            BoardFrame.scoreBoard(frame, score1Label, score2Label)
         else:
             dirLower = dir.lower()
             wordUp = word.upper()
@@ -199,7 +219,7 @@ class BoardFrame:
                 rackLabel.configure(text = player1Rack)
                 turn = 1
 
-    def endChecks(word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters):
+    def endChecks(frame, word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters):
         global roundCount
         dirLower = dir.lower()
         wordUp = word.upper()
@@ -220,7 +240,7 @@ class BoardFrame:
                 validTurn = checkBoardDown.downCheck(row, col, wordUp, mainBoard.getBoard(), roundCount)
                 
                 if validTurn:
-                    BoardFrame.completeTurn(wordUp, row, col, dirLower, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
+                    BoardFrame.completeTurn(frame, wordUp, row, col, dirLower, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
                 else:
                     #label popup for try again
                     #print("Try again")
@@ -232,7 +252,7 @@ class BoardFrame:
                 validTurn = checkBoardRight.rightCheck(row, col, wordUp, mainBoard.getBoard(), roundCount)
                 print(validTurn, "dir right")
                 if validTurn:
-                    BoardFrame.completeTurn(wordUp, row, col, dirLower, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
+                    BoardFrame.completeTurn(frame, wordUp, row, col, dirLower, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
                 else:
                     #label popup for try again
                     #print("Try again")
@@ -244,7 +264,7 @@ class BoardFrame:
             print("failure in shared")
             validMoveL.configure(text = "Invalid move please try again")
 
-    def endMove(word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters):
+    def endMove(frame, word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters):
         global turn
         dirLower = dir.lower()
         wordUp = word.upper()
@@ -252,9 +272,9 @@ class BoardFrame:
         winState = False
         print(word + "," + row + "," + col + "," + dir + str(turn))
         if turn == 1:
-            BoardFrame.endChecks(wordUp, row, col, dirLower, player1, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE,inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters)
+            BoardFrame.endChecks(frame, wordUp, row, col, dirLower, player1, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE,inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters)
         elif turn == 2:
-            BoardFrame.endChecks(wordUp, row, col, dirLower, player2, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE,inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters)
+            BoardFrame.endChecks(frame, wordUp, row, col, dirLower, player2, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE,inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters)
     def updateLabelText(self, label):
         if (label['text'] == "Player " + p1Name + "'s turn"):
             label.configure(text = "Player " + p2Name + "'s turn")
@@ -299,7 +319,7 @@ class BoardFrame:
         p2ScoreValL = Label(boardF, text = "0")
         p2ScoreValL.grid(row = 4, column = 18)
         #Buttons for end move and exchange tiles.
-        endMoveB = Button(boardF, text = "End Move", command=lambda: BoardFrame.endMove(inputWordE.get(),
+        endMoveB = Button(boardF, text = "End Move", command=lambda: BoardFrame.endMove(boardF, inputWordE.get(),
         inputRowE.get(), inputColE.get(), inputDirE.get(), playerRackL, p1ScoreValL, p2ScoreValL, turnL,
         inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, inputWordSharedE.get()))
         endMoveB.grid(row = 11, column = 17)
