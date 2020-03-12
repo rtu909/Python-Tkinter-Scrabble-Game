@@ -260,11 +260,21 @@ Rack = set of Tiles where $t : Tile \in Bag$
 \hline
 \textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
 \hline
-init & str & Bag & invalid\_size \\
+init & Bag &  &  \\
 \hline
-getLetter &  & str & \\
+addToRack &  &  & \\
 \hline
-getScore & & $\mathbb{N}$ & \\
+initialize & &  & \\
+\hline
+getRackStr & & String & \\
+\hline
+getRackArr & & Rack & \\
+\hline
+removeFromRack & Tile &  & \\
+\hline
+getRackLength &  & \mathbb{N} & \\
+\hline
+replenishRack &  &  & \\
 \hline
 \end{tabular}
 
@@ -276,7 +286,9 @@ bag \\
 \subsubsection* {Environment Variables}
 None
 \subsubsection* {State Invariant}
-$0 < score \leq 10$
+
+$0 < |rack| \leq 7$
+
 \subsubsection* {Assumptions}
 
 N/A
@@ -287,30 +299,165 @@ N/A
 
 \subsubsection* {Access Routine Semantics}
 
-\noindent init(\textcolor{black}{ $letter$}):
+\noindent init(\textcolor{black}{ $Bag$}):
 \begin{itemize}
-\item transition: $score := LETTER\_VALUES[letter]$ 
+\item transition: $rack := \emptyset $ \\
+$bag = Bag$
 \item output: None
 \item exception: None
 \end{itemize}
 
-\noindent getLetter():
+\noindent addToRack():
 \begin{itemize}
-\item transition: None
-\item output: letter
+\item transition: $rack \rightarrow rack + t$ \\
+        where $t : Tile \in bag$
+\item output: None
 \item exception: None
 \end{itemize}
 
-\noindent getScore():
+\noindent initialize():
 \begin{itemize}
-\item transition: None
-\item output: score
+\item transition: $rack \rightarrow rack + 7*t$ \\
+        where $t : Tile \in bag$
+\item output: None
 \item exception: None
 \end{itemize}
 
-\subsection*{Local Constants}
+\newpage
+
+\noindent getRackStr():
+\begin{itemize}
+\item transition: None
+\item output: $r:Rack \rightarrow s:String$ \\
+where r and s represent same set of characters.
+\item exception: None
+\end{itemize}
+
+\noindent getRackArr():
+\begin{itemize}
+\item transition: None
+\item output: rack
+\item exception: None
+\end{itemize}
+
+\noindent removeFromRack(tile):
+\begin{itemize}
+\item transition: $rack \rightarrow rack \setminus tile$ \\
+where tile : Tile
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent getRackLength():
+\begin{itemize}
+\item transition: None
+\item output: |rack|
+\item exception: None
+\end{itemize}
+
+\noindent replenishRack():
+\begin{itemize}
+\item transition: $rack \rightarrow rack + n*t$ \\
+        where $n : 7 - |rack|$
+\item output: None
+\item exception: None
+\end{itemize}
 \medskip
 \newpage
 
+\section* {Player Module}
+
+\subsection*{Module}
+
+Bag Type
+
+\subsection* {Uses}
+
+Tile
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+N/A
+\subsubsection* {Exported Types}
+Bag = list of Tiles
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init &  & Bag &  \\
+\hline
+addToBag & Tile, \mathbb{N} & Bag & \\
+\hline
+initBag & & & \\
+\hline
+takeFromBag & & Tile & \\
+\hline
+getRemainingTiles & & \mathbb{N} & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+Bag \\
+
+\subsubsection* {Environment Variables}
+None
+\subsubsection* {State Invariant}
+
+$0 \leq |Bag| \leq 100$
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\begin{itemize}
+
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent init():
+\begin{itemize}
+\item transition: ? 
+\item output: ?
+\item exception: None
+\end{itemize}
+
+\noindent addToBag(Tile, n):
+\begin{itemize}
+\item transition: $Bag \rightarrow Bag+n*Tiles$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent initBag():
+\begin{itemize}
+\item transition: $Bag \rightarrow Bag+a*Tiles(A)+b*Tiles(B)+...+z*Tiles(Z)$\\
+where a, b,..., z are the number of that lettered tile to be in the bag.\\ Additionally shuffles the order of the letters.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent takeFromBag():
+\begin{itemize}
+\item transition: $|Bag| \rightarrow |Bag|-1$
+\item output: $Bag(|Bag|-1)$
+\item exception: None
+\end{itemize}
+
+\noindent getRemainingTiles():
+\begin{itemize}
+\item transition: None
+\item output: $|Bag|$
+\item exception: None
+\end{itemize}
+
+\newpage
 
 \end {document}
