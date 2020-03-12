@@ -97,6 +97,10 @@ class frontEndMain:
 
         playB = Button(self.startF, text = "Let's play", command = lambda: BoardFrame.scrabbleBoard(self.root, self.startF, play1E.get(), play2E.get()))
         playB.grid(row = 3, column = 1)
+    
+    def destroyWindow(self):
+        self.startF.destroy()
+        self.introF.destroy()
 
 class BoardFrame:
     global tileArray
@@ -164,32 +168,47 @@ class BoardFrame:
             turn = 1
         roundCount += 1
     
-    def scoreBoard(frame, score1Label, score2Label):
-         frame.destroy()
-         scoreBoardR = Toplevel()
-         scoreBoardR.title('Score Board')
-         
-         winnerL = Label(scoreBoardR, text = "")
+    def scoreBoard(root, frame, score1Label, score2Label):
          
          
-         if ((score1Label['text']) > (score2Label['text'])):
-            winnerL.configure(text = p1Name + "is the winner!")
+         #scoreBoardR = Toplevel()
+         #scoreBoardR.title('Score Board')
+         
+         #winnerL = Label(scoreBoardR, text = "")
+         #winnerL.grid(row = 0, column = 0)
+         winnerStr = ""
+         if (int(score1Label['text']) > int(score2Label['text'])):
+            winnerStr =  p1Name + " is the winner!"
+            #winnerL.configure(text = p1Name + " is the winner!")
          else:
-            winnerL.configure(text = p2Name + "is the winner!")
+            winnerStr =  p2Name + " is the winner!"
+            #winnerL.configure(text = p2Name + " is the winner!")
+         frame.destroy()
+         root.destroy()
+         scoreBoardR = Tk()
+         #scoreBoardR = Toplevel(scoreBoardRoot)
+         scoreBoardR.title('Score Board')
+         winnerL = Label(scoreBoardR, text = "")
+         winnerL.grid(row = 0, column = 0)
+         winnerL.configure(text = winnerStr)
+         closeB = Button(scoreBoardR, text = "Close Score Board", command = scoreBoardR.destroy)
+         closeB.grid(row = 1, column = 0)
+         scoreBoardRoot.mainloop()
          #Displays label with Scrabble Game instructions.
          #instrL = Label(instructR, text = strInstruct)
          #instrL.grid(row = 0, column = 0)
          #Closes the window once the button is pressed.
-         closeB = Button(scoreBoardR, text = "Close Score Board", command = scoreBoardR.destroy)
-         closeB.grid(row = 1, column = 0)
+         
 
-    def completeTurn(frame, word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL):
+    def completeTurn(root, frame, word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL):
         global turn, roundCount
         #winState = endTurn.checkWinState(player1.rack, player2.rack, mainBag)
-        winState = True
+        winState = False
+        if roundCount == 1:
+            winState = True
         if winState:
             #popup winner and destroy all windows
-            BoardFrame.scoreBoard(frame, score1Label, score2Label)
+            BoardFrame.scoreBoard(root, frame, score1Label, score2Label)
         else:
             dirLower = dir.lower()
             wordUp = word.upper()
@@ -219,7 +238,7 @@ class BoardFrame:
                 rackLabel.configure(text = player1Rack)
                 turn = 1
 
-    def endChecks(frame, word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters):
+    def endChecks(root, frame, word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters):
         global roundCount
         dirLower = dir.lower()
         wordUp = word.upper()
@@ -240,7 +259,7 @@ class BoardFrame:
                 validTurn = checkBoardDown.downCheck(row, col, wordUp, mainBoard.getBoard(), roundCount)
                 
                 if validTurn:
-                    BoardFrame.completeTurn(frame, wordUp, row, col, dirLower, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
+                    BoardFrame.completeTurn(root, frame, wordUp, row, col, dirLower, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
                 else:
                     #label popup for try again
                     #print("Try again")
@@ -252,7 +271,7 @@ class BoardFrame:
                 validTurn = checkBoardRight.rightCheck(row, col, wordUp, mainBoard.getBoard(), roundCount)
                 print(validTurn, "dir right")
                 if validTurn:
-                    BoardFrame.completeTurn(frame, wordUp, row, col, dirLower, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
+                    BoardFrame.completeTurn(root, frame, wordUp, row, col, dirLower, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL)
                 else:
                     #label popup for try again
                     #print("Try again")
@@ -264,7 +283,7 @@ class BoardFrame:
             print("failure in shared")
             validMoveL.configure(text = "Invalid move please try again")
 
-    def endMove(frame, word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters):
+    def endMove(root, frame, word, row, col, dir, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters):
         global turn
         dirLower = dir.lower()
         wordUp = word.upper()
@@ -272,9 +291,9 @@ class BoardFrame:
         winState = False
         print(word + "," + row + "," + col + "," + dir + str(turn))
         if turn == 1:
-            BoardFrame.endChecks(frame, wordUp, row, col, dirLower, player1, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE,inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters)
+            BoardFrame.endChecks(root, frame, wordUp, row, col, dirLower, player1, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE,inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters)
         elif turn == 2:
-            BoardFrame.endChecks(frame, wordUp, row, col, dirLower, player2, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE,inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters)
+            BoardFrame.endChecks(root, frame, wordUp, row, col, dirLower, player2, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE,inputWordSharedE, inputWordExchangeE, validMoveL, sharedLetters)
     def updateLabelText(self, label):
         if (label['text'] == "Player " + p1Name + "'s turn"):
             label.configure(text = "Player " + p2Name + "'s turn")
@@ -319,7 +338,7 @@ class BoardFrame:
         p2ScoreValL = Label(boardF, text = "0")
         p2ScoreValL.grid(row = 4, column = 18)
         #Buttons for end move and exchange tiles.
-        endMoveB = Button(boardF, text = "End Move", command=lambda: BoardFrame.endMove(boardF, inputWordE.get(),
+        endMoveB = Button(boardF, text = "End Move", command=lambda: BoardFrame.endMove(root, boardF, inputWordE.get(),
         inputRowE.get(), inputColE.get(), inputDirE.get(), playerRackL, p1ScoreValL, p2ScoreValL, turnL,
         inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, inputWordSharedE.get()))
         endMoveB.grid(row = 11, column = 17)
