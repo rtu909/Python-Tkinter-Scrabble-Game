@@ -463,4 +463,171 @@ where r and s represent same set of characters.
 
 \newpage
 
+\section* {Board Module}
+
+\subsection*{Module}
+
+Board Type
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+N/A
+\subsubsection* {Exported Types}
+
+Board = $16 \times 16$ matrix of Tiles
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init &  & Board & \\
+\hline
+getBoard &  & Board & \\
+\hline
+updateBackBoard & \mathbb{N}, \mathbb{N}, String, String &  & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+backBoard \\
+\subsubsection* {Environment Variables}
+None
+\subsubsection* {State Invariant}
+$|Board| = 256$
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent init():
+\begin{itemize}
+\item transition: $Board \rightarrow Board$ 
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent getLetter():
+\begin{itemize}
+\item transition: None
+\item output: backBoard
+\item exception: None
+\end{itemize}
+
+\noindent updateBackBoard($row, column, direction, word$):
+\begin{itemize}
+\item transition: $Board \rightarrow Board + word$ \\
+where first letter of word is added from Board[row][column] and the rest are added to row(right) or column(down) depending on direction.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {EndTurn Module}
+
+\subsection*{Module}
+
+\subsection* {Uses}
+
+Tiles, Bag, Rack
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+N/A
+\subsubsection* {Exported Types}
+
+N/A
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init & Bag & Player &  \\
+\hline
+getRackStr & & String & \\
+\hline
+getRackArr & & Rack & \\
+\hline
+increaseScore & $increase$ &  & \\
+\hline
+getScore & & $\mathbb{N}$ & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+Score \\
+Rack
+
+\subsubsection* {Environment Variables}
+None
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\begin{itemize}
+
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent init(Bag):
+\begin{itemize}
+\item transition: $Rack = {t : Tile \in Bag}\\
+score = 0$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent getRackStr():
+\begin{itemize}
+\item transition: None
+\item output: $r:Rack \rightarrow s:String$ \\
+where r and s represent same set of characters.
+\item exception: None
+\end{itemize}
+
+\noindent getRackArr():
+\begin{itemize}
+\item transition: None
+\item output: Rack
+\item exception: None
+\end{itemize}
+
+\noindent increaseScore($increase$):
+\begin{itemize}
+\item transition: $score \rightarrow score+increase$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent getScore():
+\begin{itemize}
+\item transition: None
+\item output: score
+\item exception: None
+\end{itemize}
+
+\newpage
+
+
 \end {document}
