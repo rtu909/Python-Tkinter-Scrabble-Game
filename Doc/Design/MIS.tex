@@ -395,7 +395,7 @@ getRackStr & & String & \\
 \hline
 getRackArr & & Rack & \\
 \hline
-increaseScore & $increase$ &  & \\
+increaseScore & $\mathbb{N}$ &  & \\
 \hline
 getScore & & $\mathbb{N}$ & \\
 \hline
@@ -555,15 +555,15 @@ N/A
 \hline
 \textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
 \hline
-init & Bag & Player &  \\
+updateFrontBoard & \mathbb{N}, \mathbb{N}, String, String & List &  \\
 \hline
-getRackStr & & String & \\
+removeTile & String, Rack &  & \\
 \hline
-getRackArr & & Rack & \\
+exchangeTile & String, Rack & & \\
 \hline
-increaseScore & $increase$ &  & \\
+calculateScore &$ \mathbb{N}, \mathbb{N}$, String, String & \mathbb{N}  & \\
 \hline
-getScore & & $\mathbb{N}$ & \\
+checkWinState & Rack, Rack, Bag & $\mathbb{B}$ & \\
 \hline
 \end{tabular}
 
@@ -571,8 +571,7 @@ getScore & & $\mathbb{N}$ & \\
 
 \subsubsection* {State Variables}
 
-Score \\
-Rack
+word\_score
 
 \subsubsection* {Environment Variables}
 None
@@ -584,50 +583,111 @@ N/A
 
 N/A
 
-\begin{itemize}
-
-\end{itemize}
-
 \subsubsection* {Access Routine Semantics}
 
-\noindent init(Bag):
+\noindent updateFrontBoard($row, column, direction, word$):
 \begin{itemize}
-\item transition: $Rack = {t : Tile \in Bag}\\
-score = 0$
+\item transition: Empty $List \rightarrow List$ of Tuples
+\item output: List of Tuples
+\item exception: None
+\end{itemize}
+
+\noindent removeTile($word, rack$):
+\begin{itemize}
+\item transition: $Rack \rightarrow Rack \setminus {letters in word}$ \\
+$Rack \setminus {letters in word} \rightarrow (Rack \setminus {letters in word}) + n$\\
+where n = letters in word.
 \item output: None
 \item exception: None
 \end{itemize}
 
-\noindent getRackStr():
+\noindent exchangeTile($word, rack$):
 \begin{itemize}
-\item transition: None
-\item output: $r:Rack \rightarrow s:String$ \\
-where r and s represent same set of characters.
-\item exception: None
-\end{itemize}
-
-\noindent getRackArr():
-\begin{itemize}
-\item transition: None
-\item output: Rack
-\item exception: None
-\end{itemize}
-
-\noindent increaseScore($increase$):
-\begin{itemize}
-\item transition: $score \rightarrow score+increase$
+\item transition: $Rack \rightarrow Rack$
 \item output: None
 \item exception: None
 \end{itemize}
 
-\noindent getScore():
+\noindent calculateScore($row, column, direction, word$):
+\begin{itemize}
+\item transition: $word\_score \rightarrow +(\forall letters \in word \cdot score)$
+\item output: word\_score
+\item exception: None
+\end{itemize}
+
+\noindent checkWinState($rack1, rack2, bag$):
 \begin{itemize}
 \item transition: None
-\item output: score
+\item output: $\mathbb{B}$
 \item exception: None
 \end{itemize}
 
 \newpage
 
+\section* {WordChecks Module}
+
+\subsection*{Module}
+
+N/A
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+N/A
+\subsubsection* {Exported Types}
+
+N/A
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+checkRack & String, Rack & $\mathbb{B}$ & \\
+\hline
+checkInDict & String & $\mathbb{B}$ & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+N/A
+
+\subsubsection* {Environment Variables}
+
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent checkRack($word, rack$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$
+\item exception: None
+\end{itemize}
+
+\noindent checkInDict($word$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$
+\item exception: None
+\end{itemize}
+
+\newpage
 
 \end {document}
