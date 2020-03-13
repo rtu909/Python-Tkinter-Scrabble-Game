@@ -55,8 +55,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+13/2/20 & 1.0 & ---\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -195,17 +194,18 @@ actually be implemented.
 {Hardware-Hiding Module} & Game Window \\
 \midrule
 
-\multirow{4}{0.3\textwidth}{Behaviour-Hiding Module} & Gameboard Boolean Checks\\
-& Game View\\
+\multirow{2}{0.3\textwidth}{Behaviour-Hiding Module} & Game View\\
 & End Turn Boolean Checks\\
-& Valid Word Boolean Checks\\
+
 \midrule
 
-\multirow{5}{0.3\textwidth}{Software Decision Module} & Bag\\
+\multirow{7}{0.3\textwidth}{Software Decision Module} & Bag\\
 & Board\\
 & Player\\
 & Rack\\
 & Tiles\\
+& Valid Word Boolean Checks\\
+& Gameboard Boolean Checks\\
 \bottomrule
 
 \end{tabular}
@@ -213,11 +213,28 @@ actually be implemented.
 \label{TblMH}
 \end{table}
 
+\newpage 
+
 \section{Connection Between Requirements and Design} %Kanak \label{SecConnection}
 
-The design of the system is intended to satisfy the requirements developed in
-the SRS. In this stage, the system is decomposed into modules. The connection
-between requirements and modules is listed in Table \ref{TblRT}.
+\begin{table}[htp]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Module} & \textbf{Requirement Module Meets}                                                                                                                   \\ \hline
+Tile            & FR10, MS1, MS2, MS3, LR1                                                                                                                            \\ \hline
+Bag             & FR5, MS1, MS2, MS3, LR1                                                                                                                             \\ \hline
+Rack            & FR11, MS1, MS2, MS3, LR1                                                                                                                            \\ \hline
+Player          & FR4, MS1, MS2, MS3, LR1                                                                                                                             \\ \hline
+Board           & FR2, MS1, MS2, MS3, LR1                                                                                                                             \\ \hline
+EndTurn         & FR10, MS1, MS2, MS3, LR1                                                                                                                            \\ \hline
+WordChecks      & FR6, MS1, MS2, MS3, CR1, LR1                                                                                                                        \\ \hline
+BoardChecks     & FR6, FR8, FR9, MS1, MS2, MS3, LR1                                                                                                                   \\ \hline
+MainGame        & \begin{tabular}[c]{@{}l@{}}FR2, FR4, FR7, FR8, FR10, FR12, \\ LF1, UH1, UH2, UH3, UH4, UH5, UH7,\\  PR1, PR2, OE1, OE2, CR1, LR1, HSR1\end{tabular} \\ \hline
+\end{tabular}
+\caption{ Requirements and Design Connection}
+\label{TblRDC}
+\end{table}
 
 \section{Module Decomposition} \label{SecMD} %Lucia
 
@@ -250,24 +267,10 @@ software.
 \item[Implemented By:] Scrabble Project
 \end{description}
 
-\subsubsection{Gameboard Boolean Checks (\mref{mBHGB})}
-\begin{description}
-\item[Secrets:]The correct placement of words on the board.
-\item[Services:]Provides the behaviour associated with ensuring that a word is correctly placed on the board. 
-\item[Implemented By:] Scrabble Project
-\end{description}
-
 \subsubsection{End Turn Boolean Checks (\mref{mBHET})}
 \begin{description}
-\item[Secrets:]The logic for move is completed by a player.
+\item[Secrets:]The logic for when a move is completed by a player.
 \item[Services:] Provides the behaviour necessary for updating the interface based on changes in data once the player has made a move.
-\item[Implemented By:] Scrabble Project
-\end{description}
-
-\subsubsection{Valid Word Boolean Checks (\mref{mBHVW})}
-\begin{description}
-\item[Secrets:]A correct word is entered by the player
-\item[Services:] Provides the behaviour necessary for ensuring that only valid words are used in the game.
 \item[Implemented By:] Scrabble Project
 \end{description}
 
@@ -289,6 +292,20 @@ software.
 \item[Services:] Includes data structure and algorithms used in the system that
   do not provide direct interaction with the user. Changes to these modules are more likely to be motivated by a desire to improve performance than by externally imposed changes.
 \item[Implemented By:] --
+\end{description}
+
+\subsubsection{Gameboard Boolean Checks (\mref{mBHGB})}
+\begin{description}
+\item[Secrets:]The algorithms dealing with the correct placement of words on the board.
+\item[Services:]Provides the behaviour associated with ensuring that a word is correctly placed on the board. 
+\item[Implemented By:] Scrabble Project
+\end{description}
+
+\subsubsection{Valid Word Boolean Checks (\mref{mBHVW})}
+\begin{description}
+\item[Secrets:]The algorithms to determine if a valid word is entered by the player
+\item[Services:] Provides the behaviour necessary for ensuring that only valid words are used in the game.
+\item[Implemented By:] Scrabble Project
 \end{description}
 
 \subsubsection{Board (\mref{mSDBO})}
@@ -339,17 +356,17 @@ requirements and between the modules and the anticipated changes. Some functiona
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
 FR1 & Obsolete \\
-FR2 & \mref{mHHGW}, \mref{mBHGV}\\
+FR2 & \mref{mHHGW}, \mref{mBHGV}, \mref{mSDBO}\\
 FR3 & Obsolete \\
 FR4 & \mref{mHHGW}, \mref{mBHGV}\\
-FR5 & \mref{mHHGW}, \mref{mBHGV}, \mref{mSDR}\\
+FR5 & \mref{mHHGW}, \mref{mBHGV}, \mref{mSDR}, \mref{mSDT}\\
 FR6 & \mref{mHHGW}, \mref{mBHGV}, \mref{mBHVW}\\
 FR7 & \mref{mHHGW}, \mref{mBHGV}\\
 FR8 & \mref{mHHGW}, \mref{mBHGV}, \mref{mBHGB}\\
-FR9 & \mref{mHHGW}, \mref{mBHGV}, \mref{mBHGB}\\
-FR10 & \mref{mHHGW}, \mref{mBHGV}\\
+FR9 & \mref{mHHGW}, \mref{mBHGV}, \mref{mBHGB}, \mref{mSDBO}\\
+FR10 & \mref{mHHGW}, \mref{mBHGV}, \mref{mSDT}\\
 FR11 & \mref{mHHGW}, \mref{mBHGV}\\
-FR12 & \mref{mHHGW}, \mref{mBHGV}, \mref{mBHET}\\
+FR12 & \mref{mHHGW}, \mref{mBHGV}, \mref{mBHET}, \mref{mSDB}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Requirements and Modules}
@@ -362,40 +379,23 @@ FR12 & \mref{mHHGW}, \mref{mBHGV}, \mref{mBHET}\\
 \toprule
 \textbf{AC} & \textbf{Modules}\\
 \midrule
-\acref{acHardware} & \mref{mHH}\\
-\acref{acInput} & \mref{mInput}\\
-\acref{acParams} & \mref{mParams}\\
-\acref{acVerify} & \mref{mVerify}\\
-\acref{acOutput} & \mref{mOutput}\\
-\acref{acVerifyOut} & \mref{mVerifyOut}\\
-\acref{acODEs} & \mref{mODEs}\\
-\acref{acEnergy} & \mref{mEnergy}\\
-\acref{acControl} & \mref{mControl}\\
-\acref{acSeqDS} & \mref{mSeqDS}\\
-\acref{acSolver} & \mref{mSolver}\\
-\acref{acPlot} & \mref{mPlot}\\
+\acref{acSkipTurn} & \mref{mBHGV}\\ %game view
+\acref{acExchangeTile} & \mref{mBHGV}\\
+& \mref{mBHET}\\ %exchange tile 
+\acref{acScoreboard} & \mref{mBHGV}\\
+\acref{acGUI} & \mref{mBHGV}\\
+& \mref{mHHGW}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
 \label{TblACT}
 \end{table}
 
-\section{Use Hierarchy Between Modules} \label{SecUse} %Kanak
-
-In this section, the uses hierarchy between modules is
-provided. \citet{Parnas1978} said of two programs A and B that A {\em uses} B if
-correct execution of B may be necessary for A to complete the task described in
-its specification. That is, A {\em uses} B if there exist situations in which
-the correct functioning of A depends upon the availability of a correct
-implementation of B.  Figure \ref{FigUH} illustrates the use relation between
-the modules. It can be seen that the graph is a directed acyclic graph
-(DAG). Each level of the hierarchy offers a testable and usable subset of the
-system, and modules in the higher level of the hierarchy are essentially simpler
-because they use modules from the lower levels.
+\section{Use Hierarchy Between Modules} \label{Module Hierarchy} %Kanak
 
 \begin{figure}[H]
 \centering
-%\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
+\includegraphics[width=0.7\textwidth]{mg_section7.png}
 \caption{Use hierarchy among modules}
 \label{FigUH}
 \end{figure}
