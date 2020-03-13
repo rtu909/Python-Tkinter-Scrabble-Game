@@ -1,0 +1,1192 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{hhline}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\textwidth 160mm
+\textheight 200mm
+\renewcommand\baselinestretch{1.0}
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+
+\newcounter{stepnum}
+
+\usepackage{color}
+
+\newif\ifcomments\commentstrue
+
+\ifcomments
+\newcommand{\authornote}[3]{\textcolor{#1}{[#3 ---#2]}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\else
+\newcommand{\authornote}[3]{}
+\newcommand{\todo}[1]{}
+\fi
+
+\newcommand{\wss}[1]{\authornote{blue}{SS}{#1}}
+
+\title{SE 3XA3: Module Interface Specification Scrabble Project}
+
+\author{Team \#214, The Trifecta
+		\\ Kanakabha Choudhri, Choudhrk
+		\\ Lucia Cristiano, Cristial
+		\\ Raymond Tu, Tur1
+}
+
+\date{March 13, 2020}
+
+\begin {document}
+ 
+\maketitle
+
+This document is the Module Interface Specification of the Scrabble Project being done by Team Trifecta. 
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+13/3/20 & 1.0 & ------\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\section* {Tile Module}
+
+\subsection*{Module}
+
+Tile Type
+
+\subsection* {Uses}
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+N/A
+\subsubsection* {Exported Types}
+Tile = tuple of (letter: String, score: $\mathbb{N}$)
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init & String & Tile & invalid\_size \\
+\hline
+getLetter &  & String & \\
+\hline
+getScore & & $\mathbb{N}$ & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+letter \\
+score \\
+\subsubsection* {Environment Variables}
+None
+\subsubsection* {State Invariant}
+$0 < score \leq 10$
+\subsubsection* {Assumptions}
+
+N/A
+
+\begin{itemize}
+
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent init(\textcolor{black}{ $letter$}):
+\begin{itemize}
+\item transition: $score := LETTER\_VALUES[letter]$ 
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent getLetter():
+\begin{itemize}
+\item transition: None
+\item output: letter
+\item exception: None
+\end{itemize}
+
+\noindent getScore():
+\begin{itemize}
+\item transition: None
+\item output: score
+\item exception: None
+\end{itemize}
+
+\subsection*{Local Constants}
+$LETTER\_VALUES =$ tuple of $("A": \mathbb{N}, "B": \mathbb{N}, "C": \mathbb{N}, "D": \mathbb{N}, "E": \mathbb{N}, "F": \mathbb{N}, "G": \mathbb{N}, "H": \mathbb{N}, "I": \mathbb{N}, "J": \mathbb{N}, "K": \mathbb{N}, "L": \mathbb{N}. "M": \mathbb{N}, "N": \mathbb{N}, "O": \mathbb{N}, "P": \mathbb{N}, "Q": \mathbb{N}, "R": \mathbb{N}, "S": \mathbb{N}, "T": \mathbb{N}, "U": \mathbb{N}, "V": \mathbb{N}, "W": \mathbb{N}, "X": \mathbb{N}, "Y": \mathbb{N}, "Z": \mathbb{N}) $ \\
+\medskip
+\newpage
+
+\section* {Bag Module}
+
+\subsection*{Module}
+
+Bag Type
+
+\subsection* {Uses}
+
+Tile
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+N/A
+\subsubsection* {Exported Types}
+Bag = list of Tiles
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init &  & Bag &  \\
+\hline
+addToBag & Tile, \mathbb{N} & Bag & \\
+\hline
+initBag & & & \\
+\hline
+takeFromBag & & Tile & \\
+\hline
+getRemainingTiles & & \mathbb{N} & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+Bag \\
+
+\subsubsection* {Environment Variables}
+None
+\subsubsection* {State Invariant}
+
+$0 \leq |Bag| \leq 100$
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\begin{itemize}
+
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent init():
+\begin{itemize}
+\item transition: $Bag \rightarrow Bag$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent addToBag(Tile, n):
+\begin{itemize}
+\item transition: $Bag \rightarrow Bag+n*Tiles$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent initBag():
+\begin{itemize}
+\item transition: $Bag \rightarrow Bag+a*Tiles(A)+b*Tiles(B)+...+z*Tiles(Z)$\\
+where a, b,..., z are the number of that lettered tile to be in the bag.\\ Additionally shuffles the order of the letters.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent takeFromBag():
+\begin{itemize}
+\item transition: $|Bag| \rightarrow |Bag|-1$
+\item output: $Bag(|Bag|-1)$
+\item exception: None
+\end{itemize}
+
+\noindent getRemainingTiles():
+\begin{itemize}
+\item transition: None
+\item output: $|Bag|$
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {Rack Module}
+
+\subsection*{Module}
+
+Rack Type
+
+\subsection* {Uses}
+
+Bag
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+N/A
+\subsubsection* {Exported Types}
+
+Rack = set of Tiles where $t : Tile \in Bag$
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init & Bag & Rack &  \\
+\hline
+addToRack &  &  & \\
+\hline
+initialize & &  & \\
+\hline
+getRackStr & & String & \\
+\hline
+getRackArr & & Rack & \\
+\hline
+removeFromRack & Tile &  & \\
+\hline
+getRackLength &  & \mathbb{N} & \\
+\hline
+replenishRack &  &  & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+rack \\
+bag \\
+\subsubsection* {Environment Variables}
+None
+\subsubsection* {State Invariant}
+
+$0 < |rack| \leq 7$
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\begin{itemize}
+
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent init(\textcolor{black}{ $Bag$}):
+\begin{itemize}
+\item transition: $rack := \emptyset $ \\
+$bag = Bag$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent addToRack():
+\begin{itemize}
+\item transition: $rack \rightarrow rack + t$ \\
+        where $t : Tile \in bag$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent initialize():
+\begin{itemize}
+\item transition: $rack \rightarrow rack + 7*t$ \\
+        where $t : Tile \in bag$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\noindent getRackStr():
+\begin{itemize}
+\item transition: None
+\item output: $r:Rack \rightarrow s:String$ \\
+where r and s represent same set of characters.
+\item exception: None
+\end{itemize}
+
+\noindent getRackArr():
+\begin{itemize}
+\item transition: None
+\item output: rack
+\item exception: None
+\end{itemize}
+
+\noindent removeFromRack(tile):
+\begin{itemize}
+\item transition: $rack \rightarrow rack \setminus tile$ \\
+where tile : Tile
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent getRackLength():
+\begin{itemize}
+\item transition: None
+\item output: |rack|
+\item exception: None
+\end{itemize}
+
+\noindent replenishRack():
+\begin{itemize}
+\item transition: $rack \rightarrow rack + n*t$ \\
+        where $n : 7 - |rack|$
+\item output: None
+\item exception: None
+\end{itemize}
+\medskip
+\newpage
+
+\section* {Player Module}
+
+\subsection*{Module}
+
+Player Type
+
+\subsection* {Uses}
+
+Bag, Rack
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+N/A
+\subsubsection* {Exported Types}
+
+Player = tuple of $(rack: Rack, score:\mathbb{N})$
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init & Bag & Player &  \\
+\hline
+getRackStr & & String & \\
+\hline
+getRackArr & & Rack & \\
+\hline
+increaseScore & $\mathbb{N}$ &  & \\
+\hline
+getScore & & $\mathbb{N}$ & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+Score \\
+Rack
+
+\subsubsection* {Environment Variables}
+None
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\begin{itemize}
+
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent init(Bag):
+\begin{itemize}
+\item transition: $Rack = {t : Tile \in Bag}\\
+score = 0$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent getRackStr():
+\begin{itemize}
+\item transition: None
+\item output: $r:Rack \rightarrow s:String$ \\
+where r and s represent same set of characters.
+\item exception: None
+\end{itemize}
+
+\noindent getRackArr():
+\begin{itemize}
+\item transition: None
+\item output: Rack
+\item exception: None
+\end{itemize}
+
+\noindent increaseScore($increase$):
+\begin{itemize}
+\item transition: $score \rightarrow score+increase$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent getScore():
+\begin{itemize}
+\item transition: None
+\item output: score
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {Board Module}
+
+\subsection*{Module}
+
+Board Type
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+N/A
+\subsubsection* {Exported Types}
+
+Board = $16 \times 16$ matrix of Tiles
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init &  & Board & \\
+\hline
+getBoard &  & Board & \\
+\hline
+updateBackBoard & \mathbb{N}, \mathbb{N}, String, String &  & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+backBoard \\
+\subsubsection* {Environment Variables}
+None
+\subsubsection* {State Invariant}
+$|Board| = 256$
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent init():
+\begin{itemize}
+\item transition: $Board \rightarrow Board$ 
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent getLetter():
+\begin{itemize}
+\item transition: None
+\item output: backBoard
+\item exception: None
+\end{itemize}
+
+\noindent updateBackBoard($row, column, direction, word$):
+\begin{itemize}
+\item transition: $Board \rightarrow Board + word$ \\
+where first letter of word is added from Board[row][column] and the rest are added to row(right) or column(down) depending on direction.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {EndTurn Module}
+
+\subsection*{Module}
+
+\subsection* {Uses}
+
+Tiles, Bag, Rack
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+N/A
+\subsubsection* {Exported Types}
+
+N/A
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+updateFrontBoard & \mathbb{N}, \mathbb{N}, String, String & List &  \\
+\hline
+removeTile & String, Rack &  & \\
+\hline
+exchangeTile & String, Rack & & \\
+\hline
+calculateScore &$ \mathbb{N}, \mathbb{N}$, String, String & \mathbb{N}  & \\
+\hline
+checkWinState & Rack, Rack, Bag & $\mathbb{B}$ & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+word\_score
+
+\subsubsection* {Environment Variables}
+None
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent updateFrontBoard($row, column, direction, word$):
+\begin{itemize}
+\item transition: Empty $List \rightarrow List$ of Tuples
+\item output: List of Tuples
+\item exception: None
+\end{itemize}
+
+\noindent removeTile($word, rack$):
+\begin{itemize}
+\item transition: $Rack \rightarrow Rack \setminus {letters in word}$ \\
+$Rack \setminus {letters in word} \rightarrow (Rack \setminus {letters in word}) + n$\\
+where n = letters in word.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent exchangeTile($word, rack$):
+\begin{itemize}
+\item transition: $Rack \rightarrow Rack$
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent calculateScore($row, column, direction, word$):
+\begin{itemize}
+\item transition: $word\_score \rightarrow +(\forall letters \in word \cdot score)$
+\item output: word\_score
+\item exception: None
+\end{itemize}
+
+\noindent checkWinState($rack1, rack2, bag$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {WordChecks Module}
+
+\subsection*{Module}
+
+Correct scrabble word check.
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+N/A
+\subsubsection* {Exported Types}
+
+N/A
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+checkRack & String, Rack & $\mathbb{B}$ & \\
+\hline
+checkInDict & String & $\mathbb{B}$ & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+N/A
+
+\subsubsection* {Environment Variables}
+
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent checkRack($word, rack$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$
+\item exception: None
+\end{itemize}
+
+\noindent checkInDict($word$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {BoardChecks Module}
+
+\subsection* {Uses}
+
+WordChecks
+
+\subsection*{Right Module}
+
+\subsubsection*{Module}
+
+Right Direction Board Checks.
+
+\paragraph*{Syntax}
+
+\subsubsection*{Exported Constants}
+N/A
+\subsubsection*{Exported Types}
+
+N/A
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+occupiedTiles & $\mathbb{N}, \mathbb{B}$, String, Board & $\mathbb{B}$ & \\
+\hline
+adjWordCheck & $\mathbb{N}, \mathbb{B}$, String, Board & $\mathbb{B}$ & \\
+\hline
+outOfBounds & $\mathbb{N}, \mathbb{B}$, String, Board & $\mathbb{B}$ & \\
+\hline
+placementCheck & $\mathbb{N}, \mathbb{B}$, String, Board, $\mathbb{N}$ & $\mathbb{B}$ & \\
+\hline
+rightCheck & $\mathbb{N}, \mathbb{B}$, String, Board, $\mathbb{N}$ & $\mathbb{B}$ & \\
+\hline
+\end{tabular}
+
+\paragraph* {Semantics}
+
+\subsubsection*{State Variables}
+
+N/A
+
+\subsubsection*{Environment Variables}
+
+N/A
+
+\subsubsection*{State Invariant}
+
+N/A
+
+\subsubsection*{Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent occupiedTile($row, column, word, board$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$ for whether a Tile is occupied or not.
+\item exception: None
+\end{itemize}
+
+\noindent adjWordCheck($row, column, word, board$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$ if there are adjacent words that can be made with user's word placement.
+\item exception: None
+\end{itemize}
+
+\noindent outOfBounds($row, column, word, board$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$ if word placement is out of the bounds of the board.
+\item exception: None
+\end{itemize}
+
+\noindent placementCheck($row, column, word, board, count$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$ for the first word starting at tile $7\times7$.
+\item exception: None
+\end{itemize}
+
+\noindent rightCheck($row, column, word, board, count$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$ for correct placement of word in the right direction using free tiles.
+\item exception: None
+\end{itemize}
+
+\subsection*{Down Module}
+
+\subsubsection*{Module}
+
+Down Direction Board Checks.
+
+\paragraph*{Syntax}
+
+\subsubsection*{Exported Constants}
+N/A
+\subsubsection*{Exported Types}
+
+N/A
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+occupiedTiles & $\mathbb{N}, \mathbb{B}$, String, Board & $\mathbb{B}$ & \\
+\hline
+adjWordCheck & $\mathbb{N}, \mathbb{B}$, String, Board & $\mathbb{B}$ & \\
+\hline
+outOfBounds & $\mathbb{N}, \mathbb{B}$, String, Board & $\mathbb{B}$ & \\
+\hline
+placementCheck & $\mathbb{N}, \mathbb{B}$, String, Board, $\mathbb{N}$ & $\mathbb{B}$ & \\
+\hline
+downCheck & $\mathbb{N}, \mathbb{B}$, String, Board, $\mathbb{N}$ & $\mathbb{B}$ & \\
+\hline
+\end{tabular}
+
+\paragraph* {Semantics}
+
+\subsubsection*{State Variables}
+
+N/A
+
+\subsubsection*{Environment Variables}
+
+N/A
+
+\subsubsection*{State Invariant}
+
+N/A
+
+\subsubsection*{Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent occupiedTile($row, column, word, board$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$ for whether a Tile is occupied or not.
+\item exception: None
+\end{itemize}
+
+\noindent adjWordCheck($row, column, word, board$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$ if there are adjacent words that can be made with user's word placement.
+\item exception: None
+\end{itemize}
+
+\noindent outOfBounds($row, column, word, board$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$ if word placement is out of the bounds of the board.
+\item exception: None
+\end{itemize}
+
+\noindent placementCheck($row, column, word, board, count$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$ for the first word starting at tile $7\times7$.
+\item exception: None
+\end{itemize}
+
+\noindent downCheck($row, column, word, board, count$):
+\begin{itemize}
+\item transition: None
+\item output: $\mathbb{B}$ for correct placement of word in the down direction using free tiles.
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {MainGame Module}
+
+\subsection*{Uses}
+
+sys, tkinter, Board, Bag, Player, Rack, Tile, BoardChecks, WordChecks, EndTurn
+
+\subsection*{FrontEndMain Module}
+
+\subsubsection*{Module}
+
+Game introduction screens which take players information.
+
+\paragraph*{Syntax}
+
+\subsubsection*{Exported Constants}
+N/A
+\subsubsection*{Exported Types}
+
+N/A
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init & & tkinter Grid & \\
+\hline
+instructions & & tkinter Grid & \\
+\hline
+getPlayerGame & & tkinter Grid & \\
+\hline
+\end{tabular}
+
+\paragraph* {Semantics}
+
+\subsubsection*{State Variables}
+
+turn, player\_1rack, player2\_rack, roundCount
+
+\subsubsection*{Environment Variables}
+
+N/A
+
+\subsubsection*{State Invariant}
+
+N/A
+
+\subsubsection*{Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent init():
+\begin{itemize}
+\item transition: None
+\item output: A tkinter grid displaying the introduction screen with options to start the game or read the instructions.
+\item exception: None
+\end{itemize}
+
+\noindent instructions():
+\begin{itemize}
+\item transition: None
+\item output: A tkinter screen which lays out the rules of Scrabble.
+\item exception: None
+\end{itemize}
+
+\noindent getPlayerName():
+\begin{itemize}
+\item transition: None
+\item output: A tkinter screen that asks for the two player names.
+\item exception: None
+\end{itemize}
+
+\subsection*{BoardFrame Module}
+
+\subsubsection*{Module}
+
+Window with scrabble board that controls game play.
+
+\paragraph*{Syntax}
+
+\subsubsection*{Exported Constants}
+N/A
+\subsubsection*{Exported Types}
+
+N/A
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+updateGUI & List of Tile location & & \\
+\hline
+clearEntry & 6 Strings &  & \\
+\hline
+skipTurn & 2 Strings & & \\
+\hline
+exchangeTiles & 3 Strings & & \\
+\hline
+scoreBoard & 3 Strings & & \\
+\hline
+completeTurn & 15 Strings & & \\
+\hline
+endChecks & 18 Strings & & \\
+\hline
+endMove & 17 Strings & & \\
+\hline
+updateLabelText & String & & \\
+\hline
+scrabbleBoard & 4 Strings & & \\
+\hline
+\end{tabular}
+
+\paragraph* {Semantics}
+
+\subsubsection*{State Variables}
+
+turn, player\_1rack, player2\_rack, roundCount
+
+\subsubsection*{Environment Variables}
+
+N/A
+
+\subsubsection*{State Invariant}
+
+N/A
+
+\subsubsection*{Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent updateGUI($updateList$):
+\begin{itemize}
+\item transition: Updates board with a tuple of row and column per letter of inputted word.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent clearEntry($inputWordE, inputRowE, inputColE, inputDirE,inputWordSharedE, inputWordExchangeE$):
+\begin{itemize}
+\item transition: Clears text boxes for game inputs.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent skipTurn($turnLabel, rackLabel$):
+\begin{itemize}
+\item transition: Skips players turn if the enter button is hit.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent exchangeTiles($exchangeTiles, label, turnLabel$):
+\begin{itemize}
+\item transition: Exchanges current rack tiles with tiles in the bag.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent scoreBoard($frame, score1Label, score2Label$):
+\begin{itemize}
+\item transition: Declares winner of game and their score.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent completeTurn($frame, word, row, col, dir, player, rackLabel, score1Label,\\ score2Label, turnLabel, inputWordE, inputRowE, inputColE,\\ inputDirE, validMoveL$):
+\begin{itemize}
+\item transition: Signifies the completion of a turn.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent endChecks($frame, word, row, col, dir, player, rackLabel, \\score1Label, score2Label, turnLabel, inputWordE, inputRowE, \\ inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, \\ validMoveL, sharedLetters$):
+\begin{itemize}
+\item transition: Performs checks on input data from players turn.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent endMove($frame, word, row, col, dir, rackLabel, score1Label, score2Label,\\ turnLabel, inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, \\ inputWordExchangeE, validMoveL, sharedLetters$):
+\begin{itemize}
+\item transition: Takes in user data from window text boxes.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent updateLabelText($label$):
+\begin{itemize}
+\item transition: Updates window components labels with string input label.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent scrabbleBoard($root, frame, player1Name, player2Name$):
+\begin{itemize}
+\item transition: Creates initial scrabble board after taking player's names.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\subsection*{BoardLabel Module}
+
+\subsubsection*{Module}
+
+Creates labels for various tkinter window components.
+
+\paragraph*{Syntax}
+
+\subsubsection*{Exported Constants}
+N/A
+\subsubsection*{Exported Types}
+
+N/A
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init & & tkinter Label & \\
+\hline
+\end{tabular}
+
+\paragraph* {Semantics}
+
+\subsubsection*{State Variables}
+
+N/A
+
+\subsubsection*{Environment Variables}
+
+N/A
+
+\subsubsection*{State Invariant}
+
+N/A
+
+\subsubsection*{Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent init():
+\begin{itemize}
+\item transition: None
+\item output: A tkinter label to be attached to the various tkinter window components.
+\item exception: None
+\end{itemize}
+
+\subsection*{ColorButton Module}
+
+\subsubsection*{Module}
+
+Creates labels for various tkinter window components.
+
+\paragraph*{Syntax}
+
+\subsubsection*{Exported Constants}
+N/A
+\subsubsection*{Exported Types}
+
+N/A
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+init & String, String, String, String, String & tkinter button & \\
+\hline
+configure & String, String & & \\
+\hline
+\end{tabular}
+
+\paragraph* {Semantics}
+
+\subsubsection*{State Variables}
+
+N/A
+
+\subsubsection*{Environment Variables}
+
+N/A
+
+\subsubsection*{State Invariant}
+
+N/A
+
+\subsubsection*{Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent init($frame, colour, row, column, text$):
+\begin{itemize}
+\item transition: None
+\item output: A tkinter button representing each tile on the board.
+\item exception: None
+\end{itemize}
+
+\noindent configure($attribute, text$):
+\begin{itemize}
+\item transition: Changes the tile button attributes label.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\end {document}

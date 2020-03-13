@@ -83,7 +83,7 @@ class BoardFrame:
         for row in range(1, 16):
             tileRow = []
             for column in  range(1, 16):
-                tile = ColorButton(boardF, "", row, column, "")
+                tile = ColorButton(boardF, "floral white", row, column, "")
                 tileRow.append(tile)
             tileArray.append(tileRow)
 
