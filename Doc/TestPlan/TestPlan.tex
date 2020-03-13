@@ -40,8 +40,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+2020/02/27 & 1.0 & Revision 0 Test Plan\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -81,19 +80,6 @@ LF1 & Look and Feel Requirements\\
 
 \end{table}
 
-\begin{table}[!htbp]
-\caption{\textbf{Table of Definitions}} \label{Table}
-\begin{tabularx}{\textwidth}{p{3cm}X}
-\toprule
-\textbf{Term} & \textbf{Definition}\\
-\midrule
-Term1 & Definition1\\
-Term2 & Definition2\\
-\bottomrule
-\end{tabularx}
-
-\end{table}	
-
 \subsection{Overview of Document}
 The remainder of this document is divided into six separate sections. \\
 Section two covers the overall testing plan, such as the testing team, tools being used, and the schedule for testing.\\ 
@@ -128,18 +114,6 @@ See Gantt Chart at the following url:
 	
 \subsection{Tests for Functional Requirements} 
 Refer to Appendix Section 7.3 for explanation of omitted functional requirements one and three. 
-\item{test-id1\\}
-
-Type: 
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-
 
 \subsubsection{User Input}
 
@@ -327,7 +301,7 @@ How test will be performed:
     Initial State: Player is allowed to make valid moves or internal bag has $N rack$ sized amount of letters in bag. \\
     Input: The Player clicks the "End Move" button.\\
     Output: The game exits the game board to a separate screen showing player with highest score and their score.
-    How test will be performed: A test member will conduct a visual test to confirm that the game board has been exited from and a new screen pops up with highest score and winner shown\\
+    How test will be performed: A test member will conduct a visual test to confirm that the game board has been exited from and a new screen pops up with highest score and winner shown.\\
 \end{enumerate}
     
 \subsection{Tests for Nonfunctional Requirements}%Raymond
@@ -426,7 +400,7 @@ How test will be performed:
     Initial State: The source code has been reviewed by a focus group of programmers.\\
     Input/Conditions: The source code of the repository.\\
     Output/Result:  The maintainability of the system is rated on a scale from 1-10.\\
-    How test will be performed: A focus group of software design experts will do a code review of the source code of the game. They will rate how modular the game is and if it allows for easy implementation of new features, on a scale from 1-10. For the test case to pass, the average score must be higher than 4=8.\\
+    How test will be performed: A focus group of software design experts will do a code review of the source code of the game. They will rate how modular the game is and if it allows for easy implementation of new features, on a scale from 1-10. For the test case to pass, the average score must be higher than 8.\\
     
     \item{test-MS3: Test for Playable State Between Python Updates} %MS3
     Type: Functional, Dynamic, Manual\\
@@ -506,28 +480,9 @@ How test will be performed:
 \end{table}
 
 \section{Tests for Proof of Concept}%Raymond
-Proof of Concept testing is similar to the planned testing above of the actual game implementation, although missing many features regarding the functionality of the game. The goal of the proof of concept was to create the GUI of the game in Tkinter to demonstrate it's feasibility. Therefore, all of the tests will be strictly regarding the front end of the game. 
-
-\subsection{Board Layout}
-
-Testing for the board layout will ensure the size of the game board and the layout of the premium is correct (See Section 7.2 Figure 1 for correct board layout). Additionally, the overall aesthetic appeal of the POC and it's visual similarity to the scrabble game will be tested. See (test-GE1, test-GE2) for testing the board size and layout of premium squares. See (test-LF1) for testing the aesthetic appeal of the POC. 
-
-\subsection{Label Layout}
-
-Testing for the label layout will ensure the labels to the right of the board fit on the screen (See Section 7.2) and are in the correct layout. Additionally, the testing will ensure that player names are correctly appended to the labels. See (test-UI2, test-UI3) for testing whether player names are correctly updated. See below test cases for testing the correct label output.
-
-\begin{enumerate}
-    \item{test-POC1: Test Label Layout\\} 
-    Type: Functional, Dynamic, Manual\\
-    Initial State: Player has entered in the two player names on the player name input screen. \\
-    Input: The Player clicks the "Let's Play" button.\\
-    Output: The game board screen is loaded with correct label layout and button layout. All labels and buttons fit in the window.
-    How test will be performed: A test member will conduct a visual test to confirm that the label and button layout is correct, and that all buttons and labels fit within the window margins. Check section 7.2 for the correct board layout.\\
-\end{enumerate}
+For the Proof of Concept issues encountered were related to the functionality of the buttons as well as the overall board layout. Initially, the implementation of the tiles on the board was unintuitive due to each individual tile needing to be defined, being inefficient with a $BOARD\_WIDTH$X$BOARD\_HEIGHT$ sized board leading to 225 individual tile declarations. This was fixed through creating a separate tile creation class that could then be iterated through in a for loop, increasing the readability of the code and leading to an overall better design.\\
+Additionally, the functionality of the buttons had issues in updating the labels with the player names when the End Turn button is clicked. Initially, these labels were not correctly updated with the inputted playernames on the previous screen. This issue was fixed by declaring the player names as global variables that stayed persistent throughout the front-end of the game. 
 	
-\section{Comparison to Existing Implementation}	%Lucia
-When writing tests for the Scrabble project the team considered how recognizable this digital version of the game is to the board game version of Scrabble. This can be seen in test-UH2 which surveys users who played the game about their ability to recognize the GUI of the Scrabble project as the board game Scrabble.\\
-Another test that takes the existing implementation into consideration is having a user that has already played Scrabble before testing how easy it is to remember how to play the game. This test can be seen in test-UH4.
 \section{Unit Testing Plan}%Lucia
 For unit testing of the Scrabble project PyTest will be used to write the test suites as well as determine coverage of the methods and classes being tested. 
 \subsection{Unit testing of internal functions}
