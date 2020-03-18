@@ -1,6 +1,6 @@
 
 class wordChecks:
-    def checkRack(self, word, rack):
+    def checkRack(word, rack):
         checksBool = False
         if word == None or word == " ":
             raise ValueError("Must input word")
@@ -11,7 +11,7 @@ class wordChecks:
                 checksBool = True
         return checksBool
 
-    def checkInDict(self, word):
+    def checkInDict(word):
         dictionary = open("dic.txt").read()
         wordUp = word.upper()
         print(wordUp + " dict")
