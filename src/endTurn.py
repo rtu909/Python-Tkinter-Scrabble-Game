@@ -13,7 +13,7 @@ class endTurn:
     #  @param3 a string that represent the direction of the word placed on the board.
     #  @param4 a string that represents the word being placed on the board.
     #  @returns a list of tuples representing the row, column and text needed to be changed in the front end
-    def updateFrontBoard(self, row, col, dir, word):
+    def updateFrontBoard(row, col, dir, word):
         frontList = []
         dirLower = dir.lower()
         if(dirLower == "right"):
@@ -30,7 +30,7 @@ class endTurn:
                 countRow += 1
         return frontList
     
-    def removeTile(self, word, rack):
+    def removeTile(word, rack):
         wordUp = word.upper()
         for letter in wordUp:
             for tile in rack.getRackArr():
@@ -38,7 +38,7 @@ class endTurn:
                     rack.removeFromRack(tile)
         rack.replenishRack()
         
-    def exchangeTile(self, word, rack):
+    def exchangeTile(word, rack):
         wordUp = word.upper()
         saveTiles = []
         print(rack.bag.getRemainingTiles())
@@ -52,7 +52,7 @@ class endTurn:
             rack.bag.addToBag(tiles, 1)
         print(rack.bag.getRemainingTiles())
 
-    def calculateScore(self, row, col, dir, word):
+    def calculateScore(row, col, dir, word):
         #Set list used in score calculations.
         #List of premium tiles.
         TWS = [(0,0), (7, 0), (14,0), (0, 7), (14, 7), (0, 14), (7, 14), (14,14)]
@@ -107,7 +107,7 @@ class endTurn:
 
     ## @brief checks if the game has been won
     #  @return returns a bool to represent win state or not 
-    def checkWinState(self, rack1, rack2, bag):
+    def checkWinState(rack1, rack2, bag):
         emptyRack = (rack1.getRackLength() == 0) or (rack2.getRackLength() == 0)
         if  emptyRack and bag.getRemainingTiles() == 0:
             return True

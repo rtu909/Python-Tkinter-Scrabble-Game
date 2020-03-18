@@ -130,7 +130,7 @@ class BoardFrame:
         #Buttons for end move and exchange tiles.
         endMoveB = Button(boardF, text = "End Move", command=lambda: backEnd.endMove(root, boardF, inputWordE.get(),
         inputRowE.get(), inputColE.get(), inputDirE.get(), playerRackL, p1ScoreValL, p2ScoreValL, turnL,
-        inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, inputWordSharedE.get()))
+        inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, inputWordSharedE.get(), tileArray, p1Name, p2Name))
         endMoveB.grid(row = 11, column = 17)
         skipTurnB = Button(boardF, text = "Skip Turn", command=lambda: backEnd.skipTurn(turnL, playerRackL))
         skipTurnB.grid(row = 11, column = 18)
