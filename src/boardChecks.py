@@ -31,7 +31,7 @@ class checkBoardRight:
         #checking for a word being placed right
         wordCheck = wordChecks()
         colCount = int(col)
-        
+        corrWords = True
         for char in word:
             if board [int(row)-1][colCount] == "0" and board[int(row) + 1][colCount] == "0":
                 colCount += 1 
@@ -69,7 +69,7 @@ class checkBoardRight:
             
     def rightCheck(self, row, col, word, board, count):
         #and self.neighbourTiles(row, col, word, board)
-        return self.occupiedTile(row, col, word, board) and self.outOfBounds(row, col, word, board) and self.placementCheck(row, col, word, board, count)
+        return self.occupiedTile(row, col, word, board) and self.outOfBounds(row, col, word, board) and self.placementCheck(row, col, word, board, count) and self.adjWordCheck(row, col, word, board)
 
 class checkBoardDown:
     def occupiedTile(self, row, col, word, board):
@@ -90,7 +90,7 @@ class checkBoardDown:
         #checking for a word being placed downwards
         wordCheck = wordChecks()
         rowCount = int(row)
-        
+        corrWords = True
         for char in word:
             if board [rowCount][int(col)-1] == "0" and board[rowCount][int(col)+1] == "0":
                 rowCount += 1 
@@ -126,5 +126,5 @@ class checkBoardDown:
         
     def downCheck(self, row, col, word, board, count):
         #and self.neighbourTiles(row, col, word, board)
-        return self.occupiedTile(row, col, word, board) and self.outOfBounds(row, col, word, board) and self.placementCheck(row, col, word, board, count)
+        return self.occupiedTile(row, col, word, board) and self.outOfBounds(row, col, word, board) and self.placementCheck(row, col, word, board, count) and self.adjWordCheck(row, col, word, board)
     

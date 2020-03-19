@@ -202,10 +202,7 @@ class BoardFrame:
 
     def completeTurn(root, frame, word, row, col, dir, player, rackLabel, score1Label, score2Label, turnLabel, inputWordE, inputRowE, inputColE, inputDirE, validMoveL):
         global turn, roundCount
-        #winState = endTurn.checkWinState(player1.rack, player2.rack, mainBag)
-        winState = False
-        if roundCount == 1:
-            winState = True
+        winState = endTurn.checkWinState(player1.rack, player2.rack, mainBag)
         if winState:
             #popup winner and destroy all windows
             BoardFrame.scoreBoard(root, frame, score1Label, score2Label)
