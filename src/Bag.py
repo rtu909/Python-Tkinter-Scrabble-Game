@@ -6,10 +6,7 @@ from random import shuffle
 #  @brief This method implements the back end model of the bag for the Scrabble game.
 #  @date Feb.15,2020
 class Bag:
-    """
-    Creates the bag of all tiles that will be available during the game. Contains 98 letters and two blank tiles.
-    Takes no arguments to initialize.
-    """
+
     ## @brief initializes the bag model by calling the initBag() method, which adds the default 100 tiles to the bag.
     def __init__(self):
         self.bag = []
@@ -19,7 +16,7 @@ class Bag:
     #  @param1 a tile object that represents the letter tile.
     #  @param2 the number of tiles being added to the back.
     def addToBag(self, tile, numOfTiles):
-        
+
         for i in range(numOfTiles):
             self.bag.append(tile)
 

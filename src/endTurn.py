@@ -3,7 +3,7 @@ from Rack import *
 from Bag import *
 ## @file endTurn.py
 #  @author Lucia Cristiano
-#  @brief This program performs various functions neeeded to update the front end after a move is validated. 
+#  @brief This program performs various functions neeeded to update the front end after a move is validated.
 #  @date Feb.12,2020
 class endTurn:
 
@@ -13,23 +13,25 @@ class endTurn:
     #  @param3 a string that represent the direction of the word placed on the board.
     #  @param4 a string that represents the word being placed on the board.
     #  @returns a list of tuples representing the row, column and text needed to be changed in the front end
-    def updateFrontBoard(row, col, dir, word):
+    def updateFrontBoard(word, row, col, dir):
         frontList = []
         dirLower = dir.lower()
+        wordUp = word.upper()
         if(dirLower == "right"):
             countCol = int(col)
-            for char in word:
+            for char in wordUp:
                 configTuple = (int(row), countCol, char.upper())
                 frontList.append(configTuple)
-                countCol += 1 
+                countCol += 1
+            return frontList
         elif(dirLower == "down"):
             countRow = int(row)
-            for char in word:
+            for char in wordUp:
                 configTuple = (countRow, int(col), char.upper())
                 frontList.append(configTuple)
                 countRow += 1
-        return frontList
-    
+            return frontList
+
     def removeTile(word, rack):
         wordUp = word.upper()
         for letter in wordUp:
@@ -37,7 +39,7 @@ class endTurn:
                 if tile.getLetter() == letter:
                     rack.removeFromRack(tile)
         rack.replenishRack()
-        
+
     def exchangeTile(word, rack):
         wordUp = word.upper()
         saveTiles = []
@@ -52,7 +54,7 @@ class endTurn:
             rack.bag.addToBag(tiles, 1)
         print(rack.bag.getRemainingTiles())
 
-    def calculateScore(row, col, dir, word):
+    def calculateScore(word, row, col, dir):
         #Set list used in score calculations.
         #List of premium tiles.
         TWS = [(0,0), (7, 0), (14,0), (0, 7), (14, 7), (0, 14), (7, 14), (14,14)]
@@ -106,7 +108,7 @@ class endTurn:
         return score
 
     ## @brief checks if the game has been won
-    #  @return returns a bool to represent win state or not 
+    #  @return returns a bool to represent win state or not
     def checkWinState(rack1, rack2, bag):
         emptyRack = (rack1.getRackLength() == 0) or (rack2.getRackLength() == 0)
         if  emptyRack and bag.getRemainingTiles() == 0:

@@ -1,14 +1,6 @@
 from tkinter import *
 from widgetCreation import *
 from backEnd import*
-# from Player import *
-# from Rack import *
-# from Board import *
-# from Bag import *
-# from Tiles import *
-# from boardChecks import *
-# from wordChecks import *
-# from endTurn import *
 
 #Initializing the introductory window to the scrabble game.
 class frontEndMain:
@@ -16,7 +8,6 @@ class frontEndMain:
         self.root = Tk()
         self.root.geometry("1500x900")
         self.root.title("Scrabble")
-        #root.iconbitmap(r'scrabbleS.ico')
         self.startF = Frame(self.root)
         self.introF = Frame(self.root)
         self.introF.grid(row = 0,column = 0)
@@ -48,6 +39,10 @@ class frontEndMain:
         \t word on the board by specifying the row and column number.
         \t Also enter the direction, indicated by writing
         \t "DOWN" for vertical and "RIGHT" for horizontal tile.
+        \t to finsh your turn press the "END MOVE" button.
+        \t To skip your turn, press the "SKIP TURN" button.
+        \t To exchange tiles type the letters that you want to change
+        \t with nothing to separate them. Then press the "EXCHANGE TILES" button.
         Special Score Tiles:
         \tTWS (triple word score): Multiplies your score for that turn by 3.
         \tDWS (double word score): Multiplies your score for that turn by 2.
@@ -82,6 +77,7 @@ class frontEndMain:
         playB.grid(row = 3, column = 1)
 
     def destroyWindow(self):
+        #destroys the window when the game is done
         self.startF.destroy()
         self.introF.destroy()
 
@@ -112,7 +108,6 @@ class BoardFrame:
         for row in range(1, 16):
             makeLabels(boardF, row, 0, str(row-1))
 
-        #Loop that creates the buttons that make up the board of the game.
         #Creating the side panel for playing the game.
         #Creating a turn label that tells which player's turn it currently is.
         turnL = Label(boardF, text = "Player " + str(p1Name) + "'s turn")
@@ -127,19 +122,17 @@ class BoardFrame:
         p1ScoreValL.grid(row = 4, column = 17)
         p2ScoreValL = Label(boardF, text = "0")
         p2ScoreValL.grid(row = 4, column = 18)
-        #Buttons for end move and exchange tiles.
-        endMoveB = Button(boardF, text = "End Move", command=lambda: backEnd.endMove(root, boardF, inputWordE.get(),
-        inputRowE.get(), inputColE.get(), inputDirE.get(), playerRackL, p1ScoreValL, p2ScoreValL, turnL,
-        inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, validMoveL, inputWordSharedE.get(), tileArray, p1Name, p2Name))
+        #Buttons for end move, skip turns and exchange tiles.
+        endMoveB = Button(boardF, text = "End Move", command=lambda: backEnd.endMove(root, boardF, inputWordE.get(), inputRowE.get(), inputColE.get(), inputDirE.get(), inputWordSharedE.get(), labelTuple, entryTuple, tileArray, p1Name, p2Name))
         endMoveB.grid(row = 11, column = 17)
         skipTurnB = Button(boardF, text = "Skip Turn", command=lambda: backEnd.skipTurn(turnL, playerRackL))
         skipTurnB.grid(row = 11, column = 18)
-        exchangeTilesB = Button(boardF, text = "Exchange Tiles", command=lambda: backEnd.exchangeTiles(inputWordExchangeE.get(), playerRackL, turnL))
+        exchangeTilesB = Button(boardF, text = "Exchange Tiles", command=lambda: backEnd.exchangeTiles(inputWordExchangeE.get(), playerRackL, turnL, entryTuple))
         exchangeTilesB.grid(row = 11, column = 19)
         #empty label as a buffer
         emptyL2 = Label(boardF, text = " ")
         emptyL2.grid(row = 0,column = 16,rowspan = 15)
-        #The label and input for word, row, column and direction.
+        #The label and input boxes for word, row, column and direction.
         playerRackL = Label(boardF, text = backEnd.player1Rack)
         playerRackL.grid(row = 5, column = 17)
         validMoveL = Label(boardF, text = "")
@@ -168,6 +161,9 @@ class BoardFrame:
         inputDirL.grid(row = 10, column = 17)
         inputDirE = Entry(boardF)
         inputDirE.grid(row = 10, column = 18)
+        #tuples of information to be passed into the game controller
+        labelTuple = (playerRackL, p1ScoreValL, p2ScoreValL, turnL, validMoveL)
+        entryTuple = (inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, inputWordExchangeE)
 
         #creating tiles
         for row in range(1, 16):
@@ -176,6 +172,7 @@ class BoardFrame:
                 tile = makeButtons(boardF, "floral white", row, column, "")
                 tileRow.append(tile)
             tileArray.append(tileRow)
+
         #configuring tiles with colour and text
         tileArray[0][0].configure("text", "TWS")
         tileArray[0][0].configure("bg", "LightGoldenrod1")

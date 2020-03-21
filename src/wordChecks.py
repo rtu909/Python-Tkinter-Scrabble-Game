@@ -1,4 +1,3 @@
-
 class wordChecks:
     def checkRack(word, rack):
         checksBool = False
@@ -13,6 +12,7 @@ class wordChecks:
 
     def checkInDict(word):
         dictionary = open("dic.txt").read()
+        checksBool = False
         wordUp = word.upper()
         print(wordUp + " dict")
         if wordUp not in dictionary:
