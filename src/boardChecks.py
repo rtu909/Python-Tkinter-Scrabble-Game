@@ -3,7 +3,7 @@ from Board import *
 import copy
 
 class checkBoardRight:
-    wordCheck = wordChecks()
+    #wordCheck = wordChecks()
 
     def occupiedTile(word, row, col, board):
         row = int(row)
@@ -54,27 +54,26 @@ class checkBoardRight:
                 begin = rowCount
                 for rown in range(begin, end):
                     findWord = findWord + adjBoard[rown][colCount]
-                wordExists = checkBoardRight.checkInDict(findWord)
+                wordExists = checkInDict(findWord)
                 corrWords = corrWords and wordExists
                 colCount += 1
         return corrWords
 
-    def checkInDict(word):
-       dicfile = open('dic.txt', 'r')
-       file1 = dicfile.read()
-       file1 = file1.split("\n")
-       word = word.upper()
-       if word in file1:
-           checksBool = True
-       else:
-           checksBool = False
-       dicfile.close()
-       return checksBool
+    # def checkInDict(word):
+    #    dicfile = open('dic.txt', 'r')
+    #    file1 = dicfile.read()
+    #    file1 = file1.split("\n")
+    #    word = word.upper()
+    #    if word in file1:
+    #        checksBool = True
+    #    else:
+    #        checksBool = False
+    #    dicfile.close()
+    #    return checksBool
 
     def outOfBounds(word, row, col, board):
         row = int(row)
         col = int(col)
-        print("in bounds", (col <= 14 and row <= 14 and col + len(word) <= 14))
         return (col <= 14 and row <= 14 and col + len(word) <= 14)
 
     def placementCheck(word, row, col, board, count):
@@ -92,7 +91,7 @@ class checkBoardRight:
         return checkBoardRight.outOfBounds(word, row, col, board) and checkBoardRight.placementCheck(word, row, col, board, count) and checkBoardRight.adjWordCheck(word, row, col, board)
 
 class checkBoardDown:
-    wordCheck = wordChecks()
+    #wordCheck = wordChecks()
 
     def occupiedTile(word, row, col, board):
         wordUp = word.upper()
@@ -140,22 +139,22 @@ class checkBoardDown:
                begin = colCount
                for coln in range(begin, end):
                    findWord = findWord + adjBoard[rowCount][coln]
-               wordExists = checkBoardRight.checkInDict(findWord)
+               wordExists = checkInDict(findWord)
                corrWords = corrWords and wordExists
                rowCount += 1
 
         return corrWords
 
-    def checkInDict(word):
-        dicfile = open('dic.txt', 'r')
-        file1 = dicfile.read()
-        file1 = file1.split("\n")
-        word = word.upper()
-        if word in file1:
-            checksBool = True
-        else:
-            checksBool = False
-        return checksBool
+    # def checkInDict(word):
+    #     dicfile = open('dic.txt', 'r')
+    #     file1 = dicfile.read()
+    #     file1 = file1.split("\n")
+    #     word = word.upper()
+    #     if word in file1:
+    #         checksBool = True
+    #     else:
+    #         checksBool = False
+    #     return checksBool
 
     def outOfBounds(word, row, col, board):
         col = int(col)
