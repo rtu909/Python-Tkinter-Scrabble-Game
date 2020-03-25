@@ -1,6 +1,6 @@
 from tkinter import *
 from widgetCreation import *
-from backEnd import*
+from gameController import*
 
 #Initializing the introductory window to the scrabble game.
 class frontEndMain:
@@ -312,4 +312,4 @@ class BoardFrame:
         tileArray[14][14].configure("bg", "LightGoldenrod1")
 
 frontEndView = frontEndMain()
-backEnd = backEnd()
+gameController = backEnd()
