@@ -14,6 +14,10 @@ class Board:
     def updateBackBoard(self, word, row, col, dir):
         dirLower = dir.lower()
         wordUp = word.upper()
+        row = int(row)
+        col = int(col)
+        if row > 14 or col > 14 or len(word) > 14:
+            raise ValueError("Word is out of bounds")
         if(dirLower == "right"):
             countCol = int(col)
             for char in wordUp:

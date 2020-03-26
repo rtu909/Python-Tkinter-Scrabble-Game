@@ -9,10 +9,10 @@ class Rack:
         self.rack = []
         self.bag = bag
         self.initialize()
-    
+
     def initialize(self):
         #Adds the initial 7 tiles to the player's hand.
-        FULL_RACK = 7 #constant for a full rack 
+        FULL_RACK = 7 #constant for a full rack
         for i in range(FULL_RACK):
             self.addToRack()
 

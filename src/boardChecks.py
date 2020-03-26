@@ -59,18 +59,6 @@ class checkBoardRight:
                 colCount += 1
         return corrWords
 
-    # def checkInDict(word):
-    #    dicfile = open('dic.txt', 'r')
-    #    file1 = dicfile.read()
-    #    file1 = file1.split("\n")
-    #    word = word.upper()
-    #    if word in file1:
-    #        checksBool = True
-    #    else:
-    #        checksBool = False
-    #    dicfile.close()
-    #    return checksBool
-
     def outOfBounds(word, row, col, board):
         row = int(row)
         col = int(col)
@@ -144,17 +132,6 @@ class checkBoardDown:
                rowCount += 1
 
         return corrWords
-
-    # def checkInDict(word):
-    #     dicfile = open('dic.txt', 'r')
-    #     file1 = dicfile.read()
-    #     file1 = file1.split("\n")
-    #     word = word.upper()
-    #     if word in file1:
-    #         checksBool = True
-    #     else:
-    #         checksBool = False
-    #     return checksBool
 
     def outOfBounds(word, row, col, board):
         col = int(col)

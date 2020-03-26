@@ -2,6 +2,8 @@ def checkRack(word, rack):
     checksBool = False
     if word == None:
         raise ValueError("Must input word")
+    if rack == None:
+        raise ValueError("Must input rack")
     else:
         wordUp = word.upper()
         for char in wordUp:

@@ -38,7 +38,7 @@ class backEnd:
         entryBoxes[5].delete(0, "end")
 
     def skipTurn(turnLabel, rackLabel):
-        global turn, roundCount, p1, p1
+        global turn, roundCount, p1, p2
         if roundCount != 0:
             if (turnLabel['text'] == "Player " + p1 + "'s turn"):
                 turnLabel.configure(text = "Player " + p2 + "'s turn")
@@ -54,24 +54,41 @@ class backEnd:
                 turn = 1
             roundCount += 1
 
-    def exchangeTiles(exchangeTiles, label, turnLabel, entryBoxes):
+    def exchangeTiles(exchangedTiles, label, turnLabel, entryBoxes, labels):
         global turn, roundCount, p1, p2
+        validMoveL = labels[4]
+        validMove = True
+        exchangedTiles = exchangedTiles.upper()
         if (turnLabel['text'] == "Player " + p1 + "'s turn"):
                 turnLabel.configure(text = "Player " + p2 + "'s turn")
         else:
                 turnLabel.configure(text = "Player " + p1 + "'s turn")
         if turn == 1:
-            endTurn.exchangeTile(exchangeTiles, backEnd.player1.rack)
-            player2Rack = backEnd.player2.rack.getRackStr()
-            label.configure(text = player2Rack)
-            turn = 2
-        else:
-            endTurn.exchangeTile(exchangeTiles, backEnd.player2.rack)
             player1Rack = backEnd.player1.rack.getRackStr()
-            label.configure(text = player1Rack)
-            turn = 1
+            for char in exchangedTiles:
+                if char not in player1Rack:
+                    validMoveL.configure(text = "Invalid Exchange Tile Not in Rack")
+                    validMove = validMove and False
+            if validMove:
+                validMoveL.configure(text = "")
+                endTurn.exchangeTile(exchangedTiles, backEnd.player1.rack)
+                player2Rack = backEnd.player2.rack.getRackStr()
+                label.configure(text = player2Rack)
+                turn = 2
+        else:
+            player2Rack = backEnd.player2.rack.getRackStr()
+            for char in exchangedTiles:
+                if char not in player2Rack:
+                    validMoveL.configure(text = "Invalid Exchange Tile Not in Rack")
+                    validMove = validMove and False
+            if validMove:
+                validMoveL.configure(text = "")
+                endTurn.exchangeTile(exchangedTiles, backEnd.player2.rack)
+                player1Rack = backEnd.player1.rack.getRackStr()
+                label.configure(text = player1Rack)
+                turn = 1
         backEnd.clearEntry(entryBoxes)
-        roundCount += 1
+        #roundCount += 1
 
     def scoreBoard(root, frame, score1Label, score2Label):
          global p1, p2

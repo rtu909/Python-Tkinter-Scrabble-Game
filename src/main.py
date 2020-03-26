@@ -127,7 +127,7 @@ class BoardFrame:
         endMoveB.grid(row = 11, column = 17)
         skipTurnB = Button(boardF, text = "Skip Turn", command=lambda: backEnd.skipTurn(turnL, playerRackL))
         skipTurnB.grid(row = 11, column = 18)
-        exchangeTilesB = Button(boardF, text = "Exchange Tiles", command=lambda: backEnd.exchangeTiles(inputWordExchangeE.get(), playerRackL, turnL, entryTuple))
+        exchangeTilesB = Button(boardF, text = "Exchange Tiles", command=lambda: backEnd.exchangeTiles(inputWordExchangeE.get(), playerRackL, turnL, entryTuple, labelTuple))
         exchangeTilesB.grid(row = 11, column = 19)
         #empty label as a buffer
         emptyL2 = Label(boardF, text = " ")
