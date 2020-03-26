@@ -1,118 +1,144 @@
 from wordChecks import *
+from Board import *
+import copy
+
 class checkBoardRight:
-    def occupiedTile(self, row, col, word, board):
+    #wordCheck = wordChecks()
+
+    def occupiedTile(word, row, col, board):
         row = int(row)
         colcount = int(col)
         wordUp = word.upper()
-        print(wordUp)
+        matchesTile = False
         for char in wordUp:
             if board[row][colcount] == "0":
-                print(board[row])
-                print(board[row][colcount])
                 colcount += 1
-                print(colcount)
             elif board[row][colcount] == char: #matches char
-                print(board[row])
-                print(board[row][colcount])
                 colcount += 1
-                print(colcount)
-            else:   
-                print(colcount, "col")
-                print(row, "row")
-                #print(board)
-                print(board[row])
-                print(board[row][colcount], "board char")
-                print(char)
-                print("occupiedTile error")
-                return False
-        return True
-    
-    def adjWordCheck(self, row, col, word, board):
-        #checking for a word being placed right
-        wordCheck = wordChecks()
-        colCount = int(col)
-        
-        for char in word:
-            if board [int(row)-1][colCount] == "0" and board[int(row) + 1][colCount] == "0":
-                colCount += 1 
+                matchesTile = True
             else:
+                return False
+        return matchesTile and True
+
+    #update copy of board with the word to be tested for adding
+    def updateArray(word, row, col, adjBoard):
+        countCol = int(col)
+        for char in word:
+            char = char.upper()
+            adjBoard[int(row)][countCol] = char
+            countCol += 1
+        return adjBoard
+
+    def adjWordCheck(word, row, col, board):
+        #checking for a word being placed right
+        colCount = int(col)
+        corrWords = True
+        findWord = ""
+        #create copy of board for checking placement
+        adjBoard = copy.deepcopy(board)
+
+        adjBoard = checkBoardRight.updateArray(word, row, col, adjBoard)
+        for char in word:
+            if  adjBoard[int(row)-1][colCount] == "0" and adjBoard[int(row) + 1][colCount] == "0":
+                colCount += 1
+            else:
+                findWord = ""
                 rowCount = int(row)
-                while board[rowCount][colCount] != "0" :
+                while adjBoard[rowCount][colCount] != "0":
                     rowCount += 1
-                end = colCount
-                while board[rowCount][colCount] != "0" :
+                end = rowCount
+                rowCount = int(row)
+                while adjBoard[rowCount][colCount] != "0" :
                     rowCount -= 1
-                begin = colCount
+                rowCount += 1
+                begin = rowCount
                 for rown in range(begin, end):
-                    word = word + board[rown][colCount]
-                corrWords = corrWords and wordCheck.checkInDict(word)
+                    findWord = findWord + adjBoard[rown][colCount]
+                wordExists = checkInDict(findWord)
+                corrWords = corrWords and wordExists
+                colCount += 1
         return corrWords
-    
-    def outOfBounds(self, row, col, word, board):
+
+    def outOfBounds(word, row, col, board):
         row = int(row)
         col = int(col)
-        print("outofbounds", (col <= 14 and row <= 14 and col + len(word) <= 14))
         return (col <= 14 and row <= 14 and col + len(word) <= 14)
-    
-    def placementCheck(self, row, col, word, board, count):
+
+    def placementCheck(word, row, col, board, count):
         colcount = int(col)
         wordUp = word.upper()
         if int(count) == 0:
             if (int(row) == 7) and (int(col) == 7):
                 return True
             else:
-                print("placement check error")
                 return False
         else:
-            return True
-            
-            
-    def rightCheck(self, row, col, word, board, count):
-        #and self.neighbourTiles(row, col, word, board)
-        return self.occupiedTile(row, col, word, board) and self.outOfBounds(row, col, word, board) and self.placementCheck(row, col, word, board, count)
+            return checkBoardRight.occupiedTile(word,row, col, board)
+
+    def rightCheck(word, row, col, board, count):
+        return checkBoardRight.outOfBounds(word, row, col, board) and checkBoardRight.placementCheck(word, row, col, board, count) and checkBoardRight.adjWordCheck(word, row, col, board)
 
 class checkBoardDown:
-    def occupiedTile(self, row, col, word, board):
+    #wordCheck = wordChecks()
+
+    def occupiedTile(word, row, col, board):
+        wordUp = word.upper()
         rowcount = int(row)
         col = int(col)
-        wordUp = word.upper()
+        matchesTile = False
         for char in wordUp:
             if board[rowcount][col] == "0":
                 rowcount += 1
             elif board[rowcount][col] == char: #matches char
                 rowcount += 1
-            else:    
-                print("occupiedTile error")
-                return False
-        return True
-
-    def adjWordCheck(self, row, col, word, board):
-        #checking for a word being placed downwards
-        wordCheck = wordChecks()
-        rowCount = int(row)
-        
-        for char in word:
-            if board [rowCount][int(col)-1] == "0" and board[rowCount][int(col)+1] == "0":
-                rowCount += 1 
+                matchesTile = True
             else:
-                colCount = int(col)
-                while board[rowCount][colCount] != "0" :
-                    colCount += 1
-                end = colCount
-                while board[rowCount][colCount] != "0" :
-                    colCount -= 1
-                begin = colCount
-                for coln in range(begin, end):
-                    word = word + board[rowCount][coln]
-                corrWords = corrWords and wordCheck.checkInDict(word)
+                return False
+        return matchesTile and True
+
+    def updateArray(word, row, col, adjBoard):
+        countRow = int(row)
+        for char in word:
+            char = char.upper()
+            adjBoard[countRow][int(col)] = char
+            countRow += 1
+        return adjBoard
+
+    def adjWordCheck(word, row, col, board):
+        #checking for a word being placed downwards
+        rowCount = int(row)
+        corrWords = True
+        findWord = ""
+        adjBoard = copy.deepcopy(board)
+        adjBoard = checkBoardDown.updateArray(word, row, col, adjBoard)
+        for char in word:
+            if adjBoard[rowCount][int(col)-1] == "0" and adjBoard[rowCount][int(col)+1] == "0":
+                rowCount += 1
+            else:
+               findWord = ""
+               colCount = int(col)
+               while adjBoard[rowCount][colCount] != "0":
+                   colCount += 1
+               end = colCount
+               colCount = int(col)
+               while adjBoard[rowCount][colCount] != "0" :
+                   colCount -= 1
+               colCount += 1
+               begin = colCount
+               for coln in range(begin, end):
+                   findWord = findWord + adjBoard[rowCount][coln]
+               wordExists = checkInDict(findWord)
+               corrWords = corrWords and wordExists
+               rowCount += 1
+
         return corrWords
 
-    def outOfBounds(self, row, col, word, board):
+    def outOfBounds(word, row, col, board):
         col = int(col)
         row = int(row)
         return (col <= 14 and row <= 14 and row + len(word) <= 14)
-    
-    def placementCheck(self, row, col, word, board, count):
+
+    def placementCheck(word, row, col, board, count):
         rowCount = int(row)
         colCount = int(col)
         wordUp = word.upper()
@@ -122,9 +148,7 @@ class checkBoardDown:
             else:
                 return False
         else:
-            return True
-        
-    def downCheck(self, row, col, word, board, count):
-        #and self.neighbourTiles(row, col, word, board)
-        return self.occupiedTile(row, col, word, board) and self.outOfBounds(row, col, word, board) and self.placementCheck(row, col, word, board, count)
-    
+            return checkBoardDown.occupiedTile(word, row, col, board)
+
+    def downCheck(word, row, col, board, count):
+        return checkBoardDown.outOfBounds(word, row, col, board) and checkBoardDown.placementCheck(word, row, col,board, count) and checkBoardDown.adjWordCheck(word, row, col, board)

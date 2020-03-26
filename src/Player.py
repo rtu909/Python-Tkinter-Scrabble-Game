@@ -21,7 +21,10 @@ class Player:
 
     def increaseScore(self, increase):
         #Increases the player's score by a certain amount. Takes the increase (int) as an argument and adds it to the score.
-        self.score += increase
+        if increase >= 0:
+            self.score += increase
+        else:
+            raise ValueError("Not a valid score amount")
 
     def getScore(self):
         #Returns the player's score
