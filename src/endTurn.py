@@ -31,6 +31,8 @@ class endTurn:
                 frontList.append(configTuple)
                 countRow += 1
             return frontList
+        else:
+             raise ValueError("Not a valid direction")
 
     def removeTile(word, rack):
         wordUp = word.upper()
@@ -52,7 +54,6 @@ class endTurn:
         rack.replenishRack()
         for tiles in saveTiles:
             rack.bag.addToBag(tiles, 1)
-        print(rack.bag.getRemainingTiles())
 
     def calculateScore(word, row, col, dir):
         #Set list used in score calculations.
@@ -105,6 +106,8 @@ class endTurn:
                     score += LETTER_VALUES[char]
                 countRow += 1
             score *= multiplierWord
+        else:
+             raise ValueError("Not a valid direction")
         return score
 
     ## @brief checks if the game has been won

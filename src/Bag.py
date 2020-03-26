@@ -16,10 +16,12 @@ class Bag:
     #  @param1 a tile object that represents the letter tile.
     #  @param2 the number of tiles being added to the back.
     def addToBag(self, tile, numOfTiles):
-
-        for i in range(numOfTiles):
-            self.bag.append(tile)
-
+        if numOfTiles == 100:
+            for i in range(numOfTiles):
+                self.bag.append(tile)
+        else:
+            raise ValueError("incorrect number of tiles to create complete bag.")
+         
     ## @brief initializes the bag with the 100 letter tiles needed to play the game.
     def initBag(self):
         #Added 1 extra A and S tile compared to regular scrabble game to compensate for removal of blank tile.

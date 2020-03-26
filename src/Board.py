@@ -26,3 +26,5 @@ class Board:
                 char = char.upper()
                 self.backBoard[int(countRow)][int(col)] = char
                 countRow += 1
+        else:
+            raise ValueError("Not a valid direction")

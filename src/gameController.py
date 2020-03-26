@@ -174,6 +174,8 @@ class backEnd:
                     backEnd.completeTurn(root, frame, playerMove, labels, entryBoxes, player, tileArray)
                 else:
                     validMoveL.configure(text = "Invalid move please try again")
+            else:
+                validMoveL.configure(text = "Invalid move please try again")
         else:
             validMoveL.configure(text = "Invalid move please try again")
 

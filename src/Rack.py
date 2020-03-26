@@ -9,15 +9,16 @@ class Rack:
         self.rack = []
         self.bag = bag
         self.initialize()
+    
+    def initialize(self):
+        #Adds the initial 7 tiles to the player's hand.
+        FULL_RACK = 7 #constant for a full rack 
+        for i in range(FULL_RACK):
+            self.addToRack()
 
     def addToRack(self):
         #Takes a tile from the bag and adds it to the player's rack.
         self.rack.append(self.bag.takeFromBag())
-
-    def initialize(self):
-        #Adds the initial 7 tiles to the player's hand.
-        for i in range(7):
-            self.addToRack()
 
     def getRackStr(self):
         #Displays the user's rack in string form.
@@ -37,5 +38,6 @@ class Rack:
 
     def replenishRack(self):
         #Adds tiles to the rack after a turn such that the rack will have 7 tiles (assuming a proper number of tiles in the bag).
-        while self.getRackLength() < 7 and self.bag.getRemainingTiles() > 0:
+        FULL_RACK = 7
+        while self.getRackLength() < FULL_RACK and self.bag.getRemainingTiles() > 0:
             self.addToRack()
