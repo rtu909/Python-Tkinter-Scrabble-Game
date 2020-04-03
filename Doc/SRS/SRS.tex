@@ -4,6 +4,9 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage[normalem]{ulem}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -21,7 +24,7 @@
 		\\ Lucia Cristiano, cristial
 }
 
-\date{February 9, 2020}
+\date{March 13, 2020}
 
 %\input{../Comments}
 
@@ -41,6 +44,8 @@
 \midrule
 Jan. 24, 2020 & 1.0 & Adding names and introduction\\
 Feb. 1, 2020 & 1.0 & Added to Project Drivers, FRs, NFRs, Project Issues\\
+Mar. 13, 2020 & 1.0 & Edited a few typo's. \\
+\textcolor{red}{Mar. 31, 2020} & \textcolor{red}{2.0} & \textcolor{red}{Adding Rev1 updates}
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -48,13 +53,13 @@ Feb. 1, 2020 & 1.0 & Added to Project Drivers, FRs, NFRs, Project Issues\\
 \newpage
 
 \pagenumbering{arabic}
-This document describes the requirements for the Scrabble project created by The Trifecta. This document will explain the scope and the requirements of the project in an many that can be easily understood by stakeholders and developers working on the project.
+This document describes the requirements for the Scrabble project created by The Trifecta. This document will explain the scope and the requirements of the project in \sout{an many} \textcolor{red}{a manner} that can be easily understood by stakeholders and developers working on the project.
 
 The template for the Software Requirements Specification (SRS) is a subset of the Volere template~\cite{robertson_robertson}. Any modifications to this template will be mentioned in the appendix.
 \section{Project Drivers}
 
 \subsection{The Purpose of the Project}
-The purpose of the this project is to modify a a text based version of the board game version Scrabble to include a Graphical User Interface (GUI). As well as re-implement the code to modular rather a monolithic piece of software and follow a set of formal documentation. 
+The purpose of the this project is to modify a \sout{a} text based version of the board game version Scrabble to include a Graphical User Interface (GUI)\textcolor{red}{, in addition to modularizing the code and providing sufficient documentation for the project.}\sout{. As well as re-implement the code to modular rather a monolithic piece of software and follow a set of formal documentation} 
 \subsection{The Stakeholders}
 \subsubsection{The Client}
     The clients are any user who wishes to play online scrabble. The clients will consist of individuals who enjoy board games, such as Scrabble, and have a desire to play these game digitally. 
@@ -62,26 +67,52 @@ The purpose of the this project is to modify a a text based version of the board
     The customers of this project are our professor Dr.Asghar Bokhari and our
     teaching assistants (TAs) Andrew Lucentini and Hosseinkord Maryam. This group of individuals will inform the progress of the project based on feedback.
 \subsubsection{Other Stakeholders}
-    Other stakeholders include the original author of the repository, fayrose, and other Github users who have forked the project. They have a desire to see the project succeed and improve, these features can then either be applied to their own projects or built upon.
+    Other stakeholders include the original author of the repository, fayrose, and other Github users who have forked the project. They have a desire to see the project succeed and improve, these features can then either be applied to their own projects or built upon. \textcolor{red}{Another group of stakeholders include the project team members themselves. As developers, the team's desire to see the project succeed and their skill set and capabilities are vital to shaping the functionality and viability of final product.}
     
 \subsection{Mandated Constraints}
-    The main constraint for the project is the time constraint, the project must be completed by April 6, 2020. The system constraint is that the project must be run on a system with Python 3 installed. The space constraint is reliant on the system and it's hard drive space, but the project must take up reasonable amounts of memory on the hard drive. Additionally, the project will be constrained by the processing power of the system. Internet connection is not required so will not be a constraint for the system.
+    \sout{The main constraint for the project is the time constraint, the project must be completed by April 6, 2020. The system constraint is that the project must be run on a system with Python 3 installed. The space constraint is reliant on the system and it's hard drive space, but the project must take up reasonable amounts of memory on the hard drive. Additionally, the project will be constrained by the processing power of the system. Internet connection is not required so will not be a constraint for the system.}
+\textcolor{red}{\subsubsection{\textcolor{red}{Solution Constraints}}}
+    \textcolor{red}{The system shall be able to operate on any machine running MacOS, Windows OS or Linux OS. \\
+    Rationale: The potential users of the Scrabble project have machines that run on one of the listed OS.\\
+    Fit Criterion: The project will be run Windows, Linux and MacOS machines at least once.}
+\textcolor{red}{\subsubsection{\textcolor{red}{Implementation Environment of the Current System}}}
+    \textcolor{red}{N/A}
+\textcolor{red}{\subsubsection{\textcolor{red}{Partner or Collaborative Applications}}}
+    \textcolor{red}{The project makes use of the Python library Tkinter. The user must have Python 3 installed on their machine for the project to execute and run correctly.}
+\textcolor{red}{\subsubsection{\textcolor{red}{Off-the-Shelf-Software}}}
+    \textcolor{red}{The Tkinter library will be used by the Scrabble project to create the GUI that the users interact with. \\
+    Rationale: Making use of a pre-existing library }
+\textcolor{red}{\subsubsection{\textcolor{red}{Anticipated Workplace Environment}}}
+    \textcolor{red}{N/A}
+\textcolor{red}{\subsubsection{\textcolor{red}{Schedule Constraints}}}
+     \textcolor{red}{The final version of the Scrabble Project must be completed by April 6th, 2020. Each document that comprises the documentation of the project is due by their respective due dates.}
+\textcolor{red}{\subsubsection{\textcolor{red}{Budget Constraints}}}
+    \textcolor{red}{N/A}
+\textcolor{red}{\subsubsection{\textcolor{red}{Enterprise Constraint}}}
+    \textcolor{red}{N/A}
 
 \subsection{Naming Conventions and Terminology}
-\begin{table}[!htb]
+\begin{table}[H]
     \centering
     \caption{Acronyms and Abbreviations}
     \begin{tabular}{|c|c|}
-        \hline
-        Acronym/Abbreviation & Full Form \\
+        \midrule
+        \textbf{Acronym/Abbreviation} & \textbf{Full Form} \\
         \hline
         SRS & Software Requirement Specification\\
+        \hline
         GUI & Graphical User Interface \\
+        \hline
         FR & Functional Requirements \\
+        \hline
         NFR & Non-functional requirement\\
+        \hline
         TA & Teaching Assistant\\
+        \hline
         MVC & Model-View-Controller\\
         \hline
+        OS & Operating System\\
+        \bottomrule
     \end{tabular}
 \end{table}
 
@@ -90,11 +121,14 @@ The purpose of the this project is to modify a a text based version of the board
     \caption{Definitions}
     \begin{tabular}{|c|c|}
         \hline
-        Term & Definition \\
+        \textbf{Term} & \textbf{Definition}\\
         \hline
         Tkinter & Open-source python library used to implement the GUI for the project. \\
-        User & Player who will be playing the Scrabble project game. \\  
+        \hline
+        User & Player who will be playing the Scrabble project game. \\
+        \hline
         Premium Squares & Represents a double or triple score multiplier for a word/letter. \\
+        \hline
         Crossword Fashion & Words on the board connect through a shared number of letters. \\
         \hline
     \end{tabular}
@@ -120,7 +154,7 @@ The purpose of the this project is to modify a a text based version of the board
 %
 \begin{figure}[ht]
 \centering
-\includegraphics{srs_context_of_work.png}\\
+\includegraphics{SRS/srs_context_of_work.png}\\
 \caption{Scrabble Context Diagram}
 \end{figure}
 \subsubsection{Work Partitioning} %%raymond -- stuff like business events
@@ -129,42 +163,52 @@ The purpose of the this project is to modify a a text based version of the board
 \begin{table}[!htb]
     \centering
     \caption{Work Partitioning}
-    \begin{tabular}{|c|c|}
+    \scalebox{0.75}{
+    \begin{tabular}{|c|c|c|}
         \hline
-        Event Name & Summary \\
+        Event Name & \textcolor{red}{Input/Output} & Summary \\
         \hline
-        Player places word & System checks if word exists in dictionary and if placement is valid.\\
-        All tiles are played & System checks win state to see which player won. \\  
-        Board is full & System checks win state to see which player won. \\
-        Player exchanges tiles & System takes discarded tiles and randomly assigns new ones to player. \\
+        Player places word & \textcolor{red}{word, row, col, dir (in)}& System checks if word exists in dictionary and if placement is valid.\\
+        Player exchanges tiles & \textcolor{red}{letters to exchange (in)} & System takes discarded tiles and randomly assigns new ones to player. \\
+        All tiles are played & \textcolor{red}{player rack, bag(in)} & System checks win state to see which player won. \\ 
+        \sout{ Board is full} & \sout{--} & \sout{System checks win state to see which player won.} \\
+        \textcolor{red}{Skip turn} & \textcolor{red}{skip (in)} & \textcolor{red}{System
+        switches player racks and indicates it is the next player's turn.}\\
+        \textcolor{red}{Switch Turn} & \textcolor{red}{playerTurn (in)} & \textcolor{red}{System
+        switches player racks and indicates it is the next player's turn.}\\
+        \textcolor{red}{Score} & \textcolor{red}{player score (in)} & \textcolor{red}{System
+        adds value of placed word to the current score.}\\
         \hline
-    \end{tabular}
+    \end{tabular}}
 \end{table}
 
 \subsubsection{Individual Product Use Cases}%Lucia
-The main use case for the product consists of two to four users playing a game of scrabble. The users will use the letters given to them by the system to create words and place them on the board. The system will keep track of the players score until the game is completed. The player with the highest score wins the game.
+\textcolor{red}{The main use cases for the product can be divided into two categories, one for an individual player and another for the game as a whole. For individual player use cases there is placing a word on the board. The player skipping their turn and finally the player exchanging tiles.\\
+For the use cases for the game as a whole there is  keeping track of players' turns and which rack is shown. As well as calculating the players' scores. Finally, checking to see if all tiles are played in a player's rack and the bag is empty, which is used to determine the completion of the game.}
+\sout{The main use case for the product consists of two to four users playing a game of scrabble. The users will use the letters given to them by the system to create words and place them on the board. The system will keep track of the players score until the game is completed. The player with the highest score wins the game.}
 
 \subsection{Functional Requirements}
+
 \begin{enumerate} %raymond 1-4
     \item 
-    Requirement Number: FR1 \\
-    The system shall provide a user manual outlining the rules of the game. \\
-    Rationale: A user manual will outline the rules of our implementation of Scrabble (different house rules exist) as well make it clear to the user how to play the game and use our GUI.\\
+    \sout{Requirement Number: FR1} \\ %obsolete
+    \sout{The system shall provide a user manual outlining the rules of the game. \\
+    Rationale: A user manual will outline the rules of our implementation of Scrabble (different house rules exist) as well make it clear to the user how to play the game and use our GUI.}\\
     \item 
-    Requirement Number: FR2 \\
+    Requirement Number: FR2 \\ %done
     The system shall display a game board size of is $BOARD\_WIDTHXBOARD\_HEIGHT$ and correct placement of premium squares. \\
-    Rationale: The game board size stays consistent as well as consistent locations of premium squares to keep gameplay fair and consistent. Random generation of the board would open up the system to unbalanced gameplay and situations.\\
+    Rationale: The game board size stays consistent \sout{ as well as consistent} \textcolor{red}{as well as the} locations of premium squares to keep gameplay fair and \sout{consistent} \textcolor{red}{constant}. Random generation of the board would open up the system to unbalanced gameplay and situations.\\
     \item 
-    Requirement Number: FR3 \\
-    The system shall request user to enter a number of players, between $MIN\_PLAYER$ and $MAX\_PLAYER$. \\
-    Rationale: Because the system is entirely player vs player, there must be at least 2 players. The maximum number of players keeps our project within a reasonable scope. \\
+    \sout{Requirement Number: FR3} \\ %obsolete
+    \sout{The system shall request \textcolor{red}{the} user to enter a number of players, between $MIN\_PLAYER$ and $MAX\_PLAYER$. \\
+    Rationale: Because the system is entirely player vs player, there must be at least 2 players. The maximum number of players keeps our project within a reasonable scope.} \\
     \item
-    Requirement Number: FR4 \\
-    The system shall allow user to enter a name for each player. \\
+    Requirement Number: FR4 \\ %done
+    The system shall allow \textcolor{red}{the} user to enter a name for each player. \\
     Rationale: Having names for each player vs impersonal naming such as Player 1, 2, etc. will make it clear which player currently has their turn, as well makes score rankings more personal for the player.\\
     \item 
     Requirement Number: FR5 \\ %Lucia
-    The system shall provide users with tiles not exceeding $MAX\_NUM\_TILES$.\\
+    \sout{The system shall provide users with tiles not exceeding $MAX\_NUM\_TILES$.} \textcolor{red}{Users should have at most $MAX\_NUM\_TILES$ to choose from at any point in the game. Except when there are not enough tiles in the bag to replenish the rack.}\\
     Rationale: The digital version of the game must follow the rules of the board game for consistency.\\
     \item 
     Requirement Number: FR6 \\
@@ -195,6 +239,31 @@ The main use case for the product consists of two to four users playing a game o
     Requirement Number: FR12 \\
     The system shall end the game when no letter tiles remain in bag and one user has played all their tiles.\\
     Rationale: This acts as the final state of the game at which point game resources would have been used up.\\
+        
+    \item
+    \textcolor{red}{Requirement Number: FR13} \\
+    \textcolor{red}{The system shall end allow users to input their desired word using keyboard input.}\\
+    \textcolor{red}{Rationale: Having the keyboard input be available allows the user to interact with and play the game.}\\
+    
+    \item
+    \textcolor{red}{Requirement Number: FR14} \\
+    \textcolor{red}{The system shall end allow users to input their desired word based on letters found in their rack and on the board.}\\
+    \textcolor{red}{Rationale: This prevents users from inputting random gibberish as a word and ignoring Scrabble game rules.}\\
+    
+    \item
+    \textcolor{red}{Requirement Number: FR15} \\
+    \textcolor{red}{The system shall end allow users to confirm their desire to place the word using an enter key.}\\
+    \textcolor{red}{Rationale: Allows the user to determine when their input is taken into the system to determine if the move is valid.}\\
+    
+    \item
+    \textcolor{red}{Requirement Number: FR16} \\
+    \textcolor{red}{The system shall end display the current score of the users at all times.}\\
+    \textcolor{red}{Rationale: Allows the user to determine their score easily, as well as develop strategies to increase their score.}\\
+    
+    \item
+    \textcolor{red}{Requirement Number: FR17} \\
+    \textcolor{red}{The system shall only receive input through the keyboard and mouse.}\\
+    \textcolor{red}{Rationale: Allows the user to interact with the Scrabble game using the conventional interface methods}\\
 \end{enumerate}
 
 \section{Non-functional Requirements}
@@ -203,7 +272,7 @@ The main use case for the product consists of two to four users playing a game o
 \begin{enumerate}
     \item NFR Number: LF1\\ %%KANAK
     The system should give a warm, welcoming and homely feeling to the user that they would like to show to their families as well.\\
-    Fit Criterion: The color schemes and overall layout must closely match environments and surroundings that are cognitively known to be warm and welcoming.
+    Fit Criterion: \sout{The color schemes and overall layout must closely match environments and surroundings that are cognitively known to be warm and welcoming.} \textcolor{red}{The colour scheme of the GUI will be stated as warm and welcoming by 85\% of users that are surveyed after interacting with the interface.}
 \end{enumerate}
 
 \subsection{Usability and Humanity Requirements}
@@ -229,13 +298,17 @@ N/A
     \item NFR Number: UH5\\ %%LUCIA
     The users shall remember how to navigate the interface after playing a single scrabble game. \\
     Fit Criterion: A test group will have users play the game two separate times a week apart. 90\% of the users will correctly control the game upon the second session. 
+     
+    \textcolor{red}{\item{\textcolor{red}{NFR Number: UH6}}}\\
+    \textcolor{red}{The system shall provide a user manual outlining the rules of the game.As well as how to interact with the GUI.}\\
+    \textcolor{red}{Fit Criterion: After playing a single game 90\% of users will state that}
 \end{enumerate}
 \subsubsection{Understandability and Politeness Requirements}
 \begin{enumerate}
-    \item NFR Number: UH6\\ %%LUCIA
+    \item NFR Number: \sout{UH6} \textcolor{red}{UH7}\\ %%LUCIA
     The interface of the system shall include descriptive text that accurately describe the functionality of various items in the interface.\\
     Fit Criterion: After a single game 90\% of users will report little to no frustration when surveyed about their game experience.
-     \item NFR Number: UH7\\ %%LUCIA
+     \item NFR Number: \sout{UH7} \textcolor{red}{UH8}\\ %%LUCIA
     The interface of the system shall include use common symbols to represent actions.\\
     Fit Criterion: After a single game 90\% of users will be able to recognize various symbols from the game.
 \end{enumerate}
@@ -246,7 +319,7 @@ N/A
 \begin{enumerate}
     \item NFR Number: PR1\\%%RAYMOND
     The system shall process turn changes within a reasonable time limit.
-    Fit Criterion: The system check for a valid move will take no more than 10 seconds before the turn is changed or the user is prompted to give another move.
+    Fit Criterion: \sout{The system check for a valid move will take no more than 10 seconds before the turn is changed or the user is prompted to give another move.} \textcolor{red}{A number of test cases will be ran and used to validate that the system check takes on average no more than $MAX\_TIME\_1$ seconds, before the user is prompted to try again.}
     \item NFR Number: PR2\\%%RAYMOND
     The system shall be in a playable state until the next major update.
     Fit Criterion: A questionnaire will be provided to confirm at least 90\% of users were able to use the software prior to the next major update.
@@ -256,10 +329,10 @@ N/A
 \begin{enumerate} %%KANAK
     \item NFR Number: OE1\\
     The system should take a reasonable time to open up.\\
-    Fit Criterion: The system shall not take more than 10 seconds to load and open up for the user to start playing the game.
+    Fit Criterion: The system shall not take more than \sout{10 seconds} \textcolor{red}{$MAX\_LOAD\_TIME$ seconds} to load and open up for the user to start playing the game.
     \item NFR Number: OE2\\
     The initial setup of the game should be within a reasonable time limit.\\
-    Fit Criterion: The system shall take 20 minutes at most to fully download and install.
+    Fit Criterion: The system shall take \sout{20 minutes} \textcolor{red}{$MAX\_DOWNLOAD\_TIME$ minutes} at most to fully download and install.
 \end{enumerate}
 
 \subsection{Maintainability and Support Requirements}
@@ -267,10 +340,10 @@ N/A
     \item NFR Number: MS1\\ %%RAYMOND
     The system shall be easily maintainable for future updates.\\
     Fit Criterion: A focus group of programmers will rate the maintainability of the system from 1-5.
-    \item NFR Number: MS1\\ %%RAYMOND
+    \item NFR Number: \sout{MS1} \textcolor{red}{MS2}\\ %%RAYMOND
     The system shall easily allow the implementation of new updates/features.\\
     Fit Criterion: Software design experts will be asked to rate the design of the system and if it allows for easy implementation of new features from a scale of 1-10.
-    \item NFR Number: MS1\\ %%RAYMOND
+    \item NFR Number: \sout{MS1} \textcolor{red}{MS3}\\ %%RAYMOND
     The system shall be operational until the next Python3 update.\\
     Fit Criterion: A questionnaire will be provided to confirm at least 90\% of users were able to use the software prior to the next major Python3 update.
 \end{enumerate}
@@ -280,7 +353,7 @@ N/A
 \subsection{Cultural Requirements} %LUCIA
 \begin{enumerate}
     \item NFR Number: CR1 \\
-    The Scrabble project shall allow users to place words that are deemed culturally offensive or inappropriate.  \\
+    The Scrabble project shall not allow users to place words that are deemed culturally offensive or inappropriate.  \\
     Fit Criterion: The dictionary used by the Scrabble project to validate words will be reviewed by 5 users of various backgrounds for any culturally insensitive words.
     \item NFR Number: CR2\\
     The users of the Scrabble project can be of any cultural background as long as they have a basic understanding of the English language.\\
@@ -297,7 +370,7 @@ N/A
 \begin{enumerate}
     \item NFR Number: HSR1\\
     The application shall include preventative measures against eye strain due to long playing periods.\\ 
-    Fit Criterion: The application should include adequately sized text to improve readability, and use colour combinations that are pleasant to the eye. 
+    Fit Criterion: \sout{The application should include adequately sized text to improve readability, and use colour combinations that are pleasant to the eye.} \textcolor{red}{The product shall include a reminder about the proper amounts of screen time for user and how to stay healthy based on guidelines from the Canadian Paediatric Society \textcolor{red}{\cite{canadian_paediatric}}}
 \end{enumerate}
 % This section is not in the original Volere template, but health and safety are
 % issues that should be considered for every engineering project.
@@ -305,16 +378,15 @@ N/A
 \section{Project Issues}
 
 \subsection{Open Issues}%raymond
-%
 The feasibility of the usage of Tkinter for the Front-end GUI implementation to connect with the backend is still in question. Additionally, the portability of the Tkinter GUI for example colours is still an issue for MacOS. Additionally, whether parts the existing Scrabble implementation can be used or must be scrapped for better design flow is still an open issue.
 
 
 \subsection{Off-the-Shelf Solutions}
-The project is based off of a text-based implementation Scrabble \cite{fayrose_2019}. This implementation of Scrabble will provide the basis for the Trifecta's version of Scrabble. Changes will be made to the original code to match the scope of the project outlined in this document.\\ \\
+The project is based off of a text-based implementation Scrabble \cite{fayrose_2019}. This implementation of Scrabble will provide the basis for the Trifecta's version of Scrabble. Changes will be made to the original code to match the scope of the project outlined in this document. \textcolor{red}{Besides the original implementation that the project is based off of there also also many other open source versions of Scrabble games that can be found online. The code from these projects can be used to help develop algorithms and logic for the current version of the Scrabble project.} \\ \\
 Another instance Off-the-shelf solution included in the project will be usage of the Tkinter Python 3 library, which is free and open source. Tkinter will be used for to create the GUI for the project.
 \subsection{New Problems}
 \subsubsection{Environmental Problems}
-N/A
+\sout{N/A} \textcolor{red}{The Scrabble project software should not modify the current environment, OS and hardware of the user's machine in any way. The only exception is the installation of Python 3 to run the Scrabble project if the user does not currently have it downloaded.}
 \subsubsection{Existing User Problems}
 The implementation of the Scrabble project cannot differ greatly from the rules and gameplay of the board game version of Scrabble. Any changes to rules and how the player interacts with the project will result in confusion for users. To maintain the current users of the project there must be consistency between the digital and board game versions of Scrabble. 
 
@@ -374,6 +446,32 @@ MAX\_NUM\_TILES =  7 \\
 BOARD\_WIDTH = 14 \\
 BOARD\_HEIGHT = 14 \\
 MIN\_NUM\_LETTERS = 2 \\
-MIN\_\AGE = 8 \\
-MIN\_TIME = 30 
+MIN\_\\AGE = 8\\
+MIN\_TIME = 30 \\
+MAX\_TIME\_1 = 10;
+MAX\_LOAD\_TIME = 10;
+MAX\_DOWNLOAD\_TIME = 20;
+\textcolor{red}{\subsection{\textcolor{red}{User Manual}}}
+\textcolor{red}{You get a rack of 7 tiles to start the game. You must            play words with these 7 tiles so that each word formed vertically         and horizontally is a word. 
+        Note: Whenever you play a word, make sure that it touches at least one other letter on the board (not diagonally.)\\
+        Note: first move must touch the star in the middle of the board.\\
+        To make a move input the desired word and the starting location of the word on the board by specifying the row and column number. Also enter the direction, indicated by writing "DOWN" for vertical and "RIGHT" for horizontal. To finsh your turn press the "END MOVE" button. \\
+        To skip your turn, press the "SKIP TURN" button. \\
+        To exchange tiles type the letters that you want to change with nothing to separate them. Then press the "EXCHANGE TILES" button.\\ 
+        Special Score Tiles:\\ 
+        TWS (triple word score): Multiplies your score for that turn by 3.\\ 
+        DWS (double word score): Multiplies your score for that turn by 2. \\
+        TLS (triple letter score): Multiplies your score for that letter by 3. \\
+        DLS (double letter score): Multiplies your score for that letter by 2.\\
+        Once you play a word, your rack will be automatically updated with tiles so that you have seven again. \\
+        The game ends when there are no tiles left in the bag.}
+
+\textcolor{red}{\subsection{\textcolor{red}{Figures}}}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth,height=\textheight, keepaspectratio]{SRS/Scrabble_board.jpg}
+    \caption{Board Layout}
+    \label{fig:my_label}
+\end{figure}
+
 \end{document}
