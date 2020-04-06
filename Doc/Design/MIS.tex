@@ -45,7 +45,7 @@
 		\\ Raymond Tu, Tur1
 }
 
-\date{March 13, 2020}
+\date{April 6, 2020}
 
 \begin {document}
  
@@ -58,7 +58,8 @@ This document is the Module Interface Specification of the Scrabble Project bein
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-13/3/20 & 1.0 & ------\\
+13/3/20 & \sout{1.0} \textcolor{red}{0.0} & \textcolor{red}{Had revision 0 finished.}\\
+\textcolor{red}{6/4/20} & \textcolor{red}{1.0} & \textcolor{red}{Revision 1 complete.}\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -108,17 +109,13 @@ $0 < score \leq 10$
 
 N/A
 
-\begin{itemize}
-
-\end{itemize}
-
 \subsubsection* {Access Routine Semantics}
 
 \noindent init(\textcolor{black}{ $letter$}):
 \begin{itemize}
 \item transition: $score := LETTER\_VALUES[letter]$ 
 \item output: None
-\item exception: None
+\item exception: \sout{None} \textcolor{red}{invalid\_size}
 \end{itemize}
 
 \noindent getLetter():
@@ -136,7 +133,7 @@ N/A
 \end{itemize}
 
 \subsection*{Local Constants}
-$LETTER\_VALUES =$ tuple of $("A": \mathbb{N}, "B": \mathbb{N}, "C": \mathbb{N}, "D": \mathbb{N}, "E": \mathbb{N}, "F": \mathbb{N}, "G": \mathbb{N}, "H": \mathbb{N}, "I": \mathbb{N}, "J": \mathbb{N}, "K": \mathbb{N}, "L": \mathbb{N}. "M": \mathbb{N}, "N": \mathbb{N}, "O": \mathbb{N}, "P": \mathbb{N}, "Q": \mathbb{N}, "R": \mathbb{N}, "S": \mathbb{N}, "T": \mathbb{N}, "U": \mathbb{N}, "V": \mathbb{N}, "W": \mathbb{N}, "X": \mathbb{N}, "Y": \mathbb{N}, "Z": \mathbb{N}) $ \\
+$LETTER\_VALUES =$ tuple of $("A": 1, "B": 3, "C": 3, "D": 2, "E": 1, "F": 4, "G": 2, "H": 4, "I": 1, "J": 1, "K": 5, "L": 1, "M" : 3, "N": 1, "O": 1, "P": 3, "Q": 10, "R": 1, "S": 1, "T": 1, "U": 1, "V": 4, "W": 4, "X": 8, "Y": 4, "Z": 10) $ \\
 \medskip
 \newpage
 
@@ -213,8 +210,8 @@ N/A
 
 \noindent initBag():
 \begin{itemize}
-\item transition: $Bag \rightarrow Bag+a*Tiles(A)+b*Tiles(B)+...+z*Tiles(Z)$\\
-where a, b,..., z are the number of that lettered tile to be in the bag.\\ Additionally shuffles the order of the letters.
+\item transition: $Bag \rightarrow Bag + 10*Tiles(A)+2*Tiles(B)+2*Tiles(C)+4*Tiles(D)+12*Tiles(E)+2*Tiles(F)+3*Tiles(G)+2*Tiles(H)+9*Tiles(I)+1*Tiles(J)+1*Tiles(K)+4*Tiles(L)+2*Tiles(M)+6*Tiles(N)+8*Tiles(O)+2*Tiles(P)+1*Tiles(Q)+6*Tiles(R)+5*Tiles(S)+6*Tiles(T)+4*Tiles(U)+2*Tiles(V)+2*Tiles(W)+1*Tiles(X)+2*Tiles(Y)+1*Tiles(Z)$\\
+Additionally shuffles the order of the letters.
 \item output: None
 \item exception: None
 \end{itemize}
@@ -490,7 +487,7 @@ init &  & Board & \\
 \hline
 getBoard &  & Board & \\
 \hline
-updateBackBoard & \mathbb{N}, \mathbb{N}, String, String &  & \\
+updateBackBoard & \mathbb{N}, \mathbb{N}, String, String &  & \textcolor{red}{ ValueError}\\
 \hline
 \end{tabular}
 
@@ -527,7 +524,7 @@ N/A
 \item transition: $Board \rightarrow Board + word$ \\
 where first letter of word is added from Board[row][column] and the rest are added to row(right) or column(down) depending on direction.
 \item output: None
-\item exception: None
+\item exception: \sout{None} \textcolor{red}{ValueError}
 \end{itemize}
 
 \newpage
@@ -554,13 +551,13 @@ N/A
 \hline
 \textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
 \hline
-updateFrontBoard & \mathbb{N}, \mathbb{N}, String, String & List &  \\
+updateFrontBoard & $\mathbb{N}, \mathbb{N},$ String, String & List &  \textcolor{red}{ValueError}\\
 \hline
 removeTile & String, Rack &  & \\
 \hline
 exchangeTile & String, Rack & & \\
 \hline
-calculateScore &$ \mathbb{N}, \mathbb{N}$, String, String & \mathbb{N}  & \\
+calculateScore &$ \mathbb{N}, \mathbb{N}$, String, String & \mathbb{N}  & \textcolor{red}{ValueError} \\
 \hline
 checkWinState & Rack, Rack, Bag & $\mathbb{B}$ & \\
 \hline
@@ -588,7 +585,7 @@ N/A
 \begin{itemize}
 \item transition: Empty $List \rightarrow List$ of Tuples
 \item output: List of Tuples
-\item exception: None
+\item exception: \sout{None} \textcolor{red}{ValueError}
 \end{itemize}
 
 \noindent removeTile($word, rack$):
@@ -611,7 +608,7 @@ where n = letters in word.
 \begin{itemize}
 \item transition: $word\_score \rightarrow +(\forall letters \in word \cdot score)$
 \item output: word\_score
-\item exception: None
+\item exception: \sout{None} \textcolor{red}{ValueError}
 \end{itemize}
 
 \noindent checkWinState($rack1, rack2, bag$):
@@ -661,7 +658,7 @@ N/A
 
 \subsubsection* {Environment Variables}
 
-N/A
+\sout{N/A} \textcolor{red}{Dictionary = dic.txt}
 
 \subsubsection* {State Invariant}
 
@@ -676,14 +673,14 @@ N/A
 \noindent checkRack($word, rack$):
 \begin{itemize}
 \item transition: None
-\item output: $\mathbb{B}$
+\item output: \sout{$\mathbb{B}$} \textcolor{red}{($\exists$   $word$ $\in rack \cdot true)$}
 \item exception: None
 \end{itemize}
 
 \noindent checkInDict($word$):
 \begin{itemize}
 \item transition: None
-\item output: $\mathbb{B}$
+\item output: \sout{$\mathbb{B}$} \textcolor{red}{$(\exists$   $word$ $\in Dictionary \cdot true)$}
 \item exception: None
 \end{itemize}
 
@@ -731,7 +728,7 @@ rightCheck & $\mathbb{N}, \mathbb{B}$, String, Board, $\mathbb{N}$ & $\mathbb{B}
 
 \subsubsection*{State Variables}
 
-N/A
+matches
 
 \subsubsection*{Environment Variables}
 
@@ -875,7 +872,7 @@ N/A
 
 \subsection*{Uses}
 
-sys, tkinter, Board, Bag, Player, Rack, Tile, BoardChecks, WordChecks, EndTurn
+\sout{sys}, tkinter, \sout{Board, Bag, Player, Rack, Tile, BoardChecks, WordChecks, EndTurn}, \textcolor{red}{WidgetCreation, GameController}
 
 \subsection*{FrontEndMain Module}
 
@@ -901,7 +898,7 @@ init & & tkinter Grid & \\
 \hline
 instructions & & tkinter Grid & \\
 \hline
-getPlayerGame & & tkinter Grid & \\
+getPlayerName & & tkinter Grid & \\
 \hline
 \end{tabular}
 
@@ -913,7 +910,7 @@ turn, player\_1rack, player2\_rack, roundCount
 
 \subsubsection*{Environment Variables}
 
-N/A
+\sout{N/A} \textcolor{red}{$GameWindow \cdot Tkinter$  $grid$}
 
 \subsubsection*{State Invariant}
 
@@ -928,31 +925,88 @@ N/A
 \noindent init():
 \begin{itemize}
 \item transition: None
-\item output: A tkinter grid displaying the introduction screen with options to start the game or read the instructions.
+\item output: \sout{A tkinter grid} \textcolor{red}{GameWindow} displaying the introduction screen with options to start the game or read the instructions.
 \item exception: None
 \end{itemize}
 
 \noindent instructions():
 \begin{itemize}
 \item transition: None
-\item output: A tkinter screen which lays out the rules of Scrabble.
+\item output: \sout{A tkinter screen} \textcolor{red}{GameWindow} which lays out the rules of Scrabble.
 \item exception: None
 \end{itemize}
 
 \noindent getPlayerName():
 \begin{itemize}
 \item transition: None
-\item output: A tkinter screen that asks for the two player names.
+\item output: \sout{A tkinter screen} \textcolor{red}{GameWindow} that asks for the two player names.
 \item exception: None
 \end{itemize}
 
-\subsection*{BoardFrame Module}
+\subsection*{\textcolor{red}{BoardFrame Module}}
 
-\subsubsection*{Module}
+\subsubsection*{\textcolor{red}{Module}}
 
-Window with scrabble board that controls game play.
+\textcolor{red}{Creates the GUI of the playable scrabble board.}
 
-\paragraph*{Syntax}
+\paragraph*{\textcolor{red}{Syntax}}
+
+\subsubsection*{\textcolor{red}{Exported Constants}}
+\textcolor{red}{N/A}
+\subsubsection*{\textcolor{red}{Exported Types}}
+
+\textcolor{red}{N/A}
+
+\subsubsection* {\textcolor{red}{Exported Access Programs}}
+\textcolor{red}{
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+scrabbleBoard & tkinter root, tkinter frame, String, String & tkinter Grid & \\
+\hline
+\end{tabular}
+}
+\paragraph* {\textcolor{red}{Semantics}}
+
+\subsubsection*{\textcolor{red}{State Variables}}
+
+\textcolor{red}{root, frame, player1name, player2name}
+
+\subsubsection*{\textcolor{red}{Environment Variables}}
+
+\textcolor{red}{$GameWindow \cdot Tkinter$  $grid$}
+
+\subsubsection*{\textcolor{red}{State Invariant}}
+
+\textcolor{red}{N/A}
+
+\subsubsection*{\textcolor{red}{Assumptions}}
+
+\textcolor{red}{N/A}
+
+\subsubsection* {\textcolor{red}{Access Routine Semantics}}
+
+\textcolor{red}{\noindent scrabbleBoard(root, frame, player1Name, player2Name):
+\begin{itemize}
+\item transition: None
+\item output: \textcolor{red}{GameWindow} displaying a functional scrabble board, input boxes for word, direction, starting row and column values, shared letters and letters to exchange,  and  current players turn and their score.
+\item exception: None
+\end{itemize}
+}
+
+\section*{\sout{BoardFrame} \textcolor{red}{GameController}}
+
+\subsection*{Module}
+
+\sout{Window with scrabble board that controls game play} \textcolor{red}{Contains control for the back end logic of the Scrabble game based on user inputs.}
+
+\subsection*{Uses}
+
+\sout{sys}, tkinter, Board, Bag, Player, Rack, Tile, BoardChecks, WordChecks, EndTurn
+
+
+\subsection*{Syntax}
 
 \subsubsection*{Exported Constants}
 N/A
@@ -1078,7 +1132,9 @@ N/A
 \item exception: None
 \end{itemize}
 
-\subsection*{BoardLabel Module}
+\section*{\textcolor{red}{WidgetCreation}}
+
+\subsection*{\sout{BoardLabel} \textcolor{red}{MakeLabel} Module}
 
 \subsubsection*{Module}
 
@@ -1129,11 +1185,11 @@ N/A
 \item exception: None
 \end{itemize}
 
-\subsection*{ColorButton Module}
+\subsection*{\sout{ColorButton} \textcolor{red}{MakeButtons} Module}
 
 \subsubsection*{Module}
 
-Creates labels for various tkinter window components.
+\sout{Creates labels} \textcolor{red}{Creates button objects} for the various tkinter window components.
 
 \paragraph*{Syntax}
 
