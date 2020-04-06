@@ -5,6 +5,7 @@
 \usepackage{hyperref}
 \usepackage{graphics}
 \usepackage{float}
+\usepackage{ulem}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -22,7 +23,7 @@
 		\\ Raymond Tu, tur1
 }
 
-\date{February 28, 2020}
+\date{April 05, 2020}
 
 %\input{../Comments}
 
@@ -41,6 +42,7 @@
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 2020/02/27 & 1.0 & Revision 0 Test Plan\\
+2020/04/05 & 1.1 & Revision 1 Test Plan\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -74,7 +76,7 @@ SRS & Software Requirement Specification\\
 GUI & Graphical User Interface\\
 MIS & Module Interface Specification\\
 POC & Proof of Concept \\
-LF1 & Look and Feel Requirements\\
+\sout{LF1} & \sout{Look and Feel Test Case 1}
 \bottomrule
 \end{tabularx}
 
@@ -98,7 +100,7 @@ The software of the Scrabble project is a re-implementation of a text based vers
 The test team consists of the members of the Scrabble project, Kanakabha Choudhri, Lucia Cristiano, and Raymond Tu.
 
 \subsection{Automated Testing Approach}
-The scrabble project team has decided to create a set of unit tests using PyTest. These tests will test every method in the front-end and back-end for errors and ensure consistency between updates. Additionally, PyTest's inbuilt code coverage feature will also be used to measure the coverage of the unit tests. Test cases will be grouped into sections based on functional requirements and non-functional requirements. These will be broken down into tests regarding the keyboard and mouse inputs to the game. Then the back-end modules that take in this input and processes the turn will be tested. These tests will be automated and automatically ran between updates to the main branch of the repository. 
+The scrabble project team has decided to create a set of unit tests using PyTest. These tests will test every method in the front-end and back-end for errors and ensure consistency between updates. Additionally, PyTest's inbuilt code coverage feature will also be used to measure the coverage of the unit tests. Test cases will be grouped into sections based on functional requirements and non-functional requirements. These will be broken down into tests regarding the keyboard and mouse inputs to the game. Then the back-end modules that take in this input and processes the turn will be tested. These tests will be \sout{automated and automatically ran between}\textcolor{red}{automated and ran between } updates to the main branch of the repository. \textcolor{red}{These automated tests will be run on the modules in the back-end that form the Model portion in the MVC architecture. These will be the Board.py, Bag.py, Tiles.py, Player.py and Rack.py files. PyTest and automated testing are only suitable for these model classes due to the nature of the Scrabble game, the majority of testing will be manual testing through the front-end.}
 
 \subsection{Testing Tools} %raymond
 
@@ -113,7 +115,7 @@ See Gantt Chart at the following url:
 \section{System Test Description}
 	
 \subsection{Tests for Functional Requirements} 
-Refer to Appendix Section 7.3 for explanation of omitted functional requirements one and three. 
+Refer to Appendix Section \sout{7.3} 6.3 \hyperref[sec:appendix]{here} for explanation of omitted functional requirements one and three. \textcolor{red}{Refer to Figure 1 in the appendix for context of the UI used in the test cases. "Rack" refers to the set of 7 tiles the player receives every turn, where all words have to be created from these lettered tiles.}
 
 \subsubsection{User Input}
 
@@ -122,9 +124,9 @@ Refer to Appendix Section 7.3 for explanation of omitted functional requirements
 \begin{enumerate}
 \item{test-UI1: Test rack size after exchanging tiles \\} %FR5
     Type: Functional, Dynamic, Manual\\
-    Initial State: Player is currently on the board screen\\
+    Initial State: Player is currently on the board screen. \textcolor{red}{The rack contains $MAX\_NUM\_TILES$.} \\
     Input: The Player clicks the "Exchange Tiles" button.\\
-    Output: A random tile is removed from the rack and replaced by another tile.\\
+    Output: A random tile is removed from the rack and replaced by another tile. \textcolor{red}{The tile removed from the rack is now in the bag of tiles.}\\
     How test will be performed: A test member will conduct a visual test to confirm that after pressing the "Exchange Tiles" button of tiles in the player's rack does not exceed $MAX\_NUM\_TILES$.
 
 \end{enumerate}
@@ -134,8 +136,8 @@ Refer to Appendix Section 7.3 for explanation of omitted functional requirements
     \item{test-UI2: Test labels update correctly with playernames\\} %FR4
     Type: Functional, Dynamic, Manual\\
     Initial State: Player has clicked Start Game and is on the player name input screen.\\
-    Input: Player inputs 2 player names, with any combination of letters and numbers.\\
-    Output: Once player clicks Let's Play, player names are saved onto the board screen and outputted as titles next to player rack and player score.\\
+    Input: Player inputs 2 player names, with any combination of letters and numbers. \textcolor{red}{Player clicks Let's Play.}\\
+    Output: \sout{Once player clicks Let's Play} Player names are saved onto the board screen and outputted as titles next to player rack and player score.\\
     How test will be performed: A test member will conduct a visual test to confirm that all the labels correctly output with the player names.\\
     
     \item{test-UI3: Inputted player names only have string characters\\} %FR4
@@ -145,40 +147,48 @@ Refer to Appendix Section 7.3 for explanation of omitted functional requirements
     Output: Once player clicks Let's Play, player names are saved onto the board screen and outputted as titles next to player rack and player score. Player names only contain string characters.\\
     How test will be performed: A test member will conduct a visual test to confirm that all the player names only contain string characters.\\
     
+    \textcolor{red}{\item{test-UI3-1: Inputted player names only have non-string characters\\} %FR4
+    Type: Functional, Dynamic, Manual\\
+    Initial State: Player has clicked Start Game and is on the player name input screen.\\
+    Input: Player inputs 2 player names, with any combination of letters and numbers. Player clicks let's play.\\
+    Output: Because there are non-string characters, the player names are rejected.\\
+    How test will be performed: A test member will conduct a visual test to confirm the game rejects the entered in names.\\}
+    
     \item{test-UI4: Test rack size after turn\\} %FR5
     Type: Functional, Dynamic, Manual\\
     Initial State: Player has entered in a word, row, column and direction on the game board screen.\\
     Input: The Player clicks the "End Move" button.\\
-    Output: If the word is valid the used tiles are removed from the rack and replaced with new tiles.\\
+    Output: If the word is valid the used tiles are removed from the rack and replaced with new tiles. \textcolor{red}{Number of new tiles given is the same length as the inputted word}\\
     How test will be performed: A test member will conduct a visual test to confirm that at the end of the player's turn the amount of tiles in the rack does not exceed $MAX\_NUM\_TILES$.
     
     \item{test-UI5: Test valid word\\} %FR6
     Type: Functional, Dynamic, Manual\\
-    Initial State: Player has entered in a valid word, as well as row, column and direction on the game board screen.\\
+    Initial State: Player has entered in a valid word, as well as row, column and direction on the game board screen. \textcolor{red}{A valid word is one that is in the dictionary provided with the Scrabble game. A valid move consists of a valid word placed in a valid location where it intersects with existing words on the board in a crossword fashion.}\\
     Input: The Player clicks the "End Move" button.\\
-    Output: The word is placed on the game board in the correct location.\\
+    Output: The word is placed on the game board in the correct location. \textcolor{red}{Correct location is where it intersected with existing words on the board in a crossword fashion.}\\
     How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the game board is updated with the correct word.\\ 
     
     \item{test-UI6: Test invalid length of word \\} %FR6, FR7
     Type: Functional, Dynamic, Manual\\
-    Initial State: Player has entered in a word of less than $MIN\_NUM\_LETTERS$, as well as row, column and direction on the game board screen.\\
+    Initial State: Player has entered in a word of less than size $MIN\_NUM\_LETTERS$, \textcolor{red}{In other words, the length of the word exceeds the length of the board (14 letters).}. \textcolor{red}{Player has entered in a row, column and direction that intersects with an existing word on the board.} \\
     Input: The Player clicks the "End Move" button.\\
     Output: An error label appears stating that the move is invalid.\\
     How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the error label appears and it remains that player's turn.\\
     
     \item{test-UI7: Test word not found in dictionary\\} %FR6, FR7
     Type: Functional, Dynamic, Manual\\
-    Initial State: Player has entered in a word not found in the official Scrabble dictionary, as well as row, column and direction on the game board screen.\\
+    Initial State: Player has entered in a word not found in the official Scrabble dictionary.  \textcolor{red}{The player also enters a row, column and direction that intersects with an existing word on the board in a crossword fashion.}\\
     Input: The Player clicks the "End Move" button.\\
     Output: An error label appears stating that the move is invalid.\\
-    How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the error label appears and it remains that player's turn.\\
+    How test will be performed: \sout{A test member will conduct a visual test to confirm that after pressing the "End Move" button the error label appears and it remains that player's turn.}\textcolor{red}{A test member will conduct a visual test to confirm the move is rejected with an error label.}\\
     
-    \item{test-UI8:Test valid dimensions and direction\\} %FR8
+    \sout{\item{test-UI8:Test valid dimensions and direction\\} %FR8
     Type: Functional, Dynamic, Manual\\
     Initial State: Player has entered a word, valid row, valid column and valid direction on the game board screen.\\
     Input: The Player clicks the "End Move" button.\\
     Output: The word is updated on the game board in desired location and orientation.\\
-    How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the starting letter of the word is at the specified row and column, as well as the word being oriented in the correct direction.\\
+    How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the starting letter of the word is at the specified row and column, as well as the word being oriented in the correct direction.\\} \textcolor{red}{Combined with UI-5.}
+    
     
     \item{test-UI9:Test invalid row and valid direction\\} %FR8
     Type: Functional, Dynamic, Manual\\
@@ -248,13 +258,13 @@ Refer to Appendix Section 7.3 for explanation of omitted functional requirements
     Initial State: Current player's rack is visible.\\
     Input: Player clicks "End move" button. \\
     Output: The previous player's rack is replaced with the next player's rack. \\
-    How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the board gets updated with a new rack.\\
+    How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the board gets updated with a new rack. \textcolor{red}{Additionally, the tester will confirm that the turn label switches to indicate it is the other player's turn.}\\
     
     \item{test-UI19:Test for end game state based on allowed words.\\} %FR12
     Type: Functional, Dynamic, Manual\\
-    Initial State: Board has space for one more word\\
+    Initial State: Board has space for one more word.\\
     Input: Player clicks "End move" button. \\
-    Output: The board is filled with no space for no valid words, exits and displays the highest score and the player who scored it. \\
+    Output: \textcolor{red}{The board enters the end state because no other moves can be made, there is no space to place new words. The game exists and displays the highest score and the winner of the game.}\sout{The board is filled with no space for no valid words, exits and displays the highest score and the player who scored it.} \\
     How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the game exits the board and displays the highest score with the player who scored that score.\\
     
     \item{test-UI20:Test for end game state based on internal bag count.\\} %FR12
@@ -263,6 +273,27 @@ Refer to Appendix Section 7.3 for explanation of omitted functional requirements
     Input: Player clicks "End move" button. \\
     Output: The internal bags size is 0 which results into game exiting board and displaying the highest score and player who scored it. \\
     How test will be performed: A test member will conduct a visual test to confirm that after pressing the "End Move" button the game exits the board and displays the highest score with the player who scored that score.\\
+    
+    \textcolor{red}{\item test-UI21: Invalid direction exception\\
+    Type: Functional, Dynamic, Manual\\
+    Initial State: Bag has more than 1 tile. Rack has 7 tiles. \\
+    Input: Player inputs valid word that ca be found in the dictionary made from letters in rack. Player inputs invalid direction (ie. up or left).\\
+    Output: The program throws an exception ValueError "Not a valid direction".\\
+    How test will be performed: A test member will conduct a visual test to confirm that the ValueError exception is thrown on the terminal.}
+    
+    \textcolor{red}{\item test-UI22: Invalid score exception\\
+    Type: Functional, Dynamic, Manual\\
+    Initial State: In the back-end, controller attempts to increase the score of a Player object. \\
+    Input: Tester passes in a negative integer as a parameter to increase the score.\\
+    Output: The program throws an exception ValueError "Not a valid direction".\\
+    How test will be performed: A test member will conduct a visual test to confirm that the ValueError exception is thrown on the terminal.}
+    
+    \textcolor{red}{\item test-UI23: Invalid exchange tile exception\\
+    Type: Functional, Dynamic, Manual\\
+    Initial State: Bag has more than 1 tile. Rack has 7 tiles. \\
+    Input: Tester inputs a series of letters that are not present as a tile in their rack into the Exchange Tiles field. Afterwards, the tester hits the Exchange Tiles button.\\
+    Output: The user interface displays "Invalid Exchange Tiles Move" on the error label below the rack.\\
+    How test will be performed: A test member will conduct a visual test to confirm the error message is thrown on the label and that the turn does not change and no tiles are exchanged. Because the user requested to exchange tiles that are not in their rack, the move fails and it stays on their turn to input another valid move.}
     
 \end{enumerate}
 \subsubsection{Game Environment}
@@ -313,7 +344,7 @@ Refer to Appendix Section 7.3 for explanation of omitted functional requirements
     Type: Functional, Static, Manual\\
     Initial State: The Scrabble project game opened and loaded to the initial screen.\\
     Input/Conditions: The user takes a good look at the interface and its components.\\
-    Output/Result: Most users report the user interface has a warm look and feel to it.\\
+    Output/Result: \textcolor{red}{90\% or more}\sout{Most} users report the user interface has a warm look and feel to it.\\
     How test will be performed: The group of testers of different personal views and opinions will statically observe the user interface and give back their opinions on what kind of impression the game gives to them.\\
 \end{enumerate}
 
@@ -372,7 +403,7 @@ Refer to Appendix Section 7.3 for explanation of omitted functional requirements
 \item{test-OE1: The Scrabble game takes no more than 20 minutes to install onto the host computer.}\\
     Type: Functional, Dynamic, Manual\\ %OE1
     Initial State: User has the link necessary for downloading the game.\\
-    Input/Conditions: The user follows necessary steps to download the game.\\
+    Input/Conditions: The user follows necessary steps to download the game. \textcolor{red}{User has internet access and can download 10 mb of data within 10 minutes.}\\
     Output/Result: The game has been downloaded and stored into correct folder within 20 minutes of initializing download. \\
     How test will be performed: The group of testers with different kinds of PC's will download the game and note how long it took them to download it and set it up on their PC's.\\
     
@@ -486,8 +517,10 @@ Additionally, the functionality of the buttons had issues in updating the labels
 \section{Unit Testing Plan}%Lucia
 For unit testing of the Scrabble project PyTest will be used to write the test suites as well as determine coverage of the methods and classes being tested. 
 \subsection{Unit testing of internal functions}
-Unit testing of the project will consist of testing each of the modules individually by creating test cases for each of the major methods within the module. Using PyTest, test cases will be written that  compare the actual output of the methods to the expected output of the method. The tests will also check if exceptions in the method are handled in the correct manner. These tests are intended to ensure that the entire module and its methods function as outlined in the SRS and the MIS.\\
+Unit testing of the project will consist of testing each of the modules individually by creating test cases for each of the major methods within the module. Using PyTest, test cases will be written that  compare the actual output of the methods to the expected output of the method. The tests will also check if exceptions in the method are handled in the correct manner. These tests are intended to ensure that the entire module and its methods function as outlined in the SRS and the MIS. \textcolor{red}{Additionally, PyTest's inbuilt functionality to measure code coverage when running test suites will be used to help validate the functions in the Scrabble program. The desired level of code coverage is at least 90\% statement and branch coverage to cover all cases a user may encounter in regular gameplay.}\\
 The unit testing step is crucial, as the modules must function as intended before proceeding to perform integration testing. Since the Scrabble project is a game all the modules work together to ensure that the game runs as intended. This testing step cannot be completed unless unit testing is done thoroughly.
+
+\textcolor{red}{The testing method we will focus on is white box testing. This method is appropriate because we will have full access to the source code, and will be testing it incrementally as it is developed. Knowledge of how methods are designed and implemented will be exploited to create test cases, for example trying to invoke an exception knowing one was coded in. This incremental testing process with whitebox testing will allow us to validate the game and ensure confidence in our program.}
 		
 \subsection{Unit testing of output files}	
 The Scrabble project does not contain any explicit output files, however, it does have a GUI that outputs to the screen of the machine the game is being played on. The testing of this interface will be completed based on the tests for functional requirements. These tests involve passing in a certain input from the mouse and keyboard and rely on visual confirmation that the GUI has outputted the correct results. This type of manual testing is necessary to ensure that the outputs of the project are sensible and result in a playable game.
@@ -500,6 +533,7 @@ The Scrabble project does not contain any explicit output files, however, it doe
 \newpage
 
 \section{Appendix}
+\label{sec:appendix}
 
 Additional information included here.
 
