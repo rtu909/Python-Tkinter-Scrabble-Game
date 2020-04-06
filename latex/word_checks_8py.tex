@@ -1,0 +1,54 @@
+\hypertarget{word_checks_8py}{}\section{src/word\+Checks.py File Reference}
+\label{word_checks_8py}\index{src/word\+Checks.\+py@{src/word\+Checks.\+py}}
+
+
+This method implements conditional checks for a valid word.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{word_checks_8py_a60dbe3cad25468f7ba2757fcef43c2ab}{word\+Checks.\+check\+Rack} (word, rack)
+\begin{DoxyCompactList}\small\item\em Checks if a word can be made from a rack. \end{DoxyCompactList}\item 
+def \hyperlink{word_checks_8py_a19e89547a5ecf90f7615784cfb1a6e69}{word\+Checks.\+check\+In\+Dict} (word)
+\begin{DoxyCompactList}\small\item\em Checks if a word belongs in the scrabble dictionary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This method implements conditional checks for a valid word. 
+
+\begin{DoxyAuthor}{Author}
+The Trifecta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Apr.\+06,2020 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{word_checks_8py_file_a19e89547a5ecf90f7615784cfb1a6e69}\label{word_checks_8py_file_a19e89547a5ecf90f7615784cfb1a6e69}} 
+\index{word\+Checks.\+py@{word\+Checks.\+py}!check\+In\+Dict@{check\+In\+Dict}}
+\index{check\+In\+Dict@{check\+In\+Dict}!word\+Checks.\+py@{word\+Checks.\+py}}
+\subsubsection{\texorpdfstring{check\+In\+Dict()}{checkInDict()}}
+{\footnotesize\ttfamily def word\+Checks.\+check\+In\+Dict (\begin{DoxyParamCaption}\item[{}]{word }\end{DoxyParamCaption})}
+
+
+
+Checks if a word belongs in the scrabble dictionary. 
+
+the inputted word to check if it exists in the text file dictionary. \begin{DoxyReturn}{Returns}
+boolean indicating word exists in the dictionary.  I\+O\+Error if text file cannot be found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{word_checks_8py_file_a60dbe3cad25468f7ba2757fcef43c2ab}\label{word_checks_8py_file_a60dbe3cad25468f7ba2757fcef43c2ab}} 
+\index{word\+Checks.\+py@{word\+Checks.\+py}!check\+Rack@{check\+Rack}}
+\index{check\+Rack@{check\+Rack}!word\+Checks.\+py@{word\+Checks.\+py}}
+\subsubsection{\texorpdfstring{check\+Rack()}{checkRack()}}
+{\footnotesize\ttfamily def word\+Checks.\+check\+Rack (\begin{DoxyParamCaption}\item[{}]{word,  }\item[{}]{rack }\end{DoxyParamCaption})}
+
+
+
+Checks if a word can be made from a rack. 
+
+the inputted word to check if its letters are in the rack.  the rack from which to check words letters. \begin{DoxyReturn}{Returns}
+boolean indicating whether word can be made from rack.  Value\+Error if empty string is entered 
+\end{DoxyReturn}

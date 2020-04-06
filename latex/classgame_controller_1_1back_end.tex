@@ -1,0 +1,139 @@
+\hypertarget{classgame_controller_1_1back_end}{}\section{game\+Controller.\+back\+End Class Reference}
+\label{classgame_controller_1_1back_end}\index{game\+Controller.\+back\+End@{game\+Controller.\+back\+End}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classgame_controller_1_1back_end_a2ee0a55368a009401de29af9200424ee}{update\+G\+UI} (update\+List, tile\+Array)
+\begin{DoxyCompactList}\small\item\em updates the front end data. \end{DoxyCompactList}\item 
+def \hyperlink{classgame_controller_1_1back_end_a5c400fe1c0ba7d4ca57ce19e1de77903}{clear\+Entry} (entry\+Boxes)
+\begin{DoxyCompactList}\small\item\em clears out input boxes. \end{DoxyCompactList}\item 
+def \hyperlink{classgame_controller_1_1back_end_acca208cf314ba9075c598a917c3a9d77}{skip\+Turn} (turn\+Label, rack\+Label)
+\begin{DoxyCompactList}\small\item\em skips a users turn. \end{DoxyCompactList}\item 
+def \hyperlink{classgame_controller_1_1back_end_ad12f14e8b6277e0a7166311d230480cd}{exchange\+Tiles} (exchanged\+Tiles, label, turn\+Label, entry\+Boxes, labels)
+\begin{DoxyCompactList}\small\item\em exchanges certain tiles from the rack with random letters from the bag. \end{DoxyCompactList}\item 
+def \hyperlink{classgame_controller_1_1back_end_a5da56829420b20413e76aa7eb2857072}{score\+Board} (root, frame, score1\+Label, score2\+Label)
+\begin{DoxyCompactList}\small\item\em displays a scoreboard. \end{DoxyCompactList}\item 
+def \hyperlink{classgame_controller_1_1back_end_a6f97fb6a72fa3af35d57bdb505656d65}{complete\+Turn} (root, frame, player\+Move, label, entry\+Boxes, player, tile\+Array)
+\begin{DoxyCompactList}\small\item\em completes a turn. \end{DoxyCompactList}\item 
+def \hyperlink{classgame_controller_1_1back_end_a650a75e35e8020a699462d7ae57c4874}{end\+Checks} (root, frame, player\+Move, labels, entry\+Boxes, player, tile\+Array)
+\begin{DoxyCompactList}\small\item\em checks whether inputted move is valid. \end{DoxyCompactList}\item 
+def \hyperlink{classgame_controller_1_1back_end_ad722a8ae3b194fb3621d43a8718d02e8}{end\+Move} (root, frame, word, row, col, dir, shared\+Letters, labels, entry\+Boxes, tile\+Array, p1\+Name, p2\+Name)
+\begin{DoxyCompactList}\small\item\em takes in user inputted move. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgame_controller_1_1back_end_a593d723f9a7c73467cee31e1dd9eddd2}\label{classgame_controller_1_1back_end_a593d723f9a7c73467cee31e1dd9eddd2}} 
+{\bfseries main\+Board} = \hyperlink{class_board_1_1_board}{Board}()
+\item 
+\mbox{\Hypertarget{classgame_controller_1_1back_end_a0c7e3c0b8a4699fc1cbdfa771b8c87da}\label{classgame_controller_1_1back_end_a0c7e3c0b8a4699fc1cbdfa771b8c87da}} 
+{\bfseries main\+Bag} = \hyperlink{class_bag_1_1_bag}{Bag}()
+\item 
+\mbox{\Hypertarget{classgame_controller_1_1back_end_abbe941320672c57549d04241e5f0db8e}\label{classgame_controller_1_1back_end_abbe941320672c57549d04241e5f0db8e}} 
+{\bfseries check\+Board\+Right} = \hyperlink{classboard_checks_1_1check_board_right}{check\+Board\+Right}()
+\item 
+\mbox{\Hypertarget{classgame_controller_1_1back_end_abc18c5bf46f679b3b69095a89590415f}\label{classgame_controller_1_1back_end_abc18c5bf46f679b3b69095a89590415f}} 
+{\bfseries check\+Board\+Down} = \hyperlink{classboard_checks_1_1check_board_down}{check\+Board\+Down}()
+\item 
+\mbox{\Hypertarget{classgame_controller_1_1back_end_ad55cd88f1cbdd4c3ed68d758b3895dd7}\label{classgame_controller_1_1back_end_ad55cd88f1cbdd4c3ed68d758b3895dd7}} 
+{\bfseries end\+Turn} = \hyperlink{classend_turn_1_1end_turn}{end\+Turn}()
+\item 
+\mbox{\Hypertarget{classgame_controller_1_1back_end_a1b9ba0c7c5471e8f31bb6c46bca63c96}\label{classgame_controller_1_1back_end_a1b9ba0c7c5471e8f31bb6c46bca63c96}} 
+{\bfseries player1} = \hyperlink{class_player_1_1_player}{Player}(main\+Bag)
+\item 
+\mbox{\Hypertarget{classgame_controller_1_1back_end_ae79eee5f50109f8734cba9a5a61a77a6}\label{classgame_controller_1_1back_end_ae79eee5f50109f8734cba9a5a61a77a6}} 
+{\bfseries player2} = \hyperlink{class_player_1_1_player}{Player}(main\+Bag)
+\item 
+\mbox{\Hypertarget{classgame_controller_1_1back_end_aa940193e253356a5e5320bae071926ec}\label{classgame_controller_1_1back_end_aa940193e253356a5e5320bae071926ec}} 
+{\bfseries player1\+Rack} = player1.\+rack.\+get\+Rack\+Str()
+\item 
+\mbox{\Hypertarget{classgame_controller_1_1back_end_a94d19bd666a5c80189c829f40ad8f88a}\label{classgame_controller_1_1back_end_a94d19bd666a5c80189c829f40ad8f88a}} 
+{\bfseries player2\+Rack} = player2.\+rack.\+get\+Rack\+Str()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classgame_controller_1_1back_end_a5c400fe1c0ba7d4ca57ce19e1de77903}\label{classgame_controller_1_1back_end_a5c400fe1c0ba7d4ca57ce19e1de77903}} 
+\index{game\+Controller\+::back\+End@{game\+Controller\+::back\+End}!clear\+Entry@{clear\+Entry}}
+\index{clear\+Entry@{clear\+Entry}!game\+Controller\+::back\+End@{game\+Controller\+::back\+End}}
+\subsubsection{\texorpdfstring{clear\+Entry()}{clearEntry()}}
+{\footnotesize\ttfamily def game\+Controller.\+back\+End.\+clear\+Entry (\begin{DoxyParamCaption}\item[{}]{entry\+Boxes }\end{DoxyParamCaption})}
+
+
+
+clears out input boxes. 
+
+list of input boxes from which to clear out data. \mbox{\Hypertarget{classgame_controller_1_1back_end_a6f97fb6a72fa3af35d57bdb505656d65}\label{classgame_controller_1_1back_end_a6f97fb6a72fa3af35d57bdb505656d65}} 
+\index{game\+Controller\+::back\+End@{game\+Controller\+::back\+End}!complete\+Turn@{complete\+Turn}}
+\index{complete\+Turn@{complete\+Turn}!game\+Controller\+::back\+End@{game\+Controller\+::back\+End}}
+\subsubsection{\texorpdfstring{complete\+Turn()}{completeTurn()}}
+{\footnotesize\ttfamily def game\+Controller.\+back\+End.\+complete\+Turn (\begin{DoxyParamCaption}\item[{}]{root,  }\item[{}]{frame,  }\item[{}]{player\+Move,  }\item[{}]{label,  }\item[{}]{entry\+Boxes,  }\item[{}]{player,  }\item[{}]{tile\+Array }\end{DoxyParamCaption})}
+
+
+
+completes a turn. 
+
+tkinter window.  tkinter frame  tuple of strings.  tuple of tkinter label objects.  tuple of entry boxes objects.  Player object for current player.  Array of buttons representing tiles. \mbox{\Hypertarget{classgame_controller_1_1back_end_a650a75e35e8020a699462d7ae57c4874}\label{classgame_controller_1_1back_end_a650a75e35e8020a699462d7ae57c4874}} 
+\index{game\+Controller\+::back\+End@{game\+Controller\+::back\+End}!end\+Checks@{end\+Checks}}
+\index{end\+Checks@{end\+Checks}!game\+Controller\+::back\+End@{game\+Controller\+::back\+End}}
+\subsubsection{\texorpdfstring{end\+Checks()}{endChecks()}}
+{\footnotesize\ttfamily def game\+Controller.\+back\+End.\+end\+Checks (\begin{DoxyParamCaption}\item[{}]{root,  }\item[{}]{frame,  }\item[{}]{player\+Move,  }\item[{}]{labels,  }\item[{}]{entry\+Boxes,  }\item[{}]{player,  }\item[{}]{tile\+Array }\end{DoxyParamCaption})}
+
+
+
+checks whether inputted move is valid. 
+
+tkinter window.  tkinter frame  tuple of strings.  tuple of tkinter label objects.  tuple of entry boxes objects.  Player object for current player.  Array of buttons representing tiles. \mbox{\Hypertarget{classgame_controller_1_1back_end_ad722a8ae3b194fb3621d43a8718d02e8}\label{classgame_controller_1_1back_end_ad722a8ae3b194fb3621d43a8718d02e8}} 
+\index{game\+Controller\+::back\+End@{game\+Controller\+::back\+End}!end\+Move@{end\+Move}}
+\index{end\+Move@{end\+Move}!game\+Controller\+::back\+End@{game\+Controller\+::back\+End}}
+\subsubsection{\texorpdfstring{end\+Move()}{endMove()}}
+{\footnotesize\ttfamily def game\+Controller.\+back\+End.\+end\+Move (\begin{DoxyParamCaption}\item[{}]{root,  }\item[{}]{frame,  }\item[{}]{word,  }\item[{}]{row,  }\item[{}]{col,  }\item[{}]{dir,  }\item[{}]{shared\+Letters,  }\item[{}]{labels,  }\item[{}]{entry\+Boxes,  }\item[{}]{tile\+Array,  }\item[{}]{p1\+Name,  }\item[{}]{p2\+Name }\end{DoxyParamCaption})}
+
+
+
+takes in user inputted move. 
+
+tkinter window.  tkinter frame  string representing inputted word.  string representing row of starting tile.  string representing column of starting tile.  string representing direction of tile placements.  string representing a set of shared letters a new word has with an existing word it wants to connect to.  tuple of tkinter label objects.  tuple of tkinter input box objects.  tuple of array of tkinter button objects representing tiles.  string for player1\textquotesingle{}s name.  string for player1\textquotesingle{}s name. \mbox{\Hypertarget{classgame_controller_1_1back_end_ad12f14e8b6277e0a7166311d230480cd}\label{classgame_controller_1_1back_end_ad12f14e8b6277e0a7166311d230480cd}} 
+\index{game\+Controller\+::back\+End@{game\+Controller\+::back\+End}!exchange\+Tiles@{exchange\+Tiles}}
+\index{exchange\+Tiles@{exchange\+Tiles}!game\+Controller\+::back\+End@{game\+Controller\+::back\+End}}
+\subsubsection{\texorpdfstring{exchange\+Tiles()}{exchangeTiles()}}
+{\footnotesize\ttfamily def game\+Controller.\+back\+End.\+exchange\+Tiles (\begin{DoxyParamCaption}\item[{}]{exchanged\+Tiles,  }\item[{}]{label,  }\item[{}]{turn\+Label,  }\item[{}]{entry\+Boxes,  }\item[{}]{labels }\end{DoxyParamCaption})}
+
+
+
+exchanges certain tiles from the rack with random letters from the bag. 
+
+string of letters to exchange.  tkinter label for rack.  tkinter label for current players turn.  tuple of input boxes on game window.  tuple of strings with the game window component labels. \mbox{\Hypertarget{classgame_controller_1_1back_end_a5da56829420b20413e76aa7eb2857072}\label{classgame_controller_1_1back_end_a5da56829420b20413e76aa7eb2857072}} 
+\index{game\+Controller\+::back\+End@{game\+Controller\+::back\+End}!score\+Board@{score\+Board}}
+\index{score\+Board@{score\+Board}!game\+Controller\+::back\+End@{game\+Controller\+::back\+End}}
+\subsubsection{\texorpdfstring{score\+Board()}{scoreBoard()}}
+{\footnotesize\ttfamily def game\+Controller.\+back\+End.\+score\+Board (\begin{DoxyParamCaption}\item[{}]{root,  }\item[{}]{frame,  }\item[{}]{score1\+Label,  }\item[{}]{score2\+Label }\end{DoxyParamCaption})}
+
+
+
+displays a scoreboard. 
+
+tkinter window.  tkinter frame  tkinter label for player 1\textquotesingle{}s score.  tkinter label for player 1\textquotesingle{}s score. \mbox{\Hypertarget{classgame_controller_1_1back_end_acca208cf314ba9075c598a917c3a9d77}\label{classgame_controller_1_1back_end_acca208cf314ba9075c598a917c3a9d77}} 
+\index{game\+Controller\+::back\+End@{game\+Controller\+::back\+End}!skip\+Turn@{skip\+Turn}}
+\index{skip\+Turn@{skip\+Turn}!game\+Controller\+::back\+End@{game\+Controller\+::back\+End}}
+\subsubsection{\texorpdfstring{skip\+Turn()}{skipTurn()}}
+{\footnotesize\ttfamily def game\+Controller.\+back\+End.\+skip\+Turn (\begin{DoxyParamCaption}\item[{}]{turn\+Label,  }\item[{}]{rack\+Label }\end{DoxyParamCaption})}
+
+
+
+skips a users turn. 
+
+tkinter label for current players turn.  tkinter label for current players. \mbox{\Hypertarget{classgame_controller_1_1back_end_a2ee0a55368a009401de29af9200424ee}\label{classgame_controller_1_1back_end_a2ee0a55368a009401de29af9200424ee}} 
+\index{game\+Controller\+::back\+End@{game\+Controller\+::back\+End}!update\+G\+UI@{update\+G\+UI}}
+\index{update\+G\+UI@{update\+G\+UI}!game\+Controller\+::back\+End@{game\+Controller\+::back\+End}}
+\subsubsection{\texorpdfstring{update\+G\+U\+I()}{updateGUI()}}
+{\footnotesize\ttfamily def game\+Controller.\+back\+End.\+update\+G\+UI (\begin{DoxyParamCaption}\item[{}]{update\+List,  }\item[{}]{tile\+Array }\end{DoxyParamCaption})}
+
+
+
+updates the front end data. 
+
+a list of front end buttons to be updated.  list of buttons that make up the inputted word. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{game_controller_8py}{game\+Controller.\+py}\end{DoxyCompactItemize}

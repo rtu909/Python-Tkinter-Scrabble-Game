@@ -4,7 +4,7 @@ from gameController import *
 
 ## @file main.py
 #  @author The Trifecta
-#  @brief This module the front end of the Scrabble game.
+#  @brief This module implements the front end of the Scrabble game.
 #  @date Apr.06,2020
 
 ## @brief Initializing the introductory window to the scrabble game.

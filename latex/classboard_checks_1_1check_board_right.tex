@@ -1,0 +1,103 @@
+\hypertarget{classboard_checks_1_1check_board_right}{}\section{board\+Checks.\+check\+Board\+Right Class Reference}
+\label{classboard_checks_1_1check_board_right}\index{board\+Checks.\+check\+Board\+Right@{board\+Checks.\+check\+Board\+Right}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classboard_checks_1_1check_board_right_ad361fe238316b76956b1b2918143d069}{occupied\+Tile} (word, row, col, board)
+\begin{DoxyCompactList}\small\item\em checks whether a tile in chosen word placement is occupied or not. \end{DoxyCompactList}\item 
+def \hyperlink{classboard_checks_1_1check_board_right_a2c96a3e11772231852720539a8ac1430}{update\+Array} (word, row, col, adj\+Board)
+\begin{DoxyCompactList}\small\item\em Updates the current board object. \end{DoxyCompactList}\item 
+def \hyperlink{classboard_checks_1_1check_board_right_a92dfcdf78db9f0a5fe8848529987327a}{adj\+Word\+Check} (word, row, col, board)
+\begin{DoxyCompactList}\small\item\em Checks whether an inputted word is forming more words with adjacently existing words. \end{DoxyCompactList}\item 
+def \hyperlink{classboard_checks_1_1check_board_right_a8bbad282fad43d8348073ff0a6a3748c}{out\+Of\+Bounds} (word, row, col, board)
+\begin{DoxyCompactList}\small\item\em Checks if a words inputted placement goes out of boards bounds. \end{DoxyCompactList}\item 
+def \hyperlink{classboard_checks_1_1check_board_right_a19735f7a568095a393d40f08684e9d1f}{placement\+Check} (word, row, col, board, count)
+\begin{DoxyCompactList}\small\item\em performs a placement check using above defined functions. \end{DoxyCompactList}\item 
+def \hyperlink{classboard_checks_1_1check_board_right_a0ea42c96718ef916ea9242b113abb49f}{right\+Check} (word, row, col, board, count)
+\begin{DoxyCompactList}\small\item\em final check for a word inputted in the right direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classboard_checks_1_1check_board_right_a92dfcdf78db9f0a5fe8848529987327a}\label{classboard_checks_1_1check_board_right_a92dfcdf78db9f0a5fe8848529987327a}} 
+\index{board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}!adj\+Word\+Check@{adj\+Word\+Check}}
+\index{adj\+Word\+Check@{adj\+Word\+Check}!board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}}
+\subsubsection{\texorpdfstring{adj\+Word\+Check()}{adjWordCheck()}}
+{\footnotesize\ttfamily def board\+Checks.\+check\+Board\+Right.\+adj\+Word\+Check (\begin{DoxyParamCaption}\item[{}]{word,  }\item[{}]{row,  }\item[{}]{col,  }\item[{}]{board }\end{DoxyParamCaption})}
+
+
+
+Checks whether an inputted word is forming more words with adjacently existing words. 
+
+string for the word to be added to the game board.  integer for the row of starting tile.  integer for the column of starting tile.  board object to check from. \begin{DoxyReturn}{Returns}
+boolean indicating that more words can be formed with adjacently existing words. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classboard_checks_1_1check_board_right_ad361fe238316b76956b1b2918143d069}\label{classboard_checks_1_1check_board_right_ad361fe238316b76956b1b2918143d069}} 
+\index{board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}!occupied\+Tile@{occupied\+Tile}}
+\index{occupied\+Tile@{occupied\+Tile}!board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}}
+\subsubsection{\texorpdfstring{occupied\+Tile()}{occupiedTile()}}
+{\footnotesize\ttfamily def board\+Checks.\+check\+Board\+Right.\+occupied\+Tile (\begin{DoxyParamCaption}\item[{}]{word,  }\item[{}]{row,  }\item[{}]{col,  }\item[{}]{board }\end{DoxyParamCaption})}
+
+
+
+checks whether a tile in chosen word placement is occupied or not. 
+
+string for the word to be added to the game board.  integer for the row of starting tile.  integer for the column of starting tile.  board object to update with valid word. \begin{DoxyReturn}{Returns}
+boolean indicating whether board has tiles occupying chosen word placement. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classboard_checks_1_1check_board_right_a8bbad282fad43d8348073ff0a6a3748c}\label{classboard_checks_1_1check_board_right_a8bbad282fad43d8348073ff0a6a3748c}} 
+\index{board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}!out\+Of\+Bounds@{out\+Of\+Bounds}}
+\index{out\+Of\+Bounds@{out\+Of\+Bounds}!board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}}
+\subsubsection{\texorpdfstring{out\+Of\+Bounds()}{outOfBounds()}}
+{\footnotesize\ttfamily def board\+Checks.\+check\+Board\+Right.\+out\+Of\+Bounds (\begin{DoxyParamCaption}\item[{}]{word,  }\item[{}]{row,  }\item[{}]{col,  }\item[{}]{board }\end{DoxyParamCaption})}
+
+
+
+Checks if a words inputted placement goes out of boards bounds. 
+
+string for the word to be added to the game board.  integer for the row of starting tile.  integer for the column of starting tile.  board object to check from. \begin{DoxyReturn}{Returns}
+boolean indicating that word placement is within board bounds. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classboard_checks_1_1check_board_right_a19735f7a568095a393d40f08684e9d1f}\label{classboard_checks_1_1check_board_right_a19735f7a568095a393d40f08684e9d1f}} 
+\index{board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}!placement\+Check@{placement\+Check}}
+\index{placement\+Check@{placement\+Check}!board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}}
+\subsubsection{\texorpdfstring{placement\+Check()}{placementCheck()}}
+{\footnotesize\ttfamily def board\+Checks.\+check\+Board\+Right.\+placement\+Check (\begin{DoxyParamCaption}\item[{}]{word,  }\item[{}]{row,  }\item[{}]{col,  }\item[{}]{board,  }\item[{}]{count }\end{DoxyParamCaption})}
+
+
+
+performs a placement check using above defined functions. 
+
+string for the word to be added to the game board.  integer for the row of starting tile.  integer for the column of starting tile.  board object check from.  integer indicating number of words currently on board. \begin{DoxyReturn}{Returns}
+boolean indicating a valid word placement on current state of board. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classboard_checks_1_1check_board_right_a0ea42c96718ef916ea9242b113abb49f}\label{classboard_checks_1_1check_board_right_a0ea42c96718ef916ea9242b113abb49f}} 
+\index{board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}!right\+Check@{right\+Check}}
+\index{right\+Check@{right\+Check}!board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}}
+\subsubsection{\texorpdfstring{right\+Check()}{rightCheck()}}
+{\footnotesize\ttfamily def board\+Checks.\+check\+Board\+Right.\+right\+Check (\begin{DoxyParamCaption}\item[{}]{word,  }\item[{}]{row,  }\item[{}]{col,  }\item[{}]{board,  }\item[{}]{count }\end{DoxyParamCaption})}
+
+
+
+final check for a word inputted in the right direction. 
+
+string for the word to be added to the game board.  integer for the row of starting tile.  integer for the column of starting tile.  board object check from.  integer indicating number of words currently on board. \begin{DoxyReturn}{Returns}
+boolean indicating whether a word can be placed in the right direction or not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classboard_checks_1_1check_board_right_a2c96a3e11772231852720539a8ac1430}\label{classboard_checks_1_1check_board_right_a2c96a3e11772231852720539a8ac1430}} 
+\index{board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}!update\+Array@{update\+Array}}
+\index{update\+Array@{update\+Array}!board\+Checks\+::check\+Board\+Right@{board\+Checks\+::check\+Board\+Right}}
+\subsubsection{\texorpdfstring{update\+Array()}{updateArray()}}
+{\footnotesize\ttfamily def board\+Checks.\+check\+Board\+Right.\+update\+Array (\begin{DoxyParamCaption}\item[{}]{word,  }\item[{}]{row,  }\item[{}]{col,  }\item[{}]{adj\+Board }\end{DoxyParamCaption})}
+
+
+
+Updates the current board object. 
+
+string for the word to be added to the game board.  integer for the row of starting tile.  integer for the column of starting tile.  board object to update with valid word. \begin{DoxyReturn}{Returns}
+board object with word added to it. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{board_checks_8py}{board\+Checks.\+py}\end{DoxyCompactItemize}

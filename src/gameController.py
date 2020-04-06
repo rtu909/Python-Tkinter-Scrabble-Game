@@ -8,12 +8,18 @@ from boardChecks import *
 from wordChecks import *
 from endTurn import *
 
+## @file gameController.py
+#  @author The Trifecta
+#  @brief This module implements the backend logic of the Scrabble game.
+#  @date Apr.06,2020
+
 turn = 1
 roundCount = 0
 player1Rack = ""
 player2Rack = ""
 p1 = ""
 p2 = ""
+
 class backEnd:
     mainBoard = Board()
     mainBag = Bag()
@@ -25,10 +31,15 @@ class backEnd:
     player1Rack = player1.rack.getRackStr()
     player2Rack = player2.rack.getRackStr()
 
+	## @brief updates the front end data.
+	#  @param1 a list of front end buttons to be updated.
+	#  @param2 list of buttons that make up the inputted word.
     def updateGUI(updateList, tileArray):
         for tuple in updateList:
             tileArray[tuple[0]][tuple[1]].configure("text", str(tuple[2]))
 
+	## @brief clears out input boxes.
+	#  @param1 list of input boxes from which to clear out data.
     def clearEntry(entryBoxes):
         entryBoxes[0].delete(0, "end")
         entryBoxes[1].delete(0, "end")
@@ -37,6 +48,9 @@ class backEnd:
         entryBoxes[4].delete(0, "end")
         entryBoxes[5].delete(0, "end")
 
+	## @brief skips a users turn.
+	#  @param1 tkinter label for current players turn.
+	#  @param2 tkinter label for current players.
     def skipTurn(turnLabel, rackLabel):
         global turn, roundCount, p1, p2
         if roundCount != 0:
@@ -54,6 +68,12 @@ class backEnd:
                 turn = 1
             roundCount += 1
 
+	## @brief exchanges certain tiles from the rack with random letters from the bag.
+	#  @param1 string of letters to exchange.
+	#  @param2 tkinter label for rack.
+	#  @param3 tkinter label for current players turn.
+	#  @param4 tuple of input boxes on game window.
+	#  @param5 tuple of strings with the game window component labels.
     def exchangeTiles(exchangedTiles, label, turnLabel, entryBoxes, labels):
         global turn, roundCount, p1, p2
         validMoveL = labels[4]
@@ -90,6 +110,11 @@ class backEnd:
         backEnd.clearEntry(entryBoxes)
         #roundCount += 1
 
+	## @brief displays a scoreboard.
+	#  @param1 tkinter window.
+	#  @param2 tkinter frame
+	#  @param3 tkinter label for player 1's score.
+	#  @param4 tkinter label for player 1's score.
     def scoreBoard(root, frame, score1Label, score2Label):
          global p1, p2
          winnerStr = ""
@@ -111,6 +136,14 @@ class backEnd:
          scoreBoardRoot.mainloop()
 
 
+	## @brief completes a turn.
+	#  @param1 tkinter window.
+	#  @param2 tkinter frame
+	#  @param3 tuple of strings.
+	#  @param4 tuple of tkinter label objects.
+	#  @param5 tuple of entry boxes objects.
+	#  @param6 Player object for current player.
+	#  @param7 Array of buttons representing tiles.
     def completeTurn(root, frame, playerMove, label, entryBoxes, player, tileArray):
         global turn, roundCount, p1, p2
         winState = False
@@ -158,6 +191,14 @@ class backEnd:
                 rackLabel.configure(text = player1Rack)
                 turn = 1
 
+	## @brief checks whether inputted move is valid.
+	#  @param1 tkinter window.
+	#  @param2 tkinter frame
+	#  @param3 tuple of strings.
+	#  @param4 tuple of tkinter label objects.
+	#  @param5 tuple of entry boxes objects.
+	#  @param6 Player object for current player.
+	#  @param7 Array of buttons representing tiles.
     def endChecks(root, frame, playerMove, labels, entryBoxes, player, tileArray):
         global roundCount
         dirLower = playerMove[3].lower()
@@ -196,6 +237,19 @@ class backEnd:
         else:
             validMoveL.configure(text = "Invalid move please try again")
 
+	## @brief takes in user inputted move.
+	#  @param1 tkinter window.
+	#  @param2 tkinter frame
+	#  @param3 string representing inputted word.
+	#  @param4 string representing row of starting tile.
+	#  @param5 string representing column of starting tile.
+	#  @param6 string representing direction of tile placements.
+	#  @param7 string representing a set of shared letters a new word has with an existing word it wants to connect to.
+	#  @param8 tuple of tkinter label objects.
+	#  @param9 tuple of tkinter input box objects.
+	#  @param10 tuple of array of tkinter button objects representing tiles.
+	#  @param11 string for player1's name.
+	#  @param12 string for player1's name.
     def endMove(root, frame, word, row, col, dir, sharedLetters, labels, entryBoxes, tileArray, p1Name, p2Name):
         global turn
         global p1, p2

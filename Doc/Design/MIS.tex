@@ -1017,25 +1017,25 @@ N/A
 \hline
 \textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
 \hline
-updateGUI & List of Tile location & & \\
+updateGUI & List of Tile locations,  \textcolor{red}{Tuple(buttons)}& & \\
 \hline
-clearEntry & 6 Strings &  & \\
+clearEntry & \sout{6 Strings} \textcolor{red}{Tuple(Input boxes)} &  & \\
 \hline
-skipTurn & 2 Strings & & \\
+skipTurn & 2 \sout{Strings} \textcolor{red}{Tkinter Labels} & & \\
 \hline
-exchangeTiles & 3 Strings & & \\
+exchangeTiles & \begin{tabular}[c]{@{}l@{}} \sout{3} \textcolor{red}{String, Tkinter label Tkinter labels} \\  \textcolor{red}{Tuple(Input boxes), Tuple(Strings)} \end{tabular}& & \\
 \hline
-scoreBoard & 3 Strings & & \\
+scoreBoard &  \begin{tabular}[c]{@{}l@{}} \sout{3 Strings} \textcolor{red}{Tkinter window, tkinter frame} \\  \textcolor{red}{tkinter label, tkinter label} \end{tabular}& & \\
 \hline
-completeTurn & 15 Strings & & \\
+completeTurn & \begin{tabular}[c]{@{}l@{}} \sout{15 Strings}, \textcolor{red}{tuple(Strings), Tkinter window, tkinter frame} \\  \textcolor{red}{tuple(labels), tuple(input boxes), Player, Array(buttons)} \end{tabular} & & \\
 \hline
-endChecks & 18 Strings & & \\
+endChecks & \begin{tabular}[c]{@{}l@{}} \sout{18 Strings}, \textcolor{red}{tuple(Strings) Tkinter window, tkinter frame} \\  \textcolor{red}{tuple(labels), tuple(input boxes), Player, Array(buttons)} \end{tabular} & & \\
 \hline
-endMove & 17 Strings & & \\
+endMove & \begin{tabular}[c]{@{}l@{}} \sout{17 Strings}, tuple(Strings) \textcolor{red}{Tkinter window, tkinter frame} \\  \textcolor{red}{String, String, String, String, String} \\  \textcolor{red}{tuple(labels), tuple(input boxes), Array(buttons)} \\ \textcolor{red}{String, String}\end{tabular} & & \\
 \hline
-updateLabelText & String & & \\
+\sout{updateLabelText} & \sout{String} & & \\
 \hline
-scrabbleBoard & 4 Strings & & \\
+\sout{scrabbleBoard} & \sout{4 Strings} & & \\
 \hline
 \end{tabular}
 
@@ -1059,14 +1059,14 @@ N/A
 
 \subsubsection* {Access Routine Semantics}
 
-\noindent updateGUI($updateList$):
+\noindent updateGUI($updateList, \textcolor{red}{tileArray}$):
 \begin{itemize}
 \item transition: Updates board with a tuple of row and column per letter of inputted word.
 \item output: None
 \item exception: None
 \end{itemize}
 
-\noindent clearEntry($inputWordE, inputRowE, inputColE, inputDirE,inputWordSharedE, inputWordExchangeE$):
+\noindent clearEntry(\sout{$inputWordE, inputRowE, inputColE,$} \\ \sout{$inputDirE,inputWordSharedE, inputWordExchangeE$}$ \\ \textcolor{red}{entryBoxes}$):
 \begin{itemize}
 \item transition: Clears text boxes for game inputs.
 \item output: None
@@ -1080,53 +1080,55 @@ N/A
 \item exception: None
 \end{itemize}
 
-\noindent exchangeTiles($exchangeTiles, label, turnLabel$):
+\noindent exchangeTiles($exchangeTiles, label, turnLabel, \textcolor{red}{entryBoxes, labels}$):
 \begin{itemize}
 \item transition: Exchanges current rack tiles with tiles in the bag.
 \item output: None
 \item exception: None
 \end{itemize}
 
-\noindent scoreBoard($frame, score1Label, score2Label$):
+\noindent scoreBoard($ \textcolor{red}{root,} frame, score1Label, score2Label$):
 \begin{itemize}
 \item transition: Declares winner of game and their score.
 \item output: None
 \item exception: None
 \end{itemize}
 
-\noindent completeTurn($frame, word, row, col, dir, player, rackLabel, score1Label,\\ score2Label, turnLabel, inputWordE, inputRowE, inputColE,\\ inputDirE, validMoveL$):
+\noindent completeTurn(\sout{$frame, word, row, col, dir, player, rackLabel, score1Label,$}\\ \sout{$score2Label, turnLabel, inputWordE, inputRowE, inputColE,$}\\ \sout{$inputDirE, validMoveL$} \\ \textcolor{red}{$root, frame, playerMove, label, entryBoxes, player, tileArray$}):
 \begin{itemize}
 \item transition: Signifies the completion of a turn.
 \item output: None
 \item exception: None
 \end{itemize}
 
-\noindent endChecks($frame, word, row, col, dir, player, rackLabel, \\score1Label, score2Label, turnLabel, inputWordE, inputRowE, \\ inputColE, inputDirE, inputWordSharedE, inputWordExchangeE, \\ validMoveL, sharedLetters$):
+\noindent endChecks(\sout{$frame, word, row, col, dir, player, rackLabel,$} \\ \sout{$score1Label, score2Label, turnLabel, inputWordE, inputRowE,$} \\ \sout{$inputColE, inputDirE, inputWordSharedE, inputWordExchangeE,$} \\ \sout{$validMoveL, sharedLetters$} \\
+\textcolor{red}{$root, frame, playerMove, labels, entryBoxes, player, tileArray$}):
 \begin{itemize}
 \item transition: Performs checks on input data from players turn.
 \item output: None
 \item exception: None
 \end{itemize}
 
-\noindent endMove($frame, word, row, col, dir, rackLabel, score1Label, score2Label,\\ turnLabel, inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE, \\ inputWordExchangeE, validMoveL, sharedLetters$):
+\noindent endMove($frame, word, row, col, dir,$ \sout{$rackLabel, score1Label, score2Label,$} \\ \sout{$turnLabel, inputWordE, inputRowE, inputColE, inputDirE, inputWordSharedE,$} \\ \sout{$inputWordExchangeE, validMoveL$},\\ 
+$sharedLetters$, \textcolor{red}{$labels, entryBoxes, tileArray, p1Name, p2Name$} ):
 \begin{itemize}
 \item transition: Takes in user data from window text boxes.
 \item output: None
 \item exception: None
 \end{itemize}
 
-\noindent updateLabelText($label$):
+\noindent \sout{updateLabelText($label$):}
 \begin{itemize}
-\item transition: Updates window components labels with string input label.
-\item output: None
-\item exception: None
+\item \sout{transition: Updates window components labels with string input label.}
+\item \sout{output: None}
+\item \sout{exception: None}
 \end{itemize}
 
-\noindent scrabbleBoard($root, frame, player1Name, player2Name$):
+\noindent \sout{scrabbleBoard($root, frame, player1Name, player2Name$):}
 \begin{itemize}
-\item transition: Creates initial scrabble board after taking player's names.
-\item output: None
-\item exception: None
+\item \sout{transition: Creates initial scrabble board after taking player's names.}
+\item \sout{output: None}
+\item \sout{exception: None}
 \end{itemize}
 
 \newpage
