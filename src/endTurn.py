@@ -34,6 +34,9 @@ class endTurn:
         else:
              raise ValueError("Not a valid direction")
 
+	## @brief removes a tiles from a rack corresponding to a word.
+    #  @param1 word i.e. the inputted word.
+	#  @param1 rack to take words letters from.
     def removeTile(word, rack):
         wordUp = word.upper()
         for letter in wordUp:
@@ -42,6 +45,9 @@ class endTurn:
                     rack.removeFromRack(tile)
         rack.replenishRack()
 
+	## @brief exchanges certain tiles in a rack with random tiles from the bag.
+    #  @param1 word here us characters to exchange.
+	#  @param2 rack to take words letters from.
     def exchangeTile(word, rack):
         wordUp = word.upper()
         saveTiles = []
@@ -55,6 +61,11 @@ class endTurn:
         for tiles in saveTiles:
             rack.bag.addToBag(tiles, 1)
 
+	## @brief exchanges certain tiles in a rack with random tiles from the bag.
+    #  @param1 word i.e. user inputed word.
+	#  @param2 row ie row value of starting tile.
+	#  @param3 column ie column value of starting tile.
+	#  @param4 dir i.e. horizontal or vertical direction in which word is to be entered onto board.
     def calculateScore(word, row, col, dir):
         #Set list used in score calculations.
         #List of premium tiles.

@@ -289,10 +289,6 @@ $0 < |rack| \leq 7$
 
 N/A
 
-\begin{itemize}
-
-\end{itemize}
-
 \subsubsection* {Access Routine Semantics}
 
 \noindent init(\textcolor{black}{ $Bag$}):
@@ -644,9 +640,9 @@ N/A
 \hline
 \textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
 \hline
-checkRack & String, Rack & $\mathbb{B}$ & \\
+checkRack & String, Rack & $\mathbb{B}$ & \textcolor{red}{ValueError}\\
 \hline
-checkInDict & String & $\mathbb{B}$ & \\
+checkInDict & String & $\mathbb{B}$ &\textcolor{red}{IOError} \\
 \hline
 \end{tabular}
 
@@ -674,14 +670,14 @@ N/A
 \begin{itemize}
 \item transition: None
 \item output: \sout{$\mathbb{B}$} \textcolor{red}{($\exists$   $word$ $\in rack \cdot true)$}
-\item exception: None
+\item exception: \sout{None} \textcolor{red}{ValueError} for empty word.
 \end{itemize}
 
 \noindent checkInDict($word$):
 \begin{itemize}
 \item transition: None
 \item output: \sout{$\mathbb{B}$} \textcolor{red}{$(\exists$   $word$ $\in Dictionary \cdot true)$}
-\item exception: None
+\item exception: \sout{None} \textcolor{red}{IOError} for incorrect file.
 \end{itemize}
 
 \newpage
@@ -690,7 +686,7 @@ N/A
 
 \subsection* {Uses}
 
-WordChecks
+WordChecks, \textcolor{red}{Board, copy}
 
 \subsection*{Right Module}
 
@@ -994,6 +990,7 @@ scrabbleBoard & tkinter root, tkinter frame, String, String & tkinter Grid & \\
 \item exception: None
 \end{itemize}
 }
+\newpage
 
 \section*{\sout{BoardFrame} \textcolor{red}{GameController}}
 
@@ -1131,6 +1128,8 @@ N/A
 \item output: None
 \item exception: None
 \end{itemize}
+
+\newpage
 
 \section*{\textcolor{red}{WidgetCreation}}
 

@@ -1,9 +1,16 @@
 from tkinter import *
 from widgetCreation import *
-from gameController import*
+from gameController import *
 
-#Initializing the introductory window to the scrabble game.
+## @file main.py
+#  @author The Trifecta
+#  @brief This module the front end of the Scrabble game.
+#  @date Apr.06,2020
+
+## @brief Initializing the introductory window to the scrabble game.
 class frontEndMain:
+
+	## @brief initializes the window for the introduction of the Scrabble game.
     def __init__(self):
         self.root = Tk()
         self.root.geometry("1500x900")
@@ -22,7 +29,7 @@ class frontEndMain:
 
         self.root.mainloop()
 
-    # Method pops up window that display instructions to the player.
+    ## @brief Method pops up window that display instructions to the player.
     def instructions(self):
         instructR = Toplevel()
         instructR.title('Instructions')
@@ -59,7 +66,7 @@ class frontEndMain:
         closeB = Button(instructR, text = "Close Instructions", command = instructR.destroy)
         closeB.grid(row = 1, column = 0)
 
-    #Allows the player to enter their names and stores the values.
+    ## @brief Allows the player to enter their names and stores the values.
     def getPlayerName(self):
         self.introF.grid_remove()
         self.startF.grid(row = 0, column = 0)
@@ -76,12 +83,17 @@ class frontEndMain:
         playB = Button(self.startF, text = "Let's play", command = lambda: BoardFrame.scrabbleBoard(self.root, self.startF, play1E.get(), play2E.get()))
         playB.grid(row = 3, column = 1)
 
+	## @brief #destroys the window when the game is done
     def destroyWindow(self):
-        #destroys the window when the game is done
         self.startF.destroy()
         self.introF.destroy()
 
 class BoardFrame:
+	## @brief initializes and maintains the scrabble board.
+    #  @param1 root window in which game is being implemented.
+    #  @param2 frame containing the various board components.
+    #  @param3 player1's name.
+    #  @param4 player2's name.
     def scrabbleBoard(root, frame, player1Name, player2Name):
         #Tile array used to access tiles to update them.
         global tileArray
