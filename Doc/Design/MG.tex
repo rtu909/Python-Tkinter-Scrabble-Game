@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{ulem}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -37,7 +38,7 @@
 		\\ Raymond Tu, Tur1
 }
 
-\date{March 13, 2020}
+\date{April 6, 2020}
 
 %\input{../../Comments}
 
@@ -55,7 +56,8 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-13/2/20 & 1.0 & ---\\
+13/2/20 & \sout{1.0}  \textcolor{red}{0.0} & ---\\
+3/4/20 & 1.0 & ---\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -76,43 +78,14 @@
 %solution space is explored.  
 \subsection{Overview}
 
-The Scrabble project is an implementation of the game Scrabble in python, with an ASCII based user interface on the command line terminal. The goal of the project is to take the original implementation on Github and improve on various aspects outlined in the SRS. The primary focus of these additional features is to implement a graphical user interface using the Tkinter library in python. This would make the game more accessible to users not familiar with use of the command line terminal, in an easily understood aesthetically pleasing format. Additionally, in the back-end modules will be re-implemented to allow for modularity and ease of maintainability for new features in the future. Overall, this would lead to better software design that is easier to maintain and update for the future. 
+The Scrabble project is a \textcolor{red}{python language} implementation of the \textcolor{red}{classic family} game Scrabble \sout{in python} \textcolor{red}{that had been implemented} with an ASCII based user interface on the command line terminal. The goal of the project is to take the original implementation \textcolor{red}{that exists} on Github and improve on various aspects outlined in the SRS. The primary focus of these additional features is to implement \textcolor{red}{the game as} a graphical user interface using the Tkinter library in python. This would make the game more accessible to users not familiar with use of the command line terminal, in an easily understood \textcolor{red}{and} aesthetically pleasing format. Additionally, in the back-end modules will be re-implemented to allow for modularity and ease of maintainability for new features in the future. Overall, this would lead to better software design that is easier to maintain and update for the future. 
 
 \subsection{Scope}
 
-The scope of the project is based around the original Scrabble repository, any new features or functionality added is to make it closer to the original game. For example, there are several new modules added for background checks that are in line with the original rules of the game but omitted from the original Github implementation. The Tkinter library in Python will be the main tool used to create the GUI for Scrabble.
+The scope of the project is based around the original Scrabble repository, any new features or functionality added is to make it closer to the original game. For example, there are several new modules added for background checks that are in line with the original rules of the game but omitted from the original Github implementation \textcolor{red}{such as enforcement of scrabble words in a crossword fashion, checking for other possible adjacent word combinations that add onto a players score, etc}. The Tkinter library in Python will be the \sout{main} \textcolor{red}{primary} tool used to create the GUI for Scrabble.
 
 \subsection{Module Guide Purpose}
-The purpose of this document, the Module Guide (MG) is to outline the modular structure of the system and allow any future contributors to easily identify parts of the program. New contributors will be able to refer to this document in the future to find relevant documentation for the modules they are working on. Additionally, the module guide will be helpful to check for consistency in the overall design of the game, the cohesion between modules and their coupling to ensure good software design. The module guide will outline how the modules in the back-end and front-end are broken up to have high cohesion and low coupling. Overall, the module guide will ensure developers and future contributors have good documentation to gain an understanding of the software, and ensure consistency between the relationships of the modules.
-
-%Our design follows the rules layed out by \citet{ParnasEtAl1984}, as follows:
-%\begin{itemize}
-%\item System details that are likely to change independently should be the
-%  secrets of separate modules.
-%\item Each data structure is used in only one module.
-%\item Any other program that requires information stored in a module's data
-%  structures must obtain it by calling access programs belonging to that module.
-%\end{itemize}
-
-%After completing the first stage of the design, the Software Requirements
-%Specification (SRS), the Module Guide (MG) is developed~\citep{ParnasEtAl1984}. %The MG
-%specifies the modular structure of the system and is intended to allow both
-%designers and maintainers to easily identify the parts of the software.  The
-%potential readers of this document are as follows:
-
-%\begin{itemize}
-%\item New project members: This document can be a guide for a new project member
-%  to easily understand the overall structure and quickly find the
-%  relevant modules they are searching for.
-%\item Maintainers: The hierarchical structure of the module guide improves the
-%  maintainers' understanding when they need to make changes to the system. It is
-%  important for a maintainer to update the relevant sections of the document
-%  after changes have been made.
-%\item Designers: Once the module guide has been written, it can be used to
-%  check for consistency, feasibility and flexibility. Designers can verify the
-%  system in various ways, such as consistency among modules, feasibility of the
-%  decomposition, and flexibility of the design.
-%\end{itemize}
+The purpose of this document, the Module Guide (MG) is to outline the modular structure of the system and allow any future contributors to easily identify parts of the program. New contributors will be able to refer to this document in the future to find relevant documentation for the modules they are working on. Additionally, the module guide will be helpful to check for consistency in the overall design of the game, the cohesion between modules and their coupling to ensure good software design. The module guide will outline how the modules in the back-end and front-end are broken up to have high cohesion and low coupling. Overall, the module guide will ensure developers and future contributors have good documentation to gain an understanding of the software, \sout{and} ensure consistency between the relationships of the modules, \textcolor{red}{and allow for identification of opportunities for addition of newer changes to the planned implementation}.
 
 The rest of the document is organized as follows. Section
 \ref{SecChange} lists the anticipated and unlikely changes of the software
@@ -141,8 +114,8 @@ unlikely changes are listed in Section \ref{SecUchange}. Anticipated changes are
 %change.
 
 \begin{description}
-\item [\refstepcounter{acnum} \actheacnum \label{acSkipTurn}:] Implementation of a Skip Turn button. This would prevent deadlock in the game if a player is unable to make a move. 
-\item [\refstepcounter{acnum} \actheacnum \label{acExchangeTile}:] Implementation of an Exchange Tiles button. This would help prevent deadlock if available tiles do not create a word that can be placed.
+\item [\refstepcounter{acnum} \actheacnum \label{acSkipTurn}:] \sout{Implementation of a Skip Turn button. This would prevent deadlock in the game if a player is unable to make a move. } \textcolor{red}{Change has been implemented}
+\item [\refstepcounter{acnum} \actheacnum \label{acExchangeTile}:] \sout{Implementation of an Exchange Tiles button. This would help prevent deadlock if available tiles do not create a word that can be placed.} \textcolor{red}{Change has been implemented}
 \item [\refstepcounter{acnum} \actheacnum \label{acScoreboard}:] Scoreboard at the end of a match. Display player total score and who won at the end of a match. 
 \item [\refstepcounter{acnum} \actheacnum \label{acGUI}:] Improved user interface, more adjustable window resolution and default size. Make the interface more friendly to different monitor sizes, and more readable text/font sizes.
 \end{description}
@@ -171,16 +144,17 @@ below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
 \begin{description}
-\item [\refstepcounter{mnum} \mthemnum \label{mHHGW}:] Game Window %Hardware-Hiding Module
-\item [\refstepcounter{mnum} \mthemnum \label{mBHGB}:] Gameboard Boolean Checks % Behaviour Hiding
-\item [\refstepcounter{mnum} \mthemnum \label{mBHET}:] End Turn Boolean Checks % Behaviour Hiding
-\item [\refstepcounter{mnum} \mthemnum \label{mBHVW}:] Valid Word Boolean Checks % Behaviour Hiding
-\item [\refstepcounter{mnum} \mthemnum \label{mBHGV}:] Game View % Behaviour Hiding
+\item [\refstepcounter{mnum} \mthemnum \label{mHHGW}:] \sout{Game Window} \textcolor{red}{Main Game} %Hardware-Hiding Module
+\item [\refstepcounter{mnum} \mthemnum \label{mBHGB}:] \sout{Gameboard Boolean Checks} \textcolor{red}{BoardChecks} % Software Decision 
+\item [\refstepcounter{mnum} \mthemnum \label{mBHET}:] EndTurn \sout{Boolean Checks} % Software Decision
+\item [\refstepcounter{mnum} \mthemnum \label{mBHVW}:] \sout{Valid Word Boolean Checks} WordChecks % % Software Decision
+\item [\refstepcounter{mnum} \mthemnum \label{mBHGV}:] \sout{Game View} \textcolor{red}{GameController} %Behaviour-Hiding Module
 \item [\refstepcounter{mnum} \mthemnum \label{mSDBO}:] Board % Software Decision
 \item [\refstepcounter{mnum} \mthemnum \label{mSDP}:] Player % Software Decision
 \item [\refstepcounter{mnum} \mthemnum \label{mSDR}:] Rack % Software Decision
 \item [\refstepcounter{mnum} \mthemnum \label{mSDT}:] Tiles % Software Decision
 \item [\refstepcounter{mnum} \mthemnum \label{mSDB}:] Bag % Software Decision
+ \item [\refstepcounter{mnum} \mthemnum \label{mSDB}:] \textcolor{red}{WidgetCreation} %Behviour Hiding
 \end{description}
 
 
@@ -191,11 +165,13 @@ actually be implemented.
 \textbf{Level 1} & \textbf{Level 2}\\
 \midrule
 
-{Hardware-Hiding Module} & Game Window \\
+{Hardware-Hiding Module} & Main Game \\
 \midrule
 
-\multirow{2}{0.3\textwidth}{Behaviour-Hiding Module} & Game View\\
-& End Turn Boolean Checks\\
+\multirow{2}{0.3\textwidth}{Behaviour-Hiding Module} & Game \sout{View} \textcolor{red}{Controller}\\
+& \sout{End Turn Boolean Checks}\\
+& \textcolor{red}{WidgetCreation}\\
+
 
 \midrule
 
@@ -204,8 +180,9 @@ actually be implemented.
 & Player\\
 & Rack\\
 & Tiles\\
-& Valid Word Boolean Checks\\
-& Gameboard Boolean Checks\\
+& \sout{Valid} Word \sout{Boolean} Checks\\
+& \textcolor{red}{EndTurn}\\
+& \sout{Gameboard Boolean Checks} \textcolor{red}{BoardChecks}\\
 \bottomrule
 
 \end{tabular}
@@ -224,13 +201,15 @@ actually be implemented.
 \textbf{Module} & \textbf{Requirement Module Meets}                                                                                                                   \\ \hline
 Tile            & FR10, MS1, MS2, MS3, LR1                                                                                                                            \\ \hline
 Bag             & FR5, MS1, MS2, MS3, LR1                                                                                                                             \\ \hline
-Rack            & FR11, MS1, MS2, MS3, LR1                                                                                                                            \\ \hline
+Rack            & FR11, \textcolor{red}{FR14}, MS1, MS2, MS3, LR1                                                                                                                            \\ \hline
 Player          & FR4, MS1, MS2, MS3, LR1                                                                                                                             \\ \hline
 Board           & FR2, MS1, MS2, MS3, LR1                                                                                                                             \\ \hline
 EndTurn         & FR10, MS1, MS2, MS3, LR1                                                                                                                            \\ \hline
 WordChecks      & FR6, MS1, MS2, MS3, CR1, LR1                                                                                                                        \\ \hline
 BoardChecks     & FR6, FR8, FR9, MS1, MS2, MS3, LR1                                                                                                                   \\ \hline
-MainGame        & \begin{tabular}[c]{@{}l@{}}FR2, FR4, FR7, FR8, FR10, FR12, \\ LF1, UH1, UH2, UH3, UH4, UH5, UH7,\\  PR1, PR2, OE1, OE2, CR1, LR1, HSR1\end{tabular} \\ \hline
+\textcolor{red}{WidgetCreation}     & \textcolor{red}{FR8, LF1, UH2, MS1, MS2, MS3}                                                                                                                   \\ \hline
+\textcolor{red}{GameController}    & \textcolor{red}{FR6, FR7, FR8, FR9, FR10, FR12, PR2, MS1, MS2, MS3}                                                                                                                   \\ \hline
+\sout{MainGame} \textcolor{red}{Main} & \begin{tabular}[c]{@{}l@{}}FR2, FR4, FR7, \sout{FR8}, FR10, \sout{FR12} \textcolor{red}{FR13, FR15, FR16, FR17}\\ LF1, UH1, UH2, UH3, UH4, UH5, UH7,\\  PR1, PR2, OE1, OE2, CR1, LR1, HSR1\end{tabular} \\ \hline
 \end{tabular}
 \caption{ Requirements and Design Connection}
 \label{TblRDC}
@@ -238,19 +217,9 @@ MainGame        & \begin{tabular}[c]{@{}l@{}}FR2, FR4, FR7, FR8, FR10, FR12, \\ 
 
 \section{Module Decomposition} \label{SecMD} %Lucia
 
-The purpose of having modules is to decompose the system into manageable pieces that can be more easily developed than a monolithic piece of software. The way modules are decomposed is based around the principle of information hiding, which states that each module has one secret that is hidden from the other modules. These secrets are parts of the implementation that are likely to change. Each module also has a service which is the functionality that the module provides without describing the implementation of these services. For each of the modules given in the hierarchy their secret and service is listed as well as how the module will be implemented.
+The purpose of having modules is to decompose the system into manageable pieces \textcolor{red}{of code} that can be more easily developed \textcolor{red}{and maintained} \sout{than} \textcolor{red}{as compared to} a monolithic piece of software. The way \textcolor{red}{the} modules are decomposed is based around the principle of information hiding, which states that each module has one secret that is hidden from the other modules. These secrets are parts of the implementation that are likely to change. Each module also has a service which is the functionality that the module provides without describing the implementation of these services. For each of the modules given in the hierarchy their secret and service is listed as well as how the module will be implemented.
 
-% Modules are decomposed according to the principle of ``information hiding''
-% proposed by \citet{ParnasEtAl1984}. The \emph{Secrets} field in a module
-% decomposition is a brief statement of the design decision hidden by the
-% module. The \emph{Services} field specifies \emph{what} the module will do
-% without documenting \emph{how} to do it. For each module, a suggestion for the implementing software is given under the \emph{Implemented By} title. If the entry is \emph{OS}, this means that the module is provided by the operating system or by standard programming language libraries.  Also indicate if the module will be implemented specifically for the software.
-
-% Only the leaf modules in the
-% hierarchy have to be implemented. If a dash (\emph{--}) is shown, this means
-% that the module is not a leaf and will not have to be implemented. Whether or not this module is implemented depends on the programming language selected.
-
-\subsection{Hardware Hiding Modules - Game Window (\mref{mHHGW})} 
+\subsection{Hardware Hiding Modules - \textcolor{red}{Main} Game (\mref{mHHGW})} 
 \begin{description}
 \item[Secrets:]The data structures and algorithms used to handle virtual input and output, for example the screen, keyboard and mouse.
 \item[Services:]Serves as a virtual hardware for the screen, keyboard, mouse used by the rest of the system to accept input and display output to the screen. This module provides the interface between the hardware and the
@@ -269,20 +238,25 @@ software.
 
 \subsubsection{End Turn Boolean Checks (\mref{mBHET})}
 \begin{description}
-\item[Secrets:]The logic for when a move is completed by a player.
-\item[Services:] Provides the behaviour necessary for updating the interface based on changes in data once the player has made a move.
-\item[Implemented By:] Scrabble Project
+\item \sout{ \textbf{Secrets:} The logic for when a move is completed by a player.}
+\item \sout{\textbf{Services:} Provides the behaviour necessary for updating the interface based on changes in data once the player has made a move.}
+\item \sout{\textbf{Implemented By:} Scrabble Project}
 \end{description}
 
-\subsubsection{Game View (\mref{mBHGV})}
+\textcolor{red}{\subsubsection{WidgetCreation (M11)}
+\begin{description}
+\item [Secrets:] The creation of the tile and label widgets of the game board.
+\item [Services:] Provides the behaviour necessary for creating tiles and the various labels on different components of the game board.
+\item [Implemented By:] Scrabble Project
+\end{description}}
+
+\subsubsection{Game \textcolor{red}{Controller} (\mref{mBHGV})}
+%When I tried the \sout command within the subsection the latex editor gave an error. 
 \begin{description}
 \item[Secrets:]The interface of the game that the player interacts with.
 \item[Services:]Displays the game board, input boxes and buttons necessary for the player to interact with the game.
 \item[Implemented By:] Scrabble Project
 \end{description}
-
-
-
 
 \subsection{Software Decision Module}
 \begin{description}
@@ -307,6 +281,13 @@ software.
 \item[Services:] Provides the behaviour necessary for ensuring that only valid words are used in the game.
 \item[Implemented By:] Scrabble Project
 \end{description}
+
+\textcolor{red}{\subsubsection{End Turn Boolean Checks (\mref{mBHET})}
+\begin{description}
+\item [Secrets:] The logic for when a move is completed by a player.
+\item [Services:] Provides the implementation necessary for checking and alerting the players on the end of a certain players turn in the interface based on changes in data once a certain player has made a move.
+\item [Implemented By:] Scrabble Project
+\end{description}}
 
 \subsubsection{Board (\mref{mSDBO})}
 \begin{description}
@@ -367,6 +348,11 @@ FR9 & \mref{mHHGW}, \mref{mBHGV}, \mref{mBHGB}, \mref{mSDBO}\\
 FR10 & \mref{mHHGW}, \mref{mBHGV}, \mref{mSDT}\\
 FR11 & \mref{mHHGW}, \mref{mBHGV}\\
 FR12 & \mref{mHHGW}, \mref{mBHGV}, \mref{mBHET}, \mref{mSDB}\\
+\textcolor{red}{FR13} & \textcolor{red}{ \mref{mHHGW}} \\
+\textcolor{red}{FR14} & \textcolor{red}{\mref{mHHGW}, \mref{mSDR}} \\
+\textcolor{red}{FR15} & \textcolor{red}{\mref{mHHGW}}\\
+\textcolor{red}{FR16} & \textcolor{red}{\mref{mHHGW}}\\
+\textcolor{red}{FR17} & \textcolor{red}{\mref{mHHGW}}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Requirements and Modules}
@@ -379,9 +365,9 @@ FR12 & \mref{mHHGW}, \mref{mBHGV}, \mref{mBHET}, \mref{mSDB}\\
 \toprule
 \textbf{AC} & \textbf{Modules}\\
 \midrule
-\acref{acSkipTurn} & \mref{mBHGV}\\ %game view
-\acref{acExchangeTile} & \mref{mBHGV}\\
-& \mref{mBHET}\\ %exchange tile 
+\acref{acSkipTurn} & \sout {\mref{mBHGV}} \textcolor{red}{Change implemented}\\ %game view
+\acref{acExchangeTile} & \sout{\mref{mBHGV}} \textcolor{red}{Change implemented}\\
+& \sout{\mref{mBHET}} \textcolor{red}{Change implemented}\\ %exchange tile 
 \acref{acScoreboard} & \mref{mBHGV}\\
 \acref{acGUI} & \mref{mBHGV}\\
 & \mref{mHHGW}\\
@@ -395,7 +381,7 @@ FR12 & \mref{mHHGW}, \mref{mBHGV}, \mref{mBHET}, \mref{mSDB}\\
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{mg_section7.png}
+\includegraphics[width=0.7\textwidth]{mg_section7_rev1.png}
 \caption{Use hierarchy among modules}
 \label{FigUH}
 \end{figure}
